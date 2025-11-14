@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Azeret Mono font */
+@import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;700;800;900&display=swap');
+
+@layer base {
+  :root {
+    --color-lime: #DAFA92;
+    --color-dark: #1a1a1a;
+    --color-light: #ffffff;
+    --color-black: #000000;
+  }
+
+  body {
+    @apply bg-white text-black;
+    font-family: 'Azeret Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
