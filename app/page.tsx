@@ -3,53 +3,48 @@ import { Button } from '@/components/ui'
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="h-screen flex flex-col overflow-hidden">
       <Marquee />
       <Header />
 
-      <main className="flex-1 flex flex-col items-center justify-center px-6 py-20 bg-dark-grey">
-        <h1 className="text-4xl md:text-6xl font-black mb-8 text-center">
-          HUMAN<span className="text-lime-green">.</span> Creative
-        </h1>
+      <main className="flex-1 relative overflow-hidden">
+        <section className="hero-section relative w-full h-full flex items-center justify-center text-center px-6">
 
-        <p className="text-xl md:text-2xl text-center max-w-3xl mb-12 text-light-text/80">
-          Component library complete. All layout and UI components are ready.
-        </p>
+          {/* Video Background */}
+          <div className="absolute top-0 left-0 w-full h-full z-[1]">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover"
+              poster="/home-screenshot.jpg"
+            >
+              <source
+                src="https://assets.mixkit.co/videos/preview/mixkit-black-and-white-video-of-a-man-in-a-field-39001-large.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
 
-        <div className="flex flex-col md:flex-row gap-6 items-center">
-          <Button variant="outline" href="/manifesto">
-            READ THE MANIFESTO
-          </Button>
-          <Button variant="solid" href="/work">
-            VIEW OUR WORK
-          </Button>
-        </div>
+          {/* Dark Overlay - 60% opacity */}
+          <div className="absolute top-0 left-0 w-full h-full bg-black/60 z-[2]" />
 
-        <div className="mt-20 w-full max-w-2xl">
-          <h2 className="text-2xl font-bold mb-6 text-lime-green">Components Built:</h2>
-          <ul className="space-y-3 text-light-text">
-            <li className="flex items-center gap-2">
-              <span className="text-lime-green">✓</span>
-              <span>Header (3-column grid, mobile responsive)</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="text-lime-green">✓</span>
-              <span>Footer (lime green background, social links)</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="text-lime-green">✓</span>
-              <span>Marquee (80s animation, scrolling partners)</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="text-lime-green">✓</span>
-              <span>Button (outline/solid variants, 410.5×80px)</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="text-lime-green">✓</span>
-              <span>Input & Textarea (error states, validation ready)</span>
-            </li>
-          </ul>
-        </div>
+          {/* Hero Content */}
+          <div className="relative z-[3] text-white">
+            <h1 className="text-4xl md:text-6xl lg:text-hero font-black leading-hero mb-10 tracking-wide">
+              A<br />
+              WELFARE-FIRST<br />
+              AGENCY FOR<br />
+              FREELANCE<br />
+              FILMMAKERS
+            </h1>
+            <Button variant="outline" href="/manifesto">
+              READ THE MANIFESTO
+            </Button>
+          </div>
+        </section>
       </main>
 
       <Footer />
