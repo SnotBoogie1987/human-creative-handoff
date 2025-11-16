@@ -18,6 +18,11 @@
     box-sizing: border-box;
   }
 
+  html {
+    /* Base font size for rem calculations (1rem = 16px) */
+    font-size: 16px;
+  }
+
   html,
   body {
     font-family: 'Azeret Mono', monospace;
@@ -26,6 +31,7 @@
     background-color: var(--color-dark-grey);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6; /* Unitless for scalability */
   }
 
   a {
@@ -37,6 +43,11 @@
     font-family: inherit;
     cursor: pointer;
   }
+
+  /* Long-form text blocks should use readable max-width */
+  p {
+    max-width: 75ch;
+  }
 }
 
 @layer utilities {
@@ -44,9 +55,9 @@
     text-wrap: balance;
   }
 
-  /* Custom scrollbar */
+  /* Custom scrollbar (8px grid aligned) */
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px; /* Was 10px → 8px (1 × 8px grid) */
   }
 
   ::-webkit-scrollbar-track {
@@ -55,7 +66,7 @@
 
   ::-webkit-scrollbar-thumb {
     background: var(--color-lime-green);
-    border-radius: 5px;
+    border-radius: 4px; /* Was 5px → 4px (0.5 × 8px grid) */
   }
 
   ::-webkit-scrollbar-thumb:hover {

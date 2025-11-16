@@ -5,7 +5,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="flex flex-col md:flex-row justify-between items-center px-6 md:px-10 py-5 bg-lime-green text-dark-text text-xs md:text-sm gap-3 md:gap-0">
+    <footer className="flex flex-col md:flex-row justify-between items-center px-6 md:px-10 py-4 bg-lime-green text-dark-text text-xs md:text-sm gap-4 md:gap-0">
       {/* Left - Info Icon */}
       <div className="flex items-center">
         <span className="text-lg font-bold">(i)</span>

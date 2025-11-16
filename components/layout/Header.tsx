@@ -15,7 +15,7 @@ export function Header() {
   ]
 
   return (
-    <header className="relative z-50 grid grid-cols-3 items-center px-6 md:px-10 py-5">
+    <header className="relative z-50 grid grid-cols-3 items-center px-6 md:px-10 py-4">
       {/* Logo - Left */}
       <div className="justify-self-start">
         <Link
@@ -58,7 +58,7 @@ export function Header() {
 
       {/* Mobile Menu Toggle */}
       <button
-        className="md:hidden justify-self-end flex flex-col gap-1.5 w-8 h-6 relative z-50"
+        className="md:hidden justify-self-end flex flex-col gap-2 w-8 h-6 relative z-50"
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         aria-label="Toggle menu"
         aria-expanded={mobileMenuOpen}

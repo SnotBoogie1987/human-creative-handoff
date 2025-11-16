@@ -21,7 +21,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         <input
           ref={ref}
           className={`
-            w-full px-4 py-3
+            w-full px-4 py-4
             bg-transparent
             border-3 ${error ? 'border-red-500' : 'border-lime-green'}
             text-light-text
@@ -69,7 +69,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           ref={ref}
           rows={4}
           className={`
-            w-full px-4 py-3
+            w-full px-4 py-4
             bg-transparent
             border-3 ${error ? 'border-red-500' : 'border-lime-green'}
             text-light-text

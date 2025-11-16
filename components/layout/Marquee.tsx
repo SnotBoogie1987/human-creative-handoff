@@ -11,7 +11,7 @@ export function Marquee({
 }: MarqueeProps) {
   return (
     <div className="w-full overflow-hidden bg-lime-green text-dark-text whitespace-nowrap border-b border-gray-700">
-      <div className="h-marquee flex items-end pb-marquee-padding">
+      <div className="h-marquee flex items-end pb-2">
         <div className="inline-block animate-marquee">
           <span className="text-marquee font-regular">{text} </span>
           <span className="text-marquee font-regular">{text}</span>
