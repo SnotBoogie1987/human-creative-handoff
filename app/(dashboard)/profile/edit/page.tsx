@@ -2,10 +2,11 @@
 
 import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { Lock, Save, Check } from 'lucide-react'
-import { Tabs, TabsList, TabsTrigger, TabsContent, Input, Textarea, Button } from '@/components/ui'
+import { Lock, Save, Check, User } from 'lucide-react'
+import { Tabs, TabsList, TabsTrigger, TabsContent, Input, Textarea, Button, FileUpload } from '@/components/ui'
 import { useDebounce } from '@/lib/hooks/useDebounce'
 import { getProfileAction, updateProfileAction } from '../actions'
+import { uploadFile, FILE_CONFIGS } from '@/lib/storage'
 import type { Profile, SkillLevel } from '@/lib/auth/types'
 import { useRouter } from 'next/navigation'
 
@@ -91,6 +92,63 @@ export default function ProfileEditPage() {
     }
   }
 
+  const handleAvatarUpload = async (file: File) => {
+    if (!profile?.id) {
+      return { success: false, error: 'No user ID found' }
+    }
+
+    try {
+      // Upload to Supabase Storage
+      const result = await uploadFile({
+        bucket: FILE_CONFIGS.avatar.bucket,
+        file,
+        userId: profile.id,
+        path: `${profile.id}/avatar.${file.name.split('.').pop()}`,
+      })
+
+      if (result.success && result.url) {
+        // Update profile with new avatar URL
+        await updateProfileAction({ avatar_url: result.url })
+        setProfile((prev) => (prev ? { ...prev, avatar_url: result.url || null } : null))
+        return { success: true, url: result.url }
+      }
+
+      return result
+    } catch (error: any) {
+      console.error('[handleAvatarUpload] Error:', error)
+      return { success: false, error: error.message }
+    }
+  }
+
+  const handleDocumentUpload = async (file: File, documentType: 'passport' | 'driving_license') => {
+    if (!profile?.id) {
+      return { success: false, error: 'No user ID found' }
+    }
+
+    try {
+      // Upload to Supabase Storage (private bucket)
+      const result = await uploadFile({
+        bucket: FILE_CONFIGS.document.bucket,
+        file,
+        userId: profile.id,
+        path: `${profile.id}/${documentType}.${file.name.split('.').pop()}`,
+      })
+
+      if (result.success && result.url) {
+        // Update profile with document URL
+        const updateKey = documentType === 'passport' ? 'passport_scan_url' : 'driving_license_url'
+        await updateProfileAction({ [updateKey]: result.url } as any)
+        setProfile((prev) => (prev ? { ...prev, [updateKey]: result.url || null } : null))
+        return { success: true, url: result.url }
+      }
+
+      return result
+    } catch (error: any) {
+      console.error('[handleDocumentUpload] Error:', error)
+      return { success: false, error: error.message }
+    }
+  }
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center">
@@ -156,6 +214,27 @@ export default function ProfileEditPage() {
             <TabsContent value="identity">
               <div className="bg-dark-grey border border-gray-800 rounded-lg p-8">
                 <h2 className="text-2xl font-black text-white mb-6">Identity & Roles</h2>
+
+                {/* Avatar Upload */}
+                <div className="mb-8 pb-8 border-b border-gray-800">
+                  <div className="flex items-start gap-4 mb-4">
+                    <User className="h-5 w-5 text-lime-green mt-1" />
+                    <div>
+                      <h3 className="text-white font-bold mb-1">Profile Photo</h3>
+                      <p className="text-gray-400 text-sm">
+                        Upload a professional photo for your profile
+                      </p>
+                    </div>
+                  </div>
+                  <FileUpload
+                    onUpload={handleAvatarUpload}
+                    accept="image/*"
+                    maxSize={FILE_CONFIGS.avatar.maxSize / (1024 * 1024)}
+                    currentFile={profile?.avatar_url}
+                    helperText="Recommended: Square image, at least 400x400px"
+                  />
+                </div>
+
                 <div className="space-y-6">
                   {/* Full Name */}
                   <Input
@@ -525,16 +604,35 @@ export default function ProfileEditPage() {
                     </div>
                   </div>
 
-                  {/* Document Uploads - Placeholder for now */}
+                  {/* Document Uploads */}
                   <div className="pt-6 border-t border-gray-800">
-                    <h3 className="text-lime-green font-mono font-bold mb-4">Documents</h3>
-                    <p className="text-gray-400 text-sm mb-4">
-                      Document upload functionality coming soon. You&apos;ll be able to upload:
+                    <h3 className="text-lime-green font-mono font-bold mb-6">Documents</h3>
+                    <p className="text-gray-400 text-sm mb-6">
+                      Upload scans of your important documents. These are stored securely and only
+                      visible to you and authorized admins.
                     </p>
-                    <ul className="list-disc list-inside text-gray-400 text-sm space-y-2">
-                      <li>Passport scan</li>
-                      <li>Driving license</li>
-                    </ul>
+
+                    <div className="space-y-6">
+                      {/* Passport */}
+                      <FileUpload
+                        onUpload={(file) => handleDocumentUpload(file, 'passport')}
+                        accept="image/*,application/pdf"
+                        maxSize={FILE_CONFIGS.document.maxSize / (1024 * 1024)}
+                        label="Passport Scan"
+                        currentFile={profile?.passport_scan_url}
+                        helperText="Upload a clear scan or photo of your passport"
+                      />
+
+                      {/* Driving License */}
+                      <FileUpload
+                        onUpload={(file) => handleDocumentUpload(file, 'driving_license')}
+                        accept="image/*,application/pdf"
+                        maxSize={FILE_CONFIGS.document.maxSize / (1024 * 1024)}
+                        label="Driving License"
+                        currentFile={profile?.driving_license_url}
+                        helperText="Upload both sides of your driving license if applicable"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>

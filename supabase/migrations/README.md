@@ -14,6 +14,7 @@ This directory contains SQL migration files for setting up the HUMAN. Creative d
    - `002_create_profile_trigger.sql`
    - `003_extend_profiles_table.sql`
    - `004_fix_rls_recursion.sql`
+   - `005_create_storage_buckets.sql`
 5. Click **Run** for each migration
 
 ### Option 2: Supabase CLI (For production)
@@ -37,6 +38,7 @@ supabase db push
 2. ✅ `002_create_profile_trigger.sql` - Creates trigger to auto-create profiles on signup
 3. ✅ `003_extend_profiles_table.sql` - Extends profiles with 40+ freelancer fields
 4. ✅ `004_fix_rls_recursion.sql` - Fixes RLS infinite recursion with security definer function
+5. ✅ `005_create_storage_buckets.sql` - Creates storage buckets for avatars and documents with RLS
 
 ## Verification
 
