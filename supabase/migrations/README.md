@@ -12,6 +12,8 @@ This directory contains SQL migration files for setting up the HUMAN. Creative d
 4. Copy and paste the contents of each migration file in order:
    - `001_create_profiles_table.sql`
    - `002_create_profile_trigger.sql`
+   - `003_extend_profiles_table.sql`
+   - `004_fix_rls_recursion.sql`
 5. Click **Run** for each migration
 
 ### Option 2: Supabase CLI (For production)
@@ -33,6 +35,8 @@ supabase db push
 
 1. ✅ `001_create_profiles_table.sql` - Creates profiles table with RLS policies
 2. ✅ `002_create_profile_trigger.sql` - Creates trigger to auto-create profiles on signup
+3. ✅ `003_extend_profiles_table.sql` - Extends profiles with 40+ freelancer fields
+4. ✅ `004_fix_rls_recursion.sql` - Fixes RLS infinite recursion with security definer function
 
 ## Verification
 
@@ -47,6 +51,12 @@ SELECT tablename, rowsecurity FROM pg_tables WHERE tablename = 'profiles';
 
 -- Check that the trigger exists
 SELECT trigger_name FROM information_schema.triggers WHERE event_object_table = 'users';
+
+-- Check that the get_my_role function exists
+SELECT routine_name FROM information_schema.routines WHERE routine_name = 'get_my_role';
+
+-- Test the function (will return your current role if authenticated)
+SELECT public.get_my_role();
 ```
 
 ## Schema Overview
@@ -75,6 +85,9 @@ SELECT trigger_name FROM information_schema.triggers WHERE event_object_table = 
 If you need to rollback these migrations:
 
 ```sql
+-- Drop security definer function
+DROP FUNCTION IF EXISTS public.get_my_role();
+
 -- Drop trigger and function
 DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
 DROP FUNCTION IF EXISTS public.handle_new_user();
