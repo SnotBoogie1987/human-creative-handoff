@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation'
 import { getUser } from '@/lib/auth'
 import { Sidebar } from '@/components/dashboard'
+import MobileSidebar from '@/components/dashboard/MobileSidebar'
 
 export default async function DashboardLayout({
   children,
@@ -31,7 +32,10 @@ export default async function DashboardLayout({
 
   return (
     <div className="flex h-screen bg-black overflow-hidden">
-      {/* Sidebar - Fixed on desktop */}
+      {/* Mobile Sidebar */}
+      <MobileSidebar userRole={userWithProfile.profile.role} />
+
+      {/* Desktop Sidebar - Fixed */}
       <div className="hidden lg:flex lg:flex-shrink-0">
         <Sidebar profile={userWithProfile.profile} />
       </div>
@@ -43,7 +47,6 @@ export default async function DashboardLayout({
           <h1 className="text-white font-black text-2xl">
             HUMAN<span className="text-lime-green">.</span>
           </h1>
-          {/* TODO: Add mobile menu button */}
         </header>
 
         {/* Page Content - Scrollable */}
