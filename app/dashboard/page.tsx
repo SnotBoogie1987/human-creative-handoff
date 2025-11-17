@@ -1,4 +1,5 @@
 import { getUser } from '@/lib/auth'
+import { OnboardingBanner } from '@/components/dashboard/OnboardingBanner'
 
 export const metadata = {
   title: 'Dashboard | HUMAN. Creative',
@@ -7,9 +8,15 @@ export const metadata = {
 
 export default async function DashboardPage() {
   const userWithProfile = await getUser()
+  const isOnboardingIncomplete =
+    userWithProfile?.profile.role === 'freelancer' &&
+    !userWithProfile?.profile.onboarding_completed
 
   return (
     <div className="px-8 py-12 max-w-7xl mx-auto">
+      {/* Onboarding Banner (backup - users should be redirected) */}
+      {isOnboardingIncomplete && <OnboardingBanner />}
+
       {/* Welcome Section */}
       <div className="mb-12">
         <h1 className="text-4xl md:text-5xl font-black text-white mb-4">

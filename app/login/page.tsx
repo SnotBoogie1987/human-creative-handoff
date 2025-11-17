@@ -9,6 +9,7 @@ import * as z from 'zod'
 import { Header, Footer, Marquee } from '@/components/layout'
 import { Button, Input } from '@/components/ui'
 import { signIn } from '@/lib/auth/client'
+import { getAuthRedirectPath } from '@/app/actions/auth-redirect'
 
 // Validation schema
 const loginSchema = z.object({
@@ -42,8 +43,11 @@ export default function LoginPage() {
       // Wait 1 second for cookies to fully propagate
       await new Promise(resolve => setTimeout(resolve, 1000))
 
+      // Get the appropriate redirect path based on role and onboarding status
+      const redirectPath = await getAuthRedirectPath()
+
       // Force a hard navigation with full page reload
-      router.push('/dashboard')
+      router.push(redirectPath)
       router.refresh()
     } catch (error: any) {
       console.error('Login error:', error)

@@ -17,6 +17,16 @@ export default async function DashboardLayout({
     redirect('/login')
   }
 
+  // Redirect freelancers with incomplete onboarding (except when on onboarding page)
+  // Admins don't need onboarding
+  const isFreelancer = userWithProfile.profile.role === 'freelancer'
+  const hasCompletedOnboarding = userWithProfile.profile.onboarding_completed
+
+  if (isFreelancer && !hasCompletedOnboarding) {
+    console.log('[DASHBOARD LAYOUT] Freelancer with incomplete onboarding, redirecting to /onboarding')
+    redirect('/onboarding')
+  }
+
   console.log('[DASHBOARD LAYOUT] User authenticated, rendering dashboard')
 
   return (
