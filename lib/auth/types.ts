@@ -6,6 +6,19 @@ export type UserRole = 'freelancer' | 'agency_admin' | 'super_admin'
 // Skill level for editing software
 export type SkillLevel = 'none' | 'good' | 'very_good'
 
+// Private freelancer details (separate table for sensitive PII)
+export interface PrivateFreelancerDetails {
+  user_id: string
+  birthdate: string | null
+  emergency_contact_name: string | null
+  emergency_contact_relationship: string | null
+  emergency_contact_phone: string | null
+  frequent_flyer_program: string | null
+  other_visas: string | null
+  created_at: string
+  updated_at: string
+}
+
 // Database profile type
 export interface Profile {
   // Core fields

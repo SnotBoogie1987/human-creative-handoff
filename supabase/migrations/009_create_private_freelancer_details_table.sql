@@ -3,29 +3,23 @@
 -- Description: Stores sensitive PII and medical information for freelancers
 -- =============================================
 
--- Create private_freelancer_details table
+-- NOTE: This table stores additional private fields not in the profiles table
+-- Many private fields (dietary_requirements, allergies, medical_notes, passport_scan_url, etc.)
+-- are currently stored in the profiles table (migration 003).
+-- This table adds truly missing fields from the original schema specification.
+
 CREATE TABLE IF NOT EXISTS public.private_freelancer_details (
   user_id UUID NOT NULL PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::TEXT, NOW()) NOT NULL,
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::TEXT, NOW()) NOT NULL,
 
-  -- Sensitive Personal Info
-  birthdate DATE,
-  address TEXT,
-  phone_number TEXT,
-  passport_scan_url TEXT,        -- Secure path from 'freelancer-private-docs' bucket
-  has_driving_license BOOLEAN DEFAULT false,
-  driving_license_scan_url TEXT, -- Secure path from 'freelancer-private-docs' bucket
-  has_access_to_vehicle BOOLEAN DEFAULT false,
-  visas_held TEXT,
-  preferred_departure_airport TEXT,
-  frequent_flyer_program TEXT,
-
-  -- Medical & Emergency
-  dietary_requirements TEXT,
-  allergies TEXT,
-  medical_notes TEXT,
-  emergency_contact_details TEXT
+  -- Additional Private Fields (not in profiles table)
+  birthdate DATE,                    -- Date of birth (required for travel/age verification)
+  emergency_contact_name TEXT,       -- Emergency contact person's name
+  emergency_contact_relationship TEXT, -- Relationship to freelancer
+  emergency_contact_phone TEXT,      -- Emergency contact phone number
+  frequent_flyer_program TEXT,       -- Airline frequent flyer details
+  other_visas TEXT                   -- Additional visa information beyond US/Schengen
 );
 
 -- Create indexes
@@ -108,11 +102,10 @@ CREATE TRIGGER private_freelancer_details_updated_at
 -- COMMENTS
 -- =============================================
 
-COMMENT ON TABLE public.private_freelancer_details IS 'Stores sensitive PII, medical, and emergency information for freelancers. This data is kept separate from public profiles for security.';
+COMMENT ON TABLE public.private_freelancer_details IS 'Stores additional sensitive PII for freelancers not in the profiles table. Emergency contacts, birthdate, and travel details.';
 COMMENT ON COLUMN public.private_freelancer_details.birthdate IS 'Freelancer date of birth for age verification and travel documentation';
-COMMENT ON COLUMN public.private_freelancer_details.passport_scan_url IS 'Secure URL to passport scan in freelancer-private-docs bucket';
-COMMENT ON COLUMN public.private_freelancer_details.driving_license_scan_url IS 'Secure URL to driving license scan in freelancer-private-docs bucket';
-COMMENT ON COLUMN public.private_freelancer_details.dietary_requirements IS 'Dietary restrictions and requirements for catering on shoots';
-COMMENT ON COLUMN public.private_freelancer_details.allergies IS 'Allergy information for safety on shoots';
-COMMENT ON COLUMN public.private_freelancer_details.medical_notes IS 'Medical conditions or notes relevant to working on shoots';
-COMMENT ON COLUMN public.private_freelancer_details.emergency_contact_details IS 'Emergency contact name, relationship, and phone number';
+COMMENT ON COLUMN public.private_freelancer_details.emergency_contact_name IS 'Name of emergency contact person';
+COMMENT ON COLUMN public.private_freelancer_details.emergency_contact_relationship IS 'Relationship to freelancer (e.g., spouse, parent, friend)';
+COMMENT ON COLUMN public.private_freelancer_details.emergency_contact_phone IS 'Phone number for emergency contact';
+COMMENT ON COLUMN public.private_freelancer_details.frequent_flyer_program IS 'Airline frequent flyer program membership details';
+COMMENT ON COLUMN public.private_freelancer_details.other_visas IS 'Additional visa information beyond US and Schengen visas already tracked in profiles';

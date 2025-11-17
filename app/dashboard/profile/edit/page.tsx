@@ -5,20 +5,23 @@ import { useForm } from 'react-hook-form'
 import { Lock, Save, Check, User } from 'lucide-react'
 import { Tabs, TabsList, TabsTrigger, TabsContent, Input, Textarea, Button, FileUpload } from '@/components/ui'
 import { useDebounce } from '@/lib/hooks/useDebounce'
-import { getProfileAction, updateProfileAction } from '../actions'
+import { getProfileAction, updateProfileAction, getPrivateDetailsAction, updatePrivateDetailsAction } from '../actions'
 import { uploadFile, FILE_CONFIGS } from '@/lib/storage'
-import type { Profile, SkillLevel } from '@/lib/auth/types'
+import type { Profile, SkillLevel, PrivateFreelancerDetails } from '@/lib/auth/types'
 import { useRouter } from 'next/navigation'
 
 type ProfileFormData = Partial<Omit<Profile, 'id' | 'created_at' | 'updated_at'>>
+type PrivateDetailsFormData = Partial<Omit<PrivateFreelancerDetails, 'user_id' | 'created_at' | 'updated_at'>>
 
 export default function ProfileEditPage() {
   const router = useRouter()
   const [isSaving, setIsSaving] = useState(false)
   const [lastSaved, setLastSaved] = useState<Date | null>(null)
   const [profile, setProfile] = useState<Profile | null>(null)
+  const [privateDetails, setPrivateDetails] = useState<PrivateFreelancerDetails | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 
+  // Profile form
   const {
     register,
     watch,
@@ -26,16 +29,26 @@ export default function ProfileEditPage() {
     formState: { errors },
   } = useForm<ProfileFormData>()
 
+  // Private details form
+  const {
+    register: registerPrivate,
+    watch: watchPrivate,
+    setValue: setPrivateValue,
+  } = useForm<PrivateDetailsFormData>()
+
   // Watch all form values
   const formValues = watch()
+  const privateFormValues = watchPrivate()
 
   // Debounce form values (2 seconds)
   const debouncedValues = useDebounce(formValues, 2000)
+  const debouncedPrivateValues = useDebounce(privateFormValues, 2000)
 
   // Load profile data on mount
   useEffect(() => {
     async function loadProfile() {
       try {
+        // Load main profile
         const profile = await getProfileAction()
         if (profile) {
           setProfile(profile)
@@ -49,6 +62,18 @@ export default function ProfileEditPage() {
             }
           })
         }
+
+        // Load private details
+        const privateData = await getPrivateDetailsAction()
+        if (privateData) {
+          setPrivateDetails(privateData)
+          // Set private form default values
+          Object.entries(privateData).forEach(([key, value]) => {
+            if (key !== 'user_id' && key !== 'created_at' && key !== 'updated_at') {
+              setPrivateValue(key as any, value)
+            }
+          })
+        }
       } catch (error) {
         console.error('Failed to load profile:', error)
       } finally {
@@ -56,15 +81,23 @@ export default function ProfileEditPage() {
       }
     }
     loadProfile()
-  }, [setValue])
+  }, [setValue, setPrivateValue])
 
-  // Auto-save when debounced values change
+  // Auto-save when debounced values change (profile)
   useEffect(() => {
     if (!isLoading && profile && debouncedValues) {
       handleAutoSave()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedValues])
+
+  // Auto-save when debounced private values change
+  useEffect(() => {
+    if (!isLoading && debouncedPrivateValues) {
+      handlePrivateAutoSave()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedPrivateValues])
 
   const handleAutoSave = async () => {
     if (!debouncedValues) return
@@ -87,6 +120,23 @@ export default function ProfileEditPage() {
       }
     } catch (error) {
       console.error('Auto-save failed:', error)
+    } finally {
+      setIsSaving(false)
+    }
+  }
+
+  const handlePrivateAutoSave = async () => {
+    if (!debouncedPrivateValues) return
+
+    setIsSaving(true)
+    try {
+      const result = await updatePrivateDetailsAction(debouncedPrivateValues)
+      if (result.success) {
+        setLastSaved(new Date())
+        setPrivateDetails(result.data)
+      }
+    } catch (error) {
+      console.error('Private details auto-save failed:', error)
     } finally {
       setIsSaving(false)
     }
@@ -600,6 +650,59 @@ export default function ProfileEditPage() {
                         label="Medical Notes (Private)"
                         placeholder="Any medical conditions we should be aware of"
                         rows={3}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Emergency Contact & Additional Details */}
+                  <div className="pt-6 border-t border-gray-800">
+                    <h3 className="text-lime-green font-mono font-bold mb-4">Personal Information & Emergency Contact</h3>
+
+                    <div className="space-y-6">
+                      {/* Birthdate */}
+                      <Input
+                        {...registerPrivate('birthdate')}
+                        label="Date of Birth"
+                        type="date"
+                        helperText="Required for travel documentation and age verification"
+                      />
+
+                      {/* Emergency Contact */}
+                      <Input
+                        {...registerPrivate('emergency_contact_name')}
+                        label="Emergency Contact Name"
+                        placeholder="Jane Doe"
+                      />
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <Input
+                          {...registerPrivate('emergency_contact_relationship')}
+                          label="Relationship"
+                          placeholder="e.g., Spouse, Parent, Friend"
+                        />
+                        <Input
+                          {...registerPrivate('emergency_contact_phone')}
+                          label="Emergency Contact Phone"
+                          type="tel"
+                          placeholder="+44 7XXX XXXXXX"
+                        />
+                      </div>
+
+                      {/* Frequent Flyer */}
+                      <Input
+                        {...registerPrivate('frequent_flyer_program')}
+                        label="Frequent Flyer Program"
+                        placeholder="e.g., BA Executive Club #123456789"
+                        helperText="Airline loyalty program membership (optional)"
+                      />
+
+                      {/* Other Visas */}
+                      <Textarea
+                        {...registerPrivate('other_visas')}
+                        label="Other Visas or Travel Documentation"
+                        placeholder="List any additional visas or travel documentation not covered above"
+                        rows={3}
+                        helperText="Optional: Any visas beyond US and Schengen"
                       />
                     </div>
                   </div>
