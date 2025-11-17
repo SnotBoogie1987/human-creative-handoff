@@ -6,27 +6,46 @@ import type { Profile, UserRole, UserWithProfile } from './types'
  * @returns User with profile or null if not authenticated
  */
 export async function getUser(): Promise<UserWithProfile | null> {
+  console.log('[getUser] Creating Supabase client...')
   const supabase = await createClient()
 
+  console.log('[getUser] Getting user from Supabase...')
   const {
     data: { user },
     error: userError,
   } = await supabase.auth.getUser()
 
-  if (userError || !user) {
+  if (userError) {
+    console.log('[getUser] User error:', userError.message)
     return null
   }
 
+  if (!user) {
+    console.log('[getUser] No user found')
+    return null
+  }
+
+  console.log('[getUser] User found:', user.email)
+
   // Fetch profile
+  console.log('[getUser] Fetching profile for user:', user.id)
   const { data: profile, error: profileError } = await supabase
     .from('profiles')
     .select('*')
     .eq('id', user.id)
     .single()
 
-  if (profileError || !profile) {
+  if (profileError) {
+    console.log('[getUser] Profile error:', profileError.message)
     return null
   }
+
+  if (!profile) {
+    console.log('[getUser] No profile found')
+    return null
+  }
+
+  console.log('[getUser] Profile found for:', user.email)
 
   return {
     user,

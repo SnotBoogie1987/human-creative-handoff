@@ -8,11 +8,16 @@ export default async function DashboardLayout({
   children: React.ReactNode
 }) {
   // Require authentication
+  console.log('[DASHBOARD LAYOUT] Checking authentication...')
   const userWithProfile = await getUser()
+  console.log('[DASHBOARD LAYOUT] User:', userWithProfile ? userWithProfile.user.email : 'null')
 
   if (!userWithProfile) {
+    console.log('[DASHBOARD LAYOUT] No user, redirecting to login')
     redirect('/login')
   }
+
+  console.log('[DASHBOARD LAYOUT] User authenticated, rendering dashboard')
 
   return (
     <div className="flex h-screen bg-black overflow-hidden">

@@ -36,8 +36,13 @@ export default function LoginPage() {
     setServerError(null)
 
     try {
+      // Use client-side Supabase auth
       await signIn(data)
-      // Redirect to dashboard
+
+      // Wait 1 second for cookies to fully propagate
+      await new Promise(resolve => setTimeout(resolve, 1000))
+
+      // Force a hard navigation with full page reload
       router.push('/dashboard')
       router.refresh()
     } catch (error: any) {
@@ -45,7 +50,6 @@ export default function LoginPage() {
       setServerError(
         error.message || 'Invalid email or password. Please try again.'
       )
-    } finally {
       setIsLoading(false)
     }
   }
