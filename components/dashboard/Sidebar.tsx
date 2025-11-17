@@ -7,7 +7,8 @@ import {
   User,
   Heart,
   Settings,
-  LogOut
+  LogOut,
+  Shield
 } from 'lucide-react'
 import { Avatar, AvatarImage, AvatarFallback, Separator } from '@/components/ui'
 import { signOut } from '@/lib/auth/client'
@@ -106,6 +107,26 @@ export function Sidebar({ profile }: SidebarProps) {
             </Link>
           )
         })}
+
+        {/* Admin Section - Only for Super Admins */}
+        {profile?.role === 'super_admin' && (
+          <>
+            <Separator className="my-4" />
+            <Link
+              href="/dashboard/admin/partnerships"
+              className={cn(
+                'flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200',
+                'text-sm font-mono',
+                pathname.startsWith('/dashboard/admin')
+                  ? 'bg-orange-400 text-dark-text font-bold'
+                  : 'text-orange-400 hover:bg-orange-400/10 hover:text-orange-300'
+              )}
+            >
+              <Shield className="h-5 w-5" />
+              <span>Admin Panel</span>
+            </Link>
+          </>
+        )}
       </nav>
 
       <Separator className="mx-6" />

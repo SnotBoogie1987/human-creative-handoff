@@ -1,18 +1,127 @@
+import { createClient } from '@/lib/supabase/server'
 import { getUser } from '@/lib/auth/server'
 import { redirect } from 'next/navigation'
-import {
-  Briefcase,
-  DollarSign,
-  Users,
-  GraduationCap,
-  Shield,
-  Heart,
-  Star,
-  Zap,
-  Award,
-  FileText,
-} from 'lucide-react'
+import { ExternalLink, Copy, Check } from 'lucide-react'
 import { Badge } from '@/components/ui'
+
+export const metadata = {
+  title: 'Member Benefits | HUMAN. Creative',
+  description: 'Exclusive partnership benefits for HUMAN. Creative members',
+}
+
+type ImpactCategory = 'mind' | 'movement' | 'money' | 'mastery'
+
+interface Partnership {
+  id: string
+  name: string
+  category: ImpactCategory
+  description: string
+  discount_details: string
+  discount_code: string | null
+  cta_text: string
+  cta_url: string
+  logo_url: string | null
+  display_order: number
+}
+
+const CATEGORY_INFO = {
+  mind: {
+    title: 'MIND',
+    subtitle: 'Mental Health & Wellbeing',
+    color: 'text-purple-400',
+    borderColor: 'border-purple-400/30',
+  },
+  movement: {
+    title: 'MOVEMENT',
+    subtitle: 'Physical Fitness & Health',
+    color: 'text-lime-green',
+    borderColor: 'border-lime-green/30',
+  },
+  money: {
+    title: 'MONEY',
+    subtitle: 'Financial Wellbeing',
+    color: 'text-green-400',
+    borderColor: 'border-green-400/30',
+  },
+  mastery: {
+    title: 'MASTERY',
+    subtitle: 'Professional Tools & Services',
+    color: 'text-orange-400',
+    borderColor: 'border-orange-400/30',
+  },
+}
+
+function PartnerCard({ partnership }: { partnership: Partnership }) {
+  return (
+    <div className="bg-dark-grey border border-gray-800 rounded-lg p-6 hover:border-lime-green/50 transition-all duration-300">
+      {/* Partner Name */}
+      <h3 className="text-white font-bold text-xl mb-2">{partnership.name}</h3>
+
+      {/* Description */}
+      {partnership.description && (
+        <p className="text-gray-400 text-sm mb-4">{partnership.description}</p>
+      )}
+
+      {/* Discount Details */}
+      <div className="mb-4">
+        <p className="text-white font-medium">{partnership.discount_details}</p>
+      </div>
+
+      {/* Discount Code */}
+      {partnership.discount_code && (
+        <div className="mb-4">
+          <div className="flex items-center gap-2 bg-black border border-lime-green/30 rounded px-4 py-2 w-fit">
+            <span className="text-lime-green font-mono text-sm font-bold">
+              {partnership.discount_code}
+            </span>
+            <Copy className="h-4 w-4 text-gray-400 cursor-pointer hover:text-lime-green transition-colors" />
+          </div>
+          <p className="text-gray-500 text-xs mt-1">Use code at checkout</p>
+        </div>
+      )}
+
+      {/* CTA Button */}
+      <a
+        href={partnership.cta_url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 px-6 py-3 bg-lime-green text-dark-text font-mono font-bold text-sm rounded hover:bg-lime-green/90 transition-all duration-200"
+      >
+        {partnership.cta_text}
+        <ExternalLink className="h-4 w-4" />
+      </a>
+    </div>
+  )
+}
+
+function CategorySection({
+  category,
+  partnerships,
+}: {
+  category: ImpactCategory
+  partnerships: Partnership[]
+}) {
+  const info = CATEGORY_INFO[category]
+
+  if (partnerships.length === 0) return null
+
+  return (
+    <div className="mb-16">
+      {/* Category Header */}
+      <div className={`border-l-4 ${info.borderColor} pl-6 mb-8`}>
+        <h2 className={`text-3xl font-black ${info.color} mb-1`}>{info.title}</h2>
+        <p className="text-gray-400">{info.subtitle}</p>
+      </div>
+
+      {/* Partnership Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {partnerships.map((partnership) => (
+          <PartnerCard key={partnership.id} partnership={partnership} />
+        ))}
+      </div>
+    </div>
+  )
+}
 
 export default async function BenefitsPage() {
   const userWithProfile = await getUser()
@@ -21,191 +130,58 @@ export default async function BenefitsPage() {
     redirect('/login')
   }
 
-  const benefits = [
-    {
-      icon: Briefcase,
-      title: 'Premium Job Listings',
-      description:
-        'Access exclusive job opportunities from top agencies and production companies across the UK and beyond.',
-      features: [
-        'Early access to new projects',
-        'Direct client connections',
-        'Vetted, high-quality opportunities',
-      ],
-      color: 'text-lime-green',
-      bgColor: 'bg-lime-green/10',
-    },
-    {
-      icon: DollarSign,
-      title: 'Fair Pay Guarantee',
-      description:
-        'All jobs posted through HUMAN. Creative meet industry-standard minimum rates. No exploitation, no low-balling.',
-      features: [
-        'Transparent rate cards',
-        'Industry-standard minimums',
-        'Payment protection',
-      ],
-      color: 'text-blue-500',
-      bgColor: 'bg-blue-500/10',
-    },
-    {
-      icon: Users,
-      title: 'Community Network',
-      description:
-        'Connect with fellow creatives, share knowledge, and collaborate on projects within our supportive community.',
-      features: [
-        'Private Slack/Discord channel',
-        'Monthly meetups & socials',
-        'Crew referrals & recommendations',
-      ],
-      color: 'text-purple-500',
-      bgColor: 'bg-purple-500/10',
-    },
-    {
-      icon: GraduationCap,
-      title: 'Learning & Development',
-      description:
-        'Access workshops, webinars, and training sessions to level up your skills and stay current with industry trends.',
-      features: [
-        'Monthly skill-building workshops',
-        'Industry expert Q&As',
-        'Equipment training sessions',
-      ],
-      color: 'text-yellow-500',
-      bgColor: 'bg-yellow-500/10',
-    },
-    {
-      icon: Shield,
-      title: 'Insurance & Protection',
-      description:
-        'Discounted rates on professional indemnity insurance, equipment insurance, and legal support for members.',
-      features: [
-        'Group insurance discounts',
-        'Legal advice hotline',
-        'Contract review service',
-      ],
-      color: 'text-red-500',
-      bgColor: 'bg-red-500/10',
-    },
-    {
-      icon: Star,
-      title: 'Equipment Discounts',
-      description:
-        'Exclusive member discounts on camera rentals, software subscriptions, and gear purchases from partner suppliers.',
-      features: [
-        '10-20% off rental houses',
-        'Adobe Creative Cloud discounts',
-        'Partner store exclusives',
-      ],
-      color: 'text-orange-500',
-      bgColor: 'bg-orange-500/10',
-    },
-    {
-      icon: Zap,
-      title: 'Fast-Track Bookings',
-      description:
-        'Priority placement for urgent bookings and last-minute opportunities that need quick turnaround.',
-      features: [
-        'SMS alerts for urgent jobs',
-        'Priority consideration',
-        'Rapid response system',
-      ],
-      color: 'text-cyan-500',
-      bgColor: 'bg-cyan-500/10',
-    },
-    {
-      icon: Award,
-      title: 'Portfolio Showcase',
-      description:
-        'Premium profile placement and portfolio hosting to get your work seen by the right people.',
-      features: [
-        'Featured profile placement',
-        'Unlimited portfolio uploads',
-        'Analytics on profile views',
-      ],
-      color: 'text-pink-500',
-      bgColor: 'bg-pink-500/10',
-    },
-  ]
+  // Fetch partnerships from Supabase
+  const supabase = await createClient()
+  const { data: partnerships, error } = await supabase
+    .from('partnerships')
+    .select('*')
+    .eq('is_active', true)
+    .order('display_order')
 
-  const membershipTier = 'Pro Member' // TODO: Get from profile when tiers implemented
+  if (error) {
+    console.error('Error fetching partnerships:', error)
+  }
+
+  // Group partnerships by category
+  const partnershipsByCategory = (partnerships || []).reduce(
+    (acc, partnership) => {
+      if (!acc[partnership.category]) {
+        acc[partnership.category] = []
+      }
+      acc[partnership.category].push(partnership)
+      return acc
+    },
+    {} as Record<ImpactCategory, Partnership[]>
+  )
 
   return (
     <div className="min-h-screen bg-black">
       <div className="max-w-7xl mx-auto px-8 py-12">
         {/* Header */}
-        <div className="mb-12">
-          <div className="flex items-center gap-4 mb-4">
-            <Heart className="h-8 w-8 text-lime-green" />
-            <h1 className="text-4xl font-black text-white">Member Benefits</h1>
-          </div>
-          <p className="text-gray-400 text-lg max-w-3xl">
-            As a valued HUMAN. Creative member, you have access to exclusive perks designed to
-            support your career, protect your rights, and help you thrive in the creative industry.
+        <div className="mb-16">
+          <h1 className="text-5xl font-black text-white mb-6">HELLO, HUMAN.</h1>
+          <p className="text-gray-300 text-lg max-w-3xl leading-relaxed">
+            Below you can access all of our partnership benefits through our <span className="text-purple-400 font-bold">Mind</span>, <span className="text-lime-green font-bold">Movement</span>, <span className="text-green-400 font-bold">Money</span> & <span className="text-orange-400 font-bold">Mastery</span> Impact Categories.
           </p>
-          <div className="mt-6">
-            <Badge variant="success">
-              <Award className="h-4 w-4 mr-2 inline" />
-              {membershipTier}
-            </Badge>
+          <p className="text-gray-400 mt-4">
+            New partnerships will be announced via WhatsApp but will always be accessed below.
+          </p>
+        </div>
+
+        {/* Impact Categories */}
+        <CategorySection category="mind" partnerships={partnershipsByCategory.mind || []} />
+        <CategorySection category="movement" partnerships={partnershipsByCategory.movement || []} />
+        <CategorySection category="money" partnerships={partnershipsByCategory.money || []} />
+        <CategorySection category="mastery" partnerships={partnershipsByCategory.mastery || []} />
+
+        {/* Empty State */}
+        {!partnerships || partnerships.length === 0 && (
+          <div className="text-center py-16">
+            <p className="text-gray-400">
+              No active partnerships at the moment. Check back soon!
+            </p>
           </div>
-        </div>
-
-        {/* Benefits Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {benefits.map((benefit, index) => {
-            const Icon = benefit.icon
-            return (
-              <div
-                key={index}
-                className="bg-dark-grey border border-gray-800 rounded-lg p-8 hover:border-lime-green transition-all duration-300"
-              >
-                {/* Icon & Title */}
-                <div className="flex items-start gap-4 mb-4">
-                  <div className={`${benefit.bgColor} p-3 rounded-lg`}>
-                    <Icon className={`h-6 w-6 ${benefit.color}`} />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-white font-bold text-xl mb-2">{benefit.title}</h3>
-                    <p className="text-gray-400 text-sm leading-relaxed">{benefit.description}</p>
-                  </div>
-                </div>
-
-                {/* Features List */}
-                <ul className="mt-6 space-y-2">
-                  {benefit.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start gap-3 text-sm">
-                      <div className="mt-1">
-                        <div className="h-1.5 w-1.5 rounded-full bg-lime-green" />
-                      </div>
-                      <span className="text-gray-300">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )
-          })}
-        </div>
-
-        {/* CTA Section */}
-        <div className="mt-16 bg-gradient-to-r from-lime-green/10 to-transparent border border-lime-green/20 rounded-lg p-8">
-          <div className="flex items-start gap-4">
-            <FileText className="h-6 w-6 text-lime-green flex-shrink-0 mt-1" />
-            <div>
-              <h3 className="text-white font-bold text-xl mb-2">Need Support?</h3>
-              <p className="text-gray-400 mb-4">
-                Our member support team is here to help you make the most of your benefits. Get in
-                touch if you have questions or need assistance.
-              </p>
-              <a
-                href="mailto:members@humancreative.co.uk"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-lime-green text-dark-text font-mono font-bold rounded-lg hover:bg-lime-green/90 transition-all duration-200"
-              >
-                Contact Support
-              </a>
-            </div>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   )
