@@ -7,18 +7,18 @@ export const metadata = {
 }
 
 const projects = [
-  { title: 'FORMULA ONE', slug: 'formula-one' },
-  { title: 'VIVO BAREFOOT', slug: 'vivo-barefoot' },
-  { title: 'JD ARMANI', slug: 'jd-armani' },
-  { title: 'MY PROTEIN', slug: 'my-protein' },
-  { title: 'PLAIN KATIE LAUNCH', slug: 'plain-katie-launch' },
-  { title: 'NIKE FESTIVAL', slug: 'nike-festival' },
-  { title: 'BUDGET RENT-A-CAR', slug: 'budget-rent-a-car' },
-  { title: 'TOUGH MUDDER', slug: 'tough-mudder' },
-  { title: 'LAURYN HILL AZIMUTH', slug: 'lauryn-hill-azimuth' },
-  { title: '180 TRAINED IN MOTION', slug: '180-trained-in-motion' },
-  { title: 'FORMULA E', slug: 'formula-e' },
-  { title: 'FESTIVAL', slug: 'festival' },
+  { title: 'ASTON MARTIN', slug: 'astonmartin' },
+  { title: 'UNDER ARMOUR', slug: 'underarmour' },
+  { title: 'BBC STORIES', slug: 'bbcstories' },
+  { title: 'JAGUAR TCS', slug: 'jaguartcs' },
+  { title: 'AL AIN FC', slug: 'alainfc' },
+  { title: 'TOUGH MUDDER', slug: 'toughmudder' },
+  { title: 'NIKE WELLFEST', slug: 'nikewellfest' },
+  { title: 'AZIMUTH', slug: 'azimuth' },
+  { title: 'LAURYN HILL', slug: 'laurynhill' },
+  { title: 'BUDGET CAR RENTAL', slug: 'budgetcarrental' },
+  { title: 'MYPROTEIN', slug: 'myprotein' },
+  { title: 'VIVOBAREFOOT', slug: 'vivobarefoot' },
 ]
 
 export default function WorkPage() {
