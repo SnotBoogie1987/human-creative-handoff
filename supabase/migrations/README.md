@@ -17,6 +17,8 @@ This directory contains SQL migration files for setting up the HUMAN. Creative d
    - `005_create_storage_buckets.sql`
    - `006_create_partnerships_table.sql`
    - `007_create_form_submissions_table.sql`
+   - `008_admin_creation_helper.sql`
+   - `009_create_private_freelancer_details_table.sql`
 5. Click **Run** for each migration
 
 ### Option 2: Supabase CLI (For production)
@@ -43,6 +45,8 @@ supabase db push
 5. ✅ `005_create_storage_buckets.sql` - Creates storage buckets for avatars and documents with RLS
 6. ✅ `006_create_partnerships_table.sql` - Creates partnerships table for member benefits
 7. ✅ `007_create_form_submissions_table.sql` - Creates form_submissions table for utility forms
+8. ✅ `008_admin_creation_helper.sql` - Helper function to assign admin roles (admins don't have profiles)
+9. ✅ `009_create_private_freelancer_details_table.sql` - Creates private_freelancer_details table for sensitive PII and medical info
 
 ## Verification
 
