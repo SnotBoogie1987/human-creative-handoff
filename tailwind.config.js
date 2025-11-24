@@ -19,30 +19,32 @@ module.exports = {
         'mono': ['Azeret Mono', 'monospace'],
       },
       fontSize: {
-        // Hero & Headers
-        'hero': '5rem',           // 80px - Homepage H1
-        'manifesto-h1': '113.75px', // Manifesto main headers
-        'manifesto-h2': '70.7px',   // Manifesto section headers
-        'manifesto-h6': '11px',     // Manifesto numbered subheadings
-        'manifesto-body': '18px',   // Manifesto body text
-        'manifesto-subtitle': '16px', // Manifesto subtitle text
-        
+        // Hero & Headers (rem-based, 8px grid aligned)
+        'hero': ['5rem', { lineHeight: '1.1' }],              // 80px - Homepage H1
+        'manifesto-h1': ['7.125rem', { lineHeight: '0.8' }],  // 114px (was 113.75px, rounded to 8px grid)
+        'manifesto-h2': ['4.5rem', { lineHeight: '0.95' }],   // 72px (was 70.7px, rounded to 8px grid)
+        'manifesto-h6': ['0.6875rem', { lineHeight: '1.45' }], // 11px
+        'manifesto-body': ['1.125rem', { lineHeight: '1.6' }], // 18px with 1.6 ratio (was 28.8px)
+        'manifesto-subtitle': ['1rem', { lineHeight: '1.4' }], // 16px with 1.4 ratio (was 22.4px)
+
         // Navigation
-        'nav': '22px',            // Navigation links
-        
+        'nav': ['1.375rem', { lineHeight: '1.2' }],           // 22px
+
         // Responsive Headers
-        'heading-xl': '5rem',     // Desktop large
-        'heading-lg': '3.5rem',   // Tablet
-        'heading-md': '2.5rem',   // Mobile
-        
+        'heading-xl': ['5rem', { lineHeight: '1.1' }],        // 80px - Desktop large
+        'heading-lg': ['3.5rem', { lineHeight: '1.15' }],     // 56px - Tablet
+        'heading-md': ['2.5rem', { lineHeight: '1.2' }],      // 40px - Mobile
+
         // Marquee
-        'marquee': '18px',
+        'marquee': ['1.125rem', { lineHeight: '1.4' }],       // 18px
       },
       lineHeight: {
-        'hero': '1.1',
-        'manifesto-h1': '91px',
-        'manifesto-body': '28.8px',
-        'manifesto-subtitle': '22.4px',
+        // Unitless line-heights for flexibility
+        'tight': '1.1',
+        'snug': '1.2',
+        'normal': '1.4',
+        'relaxed': '1.6',
+        'loose': '1.8',
       },
       fontWeight: {
         'light': 200,
@@ -52,15 +54,30 @@ module.exports = {
         'black': 900,
       },
       height: {
-        'marquee': '75px',
-        'cta-button': '80px',
-        'cta-button-mobile': '70px',
+        // 8px grid aligned heights
+        'marquee': '80px',           // Was 75px → 80px (10 × 8px)
+        'cta-button': '80px',        // Already aligned
+        'cta-button-mobile': '72px', // Was 70px → 72px (9 × 8px)
       },
       width: {
-        'cta-button': '410.5px',
+        // 8px grid aligned widths
+        'cta-button': '408px',       // Was 410.5px → 408px (51 × 8px)
+      },
+      maxWidth: {
+        // Readability constraints (ch units)
+        'readable': '75ch',          // Optimal line length for body text
+        'readable-sm': '65ch',       // Slightly narrower
+        'readable-xs': '50ch',       // Very narrow (mobile)
       },
       spacing: {
-        'marquee-padding': '10px',
+        // 8px grid system (Tailwind already has 0-96 in increments of 4)
+        // Adding specific named spacings for common use cases
+        '18': '72px',   // 18 × 4px (for large sections)
+        '20': '80px',   // 20 × 4px
+        '22': '88px',   // 22 × 4px
+        '24': '96px',   // 24 × 4px
+        '28': '112px',  // 28 × 4px
+        '32': '128px',  // 32 × 4px
       },
       animation: {
         'marquee': 'marquee 80s linear infinite',
