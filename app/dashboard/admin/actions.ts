@@ -32,7 +32,6 @@ export async function getAllFreelancersAction() {
     .order('created_at', { ascending: false })
 
   if (error) {
-    console.error('[getAllFreelancersAction] Error:', error)
     throw error
   }
 
@@ -57,7 +56,6 @@ export async function getFreelancerByIdAction(userId: string) {
     .single()
 
   if (profileError) {
-    console.error('[getFreelancerByIdAction] Profile error:', profileError)
     throw profileError
   }
 
@@ -70,14 +68,12 @@ export async function getFreelancerByIdAction(userId: string) {
 
   // It's okay if private details don't exist yet
   if (privateError && privateError.code !== 'PGRST116') {
-    console.error('[getFreelancerByIdAction] Private details error:', privateError)
   }
 
   // Fetch auth user data for email
   const { data: { user }, error: authError } = await supabase.auth.admin.getUserById(userId)
 
   if (authError) {
-    console.error('[getFreelancerByIdAction] Auth user error:', authError)
   }
 
   return {
@@ -110,7 +106,6 @@ export async function getAllFormSubmissionsAction(formName?: string) {
   const { data: submissions, error } = await query
 
   if (error) {
-    console.error('[getAllFormSubmissionsAction] Error:', error)
     throw error
   }
 
@@ -133,7 +128,6 @@ export async function getFormSubmissionsStatsAction() {
     .select('form_name, created_at')
 
   if (error) {
-    console.error('[getFormSubmissionsStatsAction] Error:', error)
     throw error
   }
 
@@ -170,7 +164,6 @@ export async function getFreelancerStatsAction() {
     .eq('role', 'freelancer')
 
   if (error) {
-    console.error('[getFreelancerStatsAction] Error:', error)
     throw error
   }
 

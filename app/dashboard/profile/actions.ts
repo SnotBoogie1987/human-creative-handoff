@@ -14,6 +14,19 @@ export async function getProfileAction() {
 }
 
 /**
+ * Server action to get current user with profile (including email)
+ */
+export async function getUserWithProfileAction() {
+  const userWithProfile = await getUser()
+  if (!userWithProfile) return null
+
+  return {
+    email: userWithProfile.user.email,
+    profile: userWithProfile.profile
+  }
+}
+
+/**
  * Server action to update profile
  * @param updates - Partial profile updates
  */
@@ -30,7 +43,6 @@ export async function updateProfileAction(
 
     return { success: true, profile: updatedProfile }
   } catch (error: any) {
-    console.error('[updateProfileAction] Error:', error)
     return { success: false, error: error.message }
   }
 }
@@ -59,7 +71,6 @@ export async function getPrivateDetailsAction() {
 
     return data as PrivateFreelancerDetails | null
   } catch (error: any) {
-    console.error('[getPrivateDetailsAction] Error:', error)
     return null
   }
 }
@@ -99,7 +110,6 @@ export async function updatePrivateDetailsAction(
 
     return { success: true, data: data as PrivateFreelancerDetails }
   } catch (error: any) {
-    console.error('[updatePrivateDetailsAction] Error:', error)
     return { success: false, error: error.message }
   }
 }

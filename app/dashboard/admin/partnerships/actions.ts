@@ -61,7 +61,6 @@ export async function createPartnership(data: PartnershipData) {
       .single()
 
     if (error) {
-      console.error('Error creating partnership:', error)
       throw new Error('Failed to create partnership')
     }
 
@@ -70,7 +69,6 @@ export async function createPartnership(data: PartnershipData) {
 
     return partnership
   } catch (error) {
-    console.error('Error in createPartnership:', error)
     throw error
   }
 }
@@ -103,7 +101,6 @@ export async function updatePartnership(id: string, data: PartnershipData) {
       .single()
 
     if (error) {
-      console.error('Error updating partnership:', error)
       throw new Error('Failed to update partnership')
     }
 
@@ -112,7 +109,6 @@ export async function updatePartnership(id: string, data: PartnershipData) {
 
     return partnership
   } catch (error) {
-    console.error('Error in updatePartnership:', error)
     throw error
   }
 }
@@ -132,7 +128,6 @@ export async function deletePartnership(id: string) {
       .eq('id', id)
 
     if (error) {
-      console.error('Error deleting partnership:', error)
       throw new Error('Failed to delete partnership')
     }
 
@@ -141,7 +136,6 @@ export async function deletePartnership(id: string) {
 
     return true
   } catch (error) {
-    console.error('Error in deletePartnership:', error)
     return false
   }
 }
@@ -166,7 +160,6 @@ export async function togglePartnershipStatus(id: string, isActive: boolean) {
       .single()
 
     if (error) {
-      console.error('Error toggling partnership status:', error)
       throw new Error('Failed to update partnership status')
     }
 
@@ -175,7 +168,6 @@ export async function togglePartnershipStatus(id: string, isActive: boolean) {
 
     return partnership
   } catch (error) {
-    console.error('Error in togglePartnershipStatus:', error)
     throw error
   }
 }

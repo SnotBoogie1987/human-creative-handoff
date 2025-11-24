@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { Settings as SettingsIcon, Bell, Lock, Shield, Trash2, Save, Check } from 'lucide-react'
 import { Input, Button, Separator } from '@/components/ui'
-import { getProfileAction, updateProfileAction } from '../profile/actions'
+import { getUserWithProfileAction, updateProfileAction } from '../profile/actions'
 import type { Profile } from '@/lib/auth/types'
 
 interface NotificationSettings {
@@ -15,6 +15,7 @@ interface NotificationSettings {
 
 export default function SettingsPage() {
   const [profile, setProfile] = useState<Profile | null>(null)
+  const [email, setEmail] = useState<string>('')
   const [isLoading, setIsLoading] = useState(true)
   const [isSaving, setIsSaving] = useState(false)
   const [saveSuccess, setSaveSuccess] = useState(false)
@@ -31,12 +32,13 @@ export default function SettingsPage() {
   useEffect(() => {
     async function loadProfile() {
       try {
-        const profileData = await getProfileAction()
-        if (profileData) {
-          setProfile(profileData)
+        const data = await getUserWithProfileAction()
+        if (data) {
+          setProfile(data.profile)
+          setEmail(data.email || '')
         }
       } catch (error) {
-        console.error('Failed to load profile:', error)
+        // Failed to load profile
       } finally {
         setIsLoading(false)
       }
@@ -60,7 +62,7 @@ export default function SettingsPage() {
       setSaveSuccess(true)
       setTimeout(() => setSaveSuccess(false), 3000)
     } catch (error) {
-      console.error('Failed to save settings:', error)
+      // Failed to save settings
     } finally {
       setIsSaving(false)
     }
@@ -104,7 +106,7 @@ export default function SettingsPage() {
                 <div className="relative">
                   <Input
                     type="email"
-                    value={profile?.id || ''}
+                    value={email}
                     disabled
                     className="bg-gray-900 cursor-not-allowed opacity-60"
                   />

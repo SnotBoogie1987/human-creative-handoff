@@ -1,5 +1,6 @@
 import { getUser } from '@/lib/auth'
 import { OnboardingBanner } from '@/components/dashboard/OnboardingBanner'
+import { createClient } from '@/lib/supabase/server'
 
 export const metadata = {
   title: 'Dashboard | HUMAN. Creative',
@@ -11,6 +12,15 @@ export default async function DashboardPage() {
   const isOnboardingIncomplete =
     userWithProfile?.profile.role === 'freelancer' &&
     !userWithProfile?.profile.onboarding_completed
+
+  // Fetch active partnerships count
+  const supabase = await createClient()
+  const { data: partnerships } = await supabase
+    .from('partnerships')
+    .select('id')
+    .eq('is_active', true)
+
+  const activeBenefitsCount = partnerships?.length || 0
 
   return (
     <div className="px-8 py-12 max-w-7xl mx-auto">
@@ -45,7 +55,7 @@ export default async function DashboardPage() {
         {/* Member Benefits */}
         <div className="bg-dark-grey border border-gray-800 rounded-lg p-6">
           <h3 className="text-lime-green font-bold text-sm mb-2">ACTIVE BENEFITS</h3>
-          <p className="text-white text-3xl font-black mb-2">7</p>
+          <p className="text-white text-3xl font-black mb-2">{activeBenefitsCount}</p>
           <p className="text-gray-400 text-sm">Perks available to you</p>
         </div>
 

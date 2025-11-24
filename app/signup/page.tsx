@@ -62,8 +62,6 @@ export default function SignupPage() {
         router.refresh()
       }
     } catch (error: any) {
-      console.error('Signup error:', error)
-
       // Handle specific error messages
       if (error.message?.includes('already registered')) {
         setServerError('This email is already registered. Please log in instead.')

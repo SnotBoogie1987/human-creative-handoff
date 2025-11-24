@@ -38,18 +38,14 @@ export async function submitForm(
       .single()
 
     if (error) {
-      console.error('[submitForm] Error:', error)
       return { success: false, error: error.message }
     }
-
-    console.log(`[submitForm] Form "${formName}" submitted successfully:`, submission.id)
 
     return {
       success: true,
       submissionId: submission.id,
     }
   } catch (error: any) {
-    console.error('[submitForm] Unexpected error:', error)
     return { success: false, error: error.message || 'Failed to submit form' }
   }
 }

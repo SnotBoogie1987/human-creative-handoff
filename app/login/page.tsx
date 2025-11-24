@@ -50,7 +50,6 @@ export default function LoginPage() {
       router.push(redirectPath)
       router.refresh()
     } catch (error: any) {
-      console.error('Login error:', error)
       setServerError(
         error.message || 'Invalid email or password. Please try again.'
       )

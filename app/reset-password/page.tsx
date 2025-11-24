@@ -56,7 +56,6 @@ export default function ResetPasswordPage() {
       // Success - redirect to login with success message
       router.push('/login?reset=success')
     } catch (error: any) {
-      console.error('Password reset error:', error)
       setServerError(
         error.message || 'Failed to reset password. Please try again or request a new reset link.'
       )

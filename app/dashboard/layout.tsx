@@ -9,12 +9,9 @@ export default async function DashboardLayout({
   children: React.ReactNode
 }) {
   // Require authentication
-  console.log('[DASHBOARD LAYOUT] Checking authentication...')
   const userWithProfile = await getUser()
-  console.log('[DASHBOARD LAYOUT] User:', userWithProfile ? userWithProfile.user.email : 'null')
 
   if (!userWithProfile) {
-    console.log('[DASHBOARD LAYOUT] No user, redirecting to login')
     redirect('/login')
   }
 
@@ -24,11 +21,8 @@ export default async function DashboardLayout({
   const hasCompletedOnboarding = userWithProfile.profile.onboarding_completed
 
   if (isFreelancer && !hasCompletedOnboarding) {
-    console.log('[DASHBOARD LAYOUT] Freelancer with incomplete onboarding, redirecting to /onboarding')
     redirect('/onboarding')
   }
-
-  console.log('[DASHBOARD LAYOUT] User authenticated, rendering dashboard')
 
   return (
     <div className="flex h-screen bg-black overflow-hidden">
