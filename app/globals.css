@@ -1,15 +1,68 @@
-@import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@200;400;700;800;900&display=swap');
+/*
+ * HUMAN CREATIVE - Base Styles
+ * Fluid Design System
+ *
+ * Required: Include Google Fonts in your HTML <head>:
+ * <link href="https://fonts.googleapis.com/css2?family=Anton&family=Azeret+Mono:wght@400&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+ */
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ===================
+   BASE LAYER (FLUID SYSTEM)
+   =================== */
 @layer base {
   :root {
+    /* --- OPTIMIZED FLUID TYPOGRAPHY --- */
+    /* Viewport Range: 320px -> 1280px */
+
+    /* DISPLAY HEADINGS (Anton) */
+    /* H1: 52px -> 96px */
+    --fs-display-lg: clamp(3.25rem, 2.3333rem + 4.5833vw, 6rem);
+
+    /* H2: 42px -> 72px */
+    --fs-display-md: clamp(2.625rem, 2rem + 3.125vw, 4.5rem);
+
+    /* H3: 32px -> 48px */
+    --fs-display-sm: clamp(2rem, 1.6667rem + 1.6667vw, 3rem);
+
+
+    /* STANDARD HEADINGS (Inter/Sans) - Major Third Scale */
+    /* H4: 28px -> 39px */
+    --fs-h4: clamp(1.75rem, 1.5208rem + 1.1458vw, 2.4414rem);
+
+    /* H5: 24px -> 31px */
+    --fs-h5: clamp(1.5rem, 1.3542rem + 0.7292vw, 1.9531rem);
+
+    /* H6: 20px -> 25px */
+    --fs-h6: clamp(1.25rem, 1.1458rem + 0.5208vw, 1.5625rem);
+
+
+    /* BODY & UTILITIES (Azeret Mono) */
+    /* Body: 16px -> 18px */
+    --fs-body: clamp(1rem, 0.9583rem + 0.2083vw, 1.125rem);
+
+    /* Small/Caption: 14px -> 15px */
+    --fs-sm: clamp(0.875rem, 0.8542rem + 0.1042vw, 0.9375rem);
+
+    /* --- LEGACY COLOR VARIABLES (for backwards compatibility) --- */
     --color-lime-green: #DAFA92;
     --color-dark-grey: #1a1a1a;
     --color-light-text: #ffffff;
     --color-dark-text: #000000;
+
+    /* --- NEW COLOR VARIABLES --- */
+    --color-primary: #D2F865;
+    --color-background-dark: #000000;
+    --color-background-light: #F5F5F5;
+  }
+
+  /* Reset defaults */
+  html {
+    @apply scroll-smooth;
+    font-size: 16px;
   }
 
   * {
@@ -18,20 +71,18 @@
     box-sizing: border-box;
   }
 
-  html {
-    /* Base font size for rem calculations (1rem = 16px) */
-    font-size: 16px;
-  }
-
-  html,
   body {
-    font-family: 'Azeret Mono', monospace;
+    @apply antialiased transition-colors duration-300;
+    font-family: 'Azeret Mono', 'Space Mono', monospace;
     font-weight: 400;
     color: var(--color-light-text);
-    background-color: var(--color-dark-grey);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    line-height: 1.6; /* Unitless for scalability */
+    background-color: var(--color-background-dark);
+    line-height: 1.6;
+  }
+
+  /* Selection highlight */
+  ::selection {
+    @apply bg-primary text-black;
   }
 
   a {
@@ -48,25 +99,92 @@
   p {
     max-width: 75ch;
   }
+
+  /* Contextual Paragraph Defaults */
+  .bg-background-dark p {
+    @apply text-white;
+  }
+
+  .bg-primary p {
+    @apply text-black;
+  }
 }
 
+/* ===================
+   COMPONENT LAYER
+   =================== */
+@layer components {
+  /* Section containers */
+  .section-dark {
+    @apply bg-background-dark text-white py-section-y px-section-x border-b border-gray-800;
+  }
+
+  .section-primary {
+    @apply bg-primary text-black py-section-y px-section-x border-b border-black;
+  }
+
+  /* Content wrappers */
+  .content-wrapper {
+    @apply max-w-content mx-auto text-center;
+  }
+
+  .content-wrapper-narrow {
+    @apply max-w-content-narrow mx-auto;
+  }
+
+  /* Link styles by context */
+  .bg-background-dark .content-link {
+    @apply text-primary;
+  }
+
+  .bg-primary .content-link {
+    @apply text-black;
+  }
+
+  /* Timestamp/estimate text */
+  .estimate-text {
+    @apply pt-4 font-mono font-bold tracking-wider;
+  }
+
+  .section-dark .estimate-text {
+    @apply text-primary;
+  }
+
+  /* Logo section spacing */
+  .logo-section {
+    @apply py-12 flex justify-center items-center;
+  }
+
+  .logo-section img {
+    @apply h-[168px] w-auto object-contain;
+  }
+}
+
+/* ===================
+   UTILITIES LAYER
+   =================== */
 @layer utilities {
+  /* Line height for display text */
+  .leading-display {
+    line-height: 0.85;
+  }
+
   .text-balance {
     text-wrap: balance;
   }
 
-  /* Custom scrollbar (8px grid aligned) */
+  /* Custom scrollbar */
   ::-webkit-scrollbar {
-    width: 8px; /* Was 10px → 8px (1 × 8px grid) */
+    width: 8px;
   }
 
   ::-webkit-scrollbar-track {
-    background: var(--color-dark-grey);
+    background: var(--color-background-dark);
   }
 
   ::-webkit-scrollbar-thumb {
-    background: var(--color-lime-green);
-    border-radius: 4px; /* Was 5px → 4px (0.5 × 8px grid) */
+    background: var(--color-primary);
+    border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
