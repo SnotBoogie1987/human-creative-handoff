@@ -21,7 +21,7 @@ export default function ManifestoPage() {
             </h1>
             <p className="text-manifesto-subtitle text-primary mb-12">(No, we&apos;re not really calling it that)</p>
 
-            <div className="space-y-6 text-manifesto-body max-w-2xl mx-auto text-text-muted text-left">
+            <div className="space-y-6 text-manifesto-body max-w-2xl mx-auto text-text-muted text-center">
               <p>A fast, fully curated crew solution to productions that require exceptional talent.</p>
               <p>Originally formed by two close friends in 2018 as a Production Company, Human Creative spent years navigating the world of filmmaking for various platforms in many forms, for all kinds of brands across multiple industries.</p>
               <p>Today - after eventually ceasing operations as a Production Company and entering a new chapter as a full time crew agency, Human Creative began a new path to make waves in the world of filmmaking when it comes to welfare.</p>
@@ -31,7 +31,7 @@ export default function ManifestoPage() {
               <p className="pt-4 text-primary font-bold">Lets get to work.</p>
             </div>
 
-            <div className="mt-12 text-manifesto-h6 font-mono text-primary uppercase">
+            <div className="mt-12 text-manifesto-h6 font-mono text-primary uppercase text-center">
               <p>Mike King</p>
               <p>Director & Co-Founder</p>
             </div>
@@ -47,7 +47,7 @@ export default function ManifestoPage() {
             <div className="inline-block border border-black px-4 py-2 mb-10">
               <p className="font-mono text-manifesto-h6 font-bold uppercase">01. Be Regenerative, Not Sustainable</p>
             </div>
-            <div className="space-y-6 text-manifesto-body max-w-content-wide mx-auto font-medium text-left">
+            <div className="space-y-6 text-manifesto-body max-w-content-wide mx-auto font-medium text-center">
               <p>Undoubtedly our biggest challenge is doing our best to reshape the narrative in an industry that champions a &apos;no days off&apos; mentality.</p>
               <p>Sometimes work as a freelancer is &apos;feast or famine&apos; and it&apos;s our job to help freelancers navigate work/life balance for a better quality of life and to keep the stoke high in an industry we love.</p>
               <p>Making a broken system &apos;less bad&apos; is a good start, but if our actions can actually revitalise and improve aspects of the workplace whilst guiding freelancers to a better work/life balance, then our work is not just sustainable...<br />
@@ -65,7 +65,7 @@ export default function ManifestoPage() {
             <div className="inline-block border border-primary px-4 py-2 mb-10">
               <p className="font-mono text-manifesto-h6 font-bold uppercase text-primary">02. Goodbye Fees</p>
             </div>
-            <div className="space-y-6 text-manifesto-body max-w-content-wide mx-auto text-text-muted text-left">
+            <div className="space-y-6 text-manifesto-body max-w-content-wide mx-auto text-text-muted text-center">
               <p className="mb-4">Inflated, archaic agency fees should be a thing of the past.</p>
               <p>With Human, we reverse-engineered how fees work in the interest of everyone, so freelancers will receive 100% of their rate with no monthly fees and no commission, none at all.</p>
               <p className="text-primary font-bold">Yes, you read that correctly.</p>
@@ -84,7 +84,7 @@ export default function ManifestoPage() {
             <div className="inline-block border border-black px-4 py-2 mb-10">
               <p className="font-mono text-manifesto-h6 font-bold uppercase">03. Support, Like No Other</p>
             </div>
-            <div className="space-y-6 text-manifesto-body max-w-content-wide mx-auto font-medium text-left">
+            <div className="space-y-6 text-manifesto-body max-w-content-wide mx-auto font-medium text-center">
               <p>From the beginning, one of the greatest endeavours was to create an unrivalled network of support for freelancers - one that would supersede any common workplace, irrespective of industry.</p>
               <p>What if freelancers had &apos;in-house&apos; style benefits and resources but still all the perks of freelance - be their own boss, choose their own hours and reap the rewards of working exclusively on projects they enjoyed?</p>
               <p>In 2024 we began onboarding amazing partners who shared our vision and this really is just the beginning...</p>
@@ -106,7 +106,7 @@ export default function ManifestoPage() {
             </div>
             <p className="text-manifesto-body mb-16 text-text-muted">Our four Impact Categories are the DNA that makes up our overall impact.</p>
 
-            <div className="space-y-12 max-w-content-wide mx-auto text-text-muted text-left">
+            <div className="space-y-12 max-w-content-wide mx-auto text-text-muted text-center">
               <div>
                 <h3 className="font-display text-3xl uppercase text-primary mb-3">Mind:</h3>
                 <p className="text-manifesto-body">
@@ -145,7 +145,7 @@ export default function ManifestoPage() {
             <div className="inline-block border border-black px-4 py-2 mb-10">
               <p className="font-mono text-manifesto-h6 font-bold uppercase">05. Lets Be Clear</p>
             </div>
-            <div className="space-y-6 text-manifesto-body max-w-content-wide mx-auto font-medium mb-16 text-left">
+            <div className="space-y-6 text-manifesto-body max-w-content-wide mx-auto font-medium mb-16 text-center">
               <p>We&apos;re human, just like you, we have ambitious targets but we won&apos;t always get it right, we&apos;re here to grow together.</p>
               <p>Accountability and transparency are huge parts of our own journey; our goals are free for the world to see on our impact page and our door is wide open when it comes to feedback.</p>
               <p>If you&apos;ve read this far, perhaps you&apos;ll come a little further...</p>

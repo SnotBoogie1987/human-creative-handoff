@@ -64,9 +64,9 @@ module.exports = {
 
         // Legacy sizes (kept for backwards compatibility)
         'hero': ['5rem', { lineHeight: '1.1' }],
-        'manifesto-h1': ['7.125rem', { lineHeight: '0.8' }],
-        'manifesto-h2': ['4.5rem', { lineHeight: '0.95' }],
-        'manifesto-h6': ['0.6875rem', { lineHeight: '1.45' }],
+        'manifesto-h1': ['7.125rem', { lineHeight: '0.95' }],
+        'manifesto-h2': ['5.5rem', { lineHeight: '0.95' }],
+        'manifesto-h6': ['0.875rem', { lineHeight: '1.45' }],
         'manifesto-body': ['1.125rem', { lineHeight: '1.6' }],
         'manifesto-subtitle': ['1rem', { lineHeight: '1.4' }],
         'nav': ['1.375rem', { lineHeight: '1.2' }],
