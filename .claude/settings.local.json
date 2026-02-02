@@ -6,7 +6,20 @@
       "Bash(done)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npm:*)",
+      "Bash(npx supabase:*)",
+      "Bash(node scripts/check-supabase.js:*)",
+      "Bash(node -e \"\nconst fs = require\\(''fs''\\);\nconst path = require\\(''path''\\);\nconst envPath = path.join\\(''.'', ''.env.local''\\);\nconst envContent = fs.readFileSync\\(envPath, ''utf8''\\);\nenvContent.split\\(''\\\\n''\\).forEach\\(line => {\n  const match = line.match\\(/^\\([^=]+\\)=\\(.*\\)$/\\);\n  if \\(match\\) {\n    process.env[match[1]] = match[2];\n  }\n}\\);\nconsole.log\\(''NEXT_PUBLIC_SUPABASE_URL:'', process.env.NEXT_PUBLIC_SUPABASE_URL\\);\nconsole.log\\(''SUPABASE_SERVICE_ROLE_KEY:'', process.env.SUPABASE_SERVICE_ROLE_KEY ? ''SET'' : ''NOT SET''\\);\n\")",
+      "Bash(node:*)",
+      "mcp__plugin_oh-my-claudecode_t__lsp_diagnostics",
+      "Bash(dir:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx next build:*)",
+      "Bash(gh pr create:*)",
+      "Bash(timeout 5 tail:*)"
     ],
     "deny": [],
     "ask": []
