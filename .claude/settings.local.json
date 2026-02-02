@@ -19,7 +19,8 @@
       "Bash(npx tsc:*)",
       "Bash(npx next build:*)",
       "Bash(gh pr create:*)",
-      "Bash(timeout 5 tail:*)"
+      "Bash(timeout 5 tail:*)",
+      "Bash(find:*)"
     ],
     "deny": [],
     "ask": []
