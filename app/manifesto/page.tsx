@@ -32,13 +32,8 @@ export default function ManifestoPage() {
               <p className="pt-4 text-primary font-bold">Lets get to work.</p>
             </div>
 
-            <div className="mt-12 text-manifesto-h6 font-mono text-primary uppercase text-center">
-              <p>Mike King</p>
-              <p>Director & Co-Founder</p>
-            </div>
-
             {/* Signature and Logo */}
-            <div className="mt-16 flex flex-col items-center gap-8">
+            <div className="mt-20 flex flex-col items-center gap-8">
               <Image
                 src="/assets/mike-king-signature.png"
                 alt="Mike King Signature"
@@ -53,6 +48,11 @@ export default function ManifestoPage() {
                 height={120}
                 className="object-contain"
               />
+            </div>
+
+            <div className="mt-16 text-manifesto-h6 font-mono text-primary uppercase text-center">
+              <p>Mike King</p>
+              <p>Director & Co-Founder</p>
             </div>
           </div>
         </section>
