@@ -13,7 +13,7 @@ interface StepProps {
   updateData: (updates: any) => void
 }
 
-export function Step1PersonalInfo({ profile, data, updateData }: StepProps) {
+export function Step1PersonalInfo({ profile, privateDetails, data, updateData }: StepProps) {
   const [uploading, setUploading] = useState(false)
 
   const handleAvatarUpload = async (file: File) => {
@@ -110,37 +110,37 @@ export function Step1PersonalInfo({ profile, data, updateData }: StepProps) {
           <Input
             label="Address Line 1"
             placeholder="Street address"
-            defaultValue={profile.address_line1 || ''}
-            onChange={(e) => updateData({ profile: { address_line1: e.target.value } })}
+            defaultValue={data.privateDetails?.address_line1 || ''}
+            onChange={(e) => updateData({ privateDetails: { address_line1: e.target.value } })}
           />
 
           <Input
             label="Address Line 2 (Optional)"
             placeholder="Apartment, suite, etc."
-            defaultValue={profile.address_line2 || ''}
-            onChange={(e) => updateData({ profile: { address_line2: e.target.value } })}
+            defaultValue={data.privateDetails?.address_line2 || ''}
+            onChange={(e) => updateData({ privateDetails: { address_line2: e.target.value } })}
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Input
               label="City"
               placeholder="London"
-              defaultValue={profile.city || ''}
-              onChange={(e) => updateData({ profile: { city: e.target.value } })}
+              defaultValue={data.privateDetails?.city || ''}
+              onChange={(e) => updateData({ privateDetails: { city: e.target.value } })}
             />
             <Input
               label="Postcode"
               placeholder="SW1A 1AA"
-              defaultValue={profile.postcode || ''}
-              onChange={(e) => updateData({ profile: { postcode: e.target.value } })}
+              defaultValue={data.privateDetails?.postcode || ''}
+              onChange={(e) => updateData({ privateDetails: { postcode: e.target.value } })}
             />
           </div>
 
           <Input
             label="Country"
             placeholder="United Kingdom"
-            defaultValue={profile.country || ''}
-            onChange={(e) => updateData({ profile: { country: e.target.value } })}
+            defaultValue={data.privateDetails?.country || ''}
+            onChange={(e) => updateData({ privateDetails: { country: e.target.value } })}
           />
         </div>
       </div>

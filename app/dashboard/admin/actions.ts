@@ -1,5 +1,6 @@
 'use server'
 
+import { createAdminClient } from '@/lib/supabase/admin'
 import { createClient } from '@/lib/supabase/server'
 import { getUser } from '@/lib/auth/server'
 import type { Profile, PrivateFreelancerDetails } from '@/lib/auth/types'
@@ -47,6 +48,7 @@ export async function getFreelancerByIdAction(userId: string) {
   }
 
   const supabase = await createClient()
+  const adminClient = createAdminClient()
 
   // Fetch profile
   const { data: profile, error: profileError } = await supabase
@@ -70,8 +72,8 @@ export async function getFreelancerByIdAction(userId: string) {
   if (privateError && privateError.code !== 'PGRST116') {
   }
 
-  // Fetch auth user data for email
-  const { data: { user }, error: authError } = await supabase.auth.admin.getUserById(userId)
+  // Fetch auth user data for email using admin client
+  const { data: { user }, error: authError } = await adminClient.auth.admin.getUserById(userId)
 
   if (authError) {
   }

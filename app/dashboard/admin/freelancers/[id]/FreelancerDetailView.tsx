@@ -226,14 +226,16 @@ export function FreelancerDetailView({ freelancerData }: FreelancerDetailViewPro
             </div>
 
             {/* Medical & Dietary */}
-            <div className="mb-8">
-              <h3 className="text-lime-green font-mono font-bold mb-4">Medical & Dietary</h3>
-              <div className="space-y-4">
-                <InfoField label="Dietary Requirements" value={profile.dietary_requirements} multiline />
-                <InfoField label="Allergies" value={profile.allergies} multiline />
-                <InfoField label="Medical Notes" value={profile.medical_notes} multiline />
+            {privateDetails && (
+              <div className="mb-8">
+                <h3 className="text-lime-green font-mono font-bold mb-4">Medical & Dietary</h3>
+                <div className="space-y-4">
+                  <InfoField label="Dietary Requirements" value={privateDetails.dietary_requirements} multiline />
+                  <InfoField label="Allergies" value={privateDetails.allergies} multiline />
+                  <InfoField label="Medical Notes" value={privateDetails.medical_notes} multiline />
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Emergency Contact & Personal */}
             {privateDetails && (
@@ -251,52 +253,56 @@ export function FreelancerDetailView({ freelancerData }: FreelancerDetailViewPro
             )}
 
             {/* Address */}
-            <div className="pt-6 border-t border-gray-800 mb-8">
-              <h3 className="text-lime-green font-mono font-bold mb-4">Address</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <InfoField label="Address Line 1" value={profile.address_line1} />
-                <InfoField label="Address Line 2" value={profile.address_line2} />
-                <InfoField label="City" value={profile.city} />
-                <InfoField label="Postcode" value={profile.postcode} />
-                <InfoField label="Country" value={profile.country} />
+            {privateDetails && (
+              <div className="pt-6 border-t border-gray-800 mb-8">
+                <h3 className="text-lime-green font-mono font-bold mb-4">Address</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <InfoField label="Address Line 1" value={privateDetails.address_line1} />
+                  <InfoField label="Address Line 2" value={privateDetails.address_line2} />
+                  <InfoField label="City" value={privateDetails.city} />
+                  <InfoField label="Postcode" value={privateDetails.postcode} />
+                  <InfoField label="Country" value={privateDetails.country} />
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Documents */}
-            <div className="pt-6 border-t border-gray-800">
-              <h3 className="text-lime-green font-mono font-bold mb-4">Documents</h3>
-              <div className="space-y-3">
-                {profile.passport_scan_url && (
-                  <div className="flex items-center gap-3">
-                    <span className="text-gray-400">Passport Scan:</span>
-                    <a
-                      href={profile.passport_scan_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-400 hover:text-blue-300 underline"
-                    >
-                      View Document
-                    </a>
-                  </div>
-                )}
-                {profile.driving_license_url && (
-                  <div className="flex items-center gap-3">
-                    <span className="text-gray-400">Driving License:</span>
-                    <a
-                      href={profile.driving_license_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-400 hover:text-blue-300 underline"
-                    >
-                      View Document
-                    </a>
-                  </div>
-                )}
-                {!profile.passport_scan_url && !profile.driving_license_url && (
-                  <p className="text-gray-500">No documents uploaded</p>
-                )}
+            {privateDetails && (
+              <div className="pt-6 border-t border-gray-800">
+                <h3 className="text-lime-green font-mono font-bold mb-4">Documents</h3>
+                <div className="space-y-3">
+                  {privateDetails.passport_scan_url && (
+                    <div className="flex items-center gap-3">
+                      <span className="text-gray-400">Passport Scan:</span>
+                      <a
+                        href={privateDetails.passport_scan_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:text-blue-300 underline"
+                      >
+                        View Document
+                      </a>
+                    </div>
+                  )}
+                  {privateDetails.driving_license_url && (
+                    <div className="flex items-center gap-3">
+                      <span className="text-gray-400">Driving License:</span>
+                      <a
+                        href={privateDetails.driving_license_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:text-blue-300 underline"
+                      >
+                        View Document
+                      </a>
+                    </div>
+                  )}
+                  {!privateDetails.passport_scan_url && !privateDetails.driving_license_url && (
+                    <p className="text-gray-500">No documents uploaded</p>
+                  )}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </TabsContent>
       </Tabs>

@@ -131,7 +131,7 @@ export default function ProfileEditPage() {
     setIsSaving(true)
     try {
       const result = await updatePrivateDetailsAction(debouncedPrivateValues)
-      if (result.success) {
+      if (result.success && result.data) {
         setLastSaved(new Date())
         setPrivateDetails(result.data)
       }
@@ -185,10 +185,12 @@ export default function ProfileEditPage() {
       })
 
       if (result.success && result.url) {
-        // Update profile with document URL
+        // Update private details with document URL
         const updateKey = documentType === 'passport' ? 'passport_scan_url' : 'driving_license_url'
-        await updateProfileAction({ [updateKey]: result.url } as any)
-        setProfile((prev) => (prev ? { ...prev, [updateKey]: result.url || null } : null))
+        const updateResult = await updatePrivateDetailsAction({ [updateKey]: result.url })
+        if (updateResult.success && updateResult.data) {
+          setPrivateDetails(updateResult.data)
+        }
         return { success: true, url: result.url }
       }
 
@@ -213,7 +215,7 @@ export default function ProfileEditPage() {
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-4xl font-black text-white mb-2">Edit Profile</h1>
+            <h1 className="text-display-md font-black text-white mb-2">Edit Profile</h1>
             <p className="text-gray-400">Update your professional information</p>
           </div>
           <div className="flex items-center gap-4">
@@ -263,7 +265,7 @@ export default function ProfileEditPage() {
             {/* TAB 1: Identity & Roles */}
             <TabsContent value="identity">
               <div className="bg-dark-grey border border-gray-800 rounded-lg p-8">
-                <h2 className="text-2xl font-black text-white mb-6">Identity & Roles</h2>
+                <h2 className="text-display-sm font-black text-white mb-6">Identity & Roles</h2>
 
                 {/* Avatar Upload */}
                 <div className="mb-8 pb-8 border-b border-gray-800">
@@ -326,38 +328,6 @@ export default function ProfileEditPage() {
                     </select>
                   </div>
 
-                  {/* Address */}
-                  <Input
-                    {...register('address_line1')}
-                    label="Address Line 1"
-                    placeholder="Street address"
-                  />
-
-                  <Input
-                    {...register('address_line2')}
-                    label="Address Line 2 (Optional)"
-                    placeholder="Apartment, suite, etc."
-                  />
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <Input
-                      {...register('city')}
-                      label="City"
-                      placeholder="London"
-                    />
-                    <Input
-                      {...register('postcode')}
-                      label="Postcode"
-                      placeholder="SW1A 1AA"
-                    />
-                  </div>
-
-                  <Input
-                    {...register('country')}
-                    label="Country"
-                    placeholder="United Kingdom"
-                  />
-
                   <Input
                     {...register('location')}
                     label="Location (Public Display)"
@@ -371,7 +341,7 @@ export default function ProfileEditPage() {
             {/* TAB 2: Portfolio */}
             <TabsContent value="portfolio">
               <div className="bg-dark-grey border border-gray-800 rounded-lg p-8">
-                <h2 className="text-2xl font-black text-white mb-6">Portfolio</h2>
+                <h2 className="text-display-sm font-black text-white mb-6">Portfolio</h2>
                 <div className="space-y-6">
                   {/* Personal Website */}
                   <Input
@@ -445,7 +415,7 @@ export default function ProfileEditPage() {
             {/* TAB 3: The Gear */}
             <TabsContent value="gear">
               <div className="bg-dark-grey border border-gray-800 rounded-lg p-8">
-                <h2 className="text-2xl font-black text-white mb-6">The Gear</h2>
+                <h2 className="text-display-sm font-black text-white mb-6">The Gear</h2>
                 <div className="space-y-6">
                   {/* Kit Value */}
                   <div>
@@ -624,12 +594,52 @@ export default function ProfileEditPage() {
                     </div>
                   </div>
 
+                  {/* Address Information */}
+                  <div className="pt-6 border-t border-gray-800">
+                    <h3 className="text-lime-green font-mono font-bold mb-4">Address Information</h3>
+
+                    <Input
+                      {...registerPrivate('address_line1')}
+                      label="Address Line 1"
+                      placeholder="Street address"
+                    />
+
+                    <div className="mt-6">
+                      <Input
+                        {...registerPrivate('address_line2')}
+                        label="Address Line 2 (Optional)"
+                        placeholder="Apartment, suite, etc."
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                      <Input
+                        {...registerPrivate('city')}
+                        label="City"
+                        placeholder="London"
+                      />
+                      <Input
+                        {...registerPrivate('postcode')}
+                        label="Postcode"
+                        placeholder="SW1A 1AA"
+                      />
+                    </div>
+
+                    <div className="mt-6">
+                      <Input
+                        {...registerPrivate('country')}
+                        label="Country"
+                        placeholder="United Kingdom"
+                      />
+                    </div>
+                  </div>
+
                   {/* Medical & Dietary */}
                   <div className="pt-6 border-t border-gray-800">
                     <h3 className="text-lime-green font-mono font-bold mb-4">Medical & Dietary</h3>
 
                     <Textarea
-                      {...register('dietary_requirements')}
+                      {...registerPrivate('dietary_requirements')}
                       label="Dietary Requirements"
                       placeholder="e.g., Vegetarian, Gluten-free, Allergies"
                       rows={3}
@@ -637,7 +647,7 @@ export default function ProfileEditPage() {
 
                     <div className="mt-6">
                       <Textarea
-                        {...register('allergies')}
+                        {...registerPrivate('allergies')}
                         label="Allergies"
                         placeholder="Any known allergies"
                         rows={3}
@@ -646,7 +656,7 @@ export default function ProfileEditPage() {
 
                     <div className="mt-6">
                       <Textarea
-                        {...register('medical_notes')}
+                        {...registerPrivate('medical_notes')}
                         label="Medical Notes (Private)"
                         placeholder="Any medical conditions we should be aware of"
                         rows={3}
@@ -722,7 +732,7 @@ export default function ProfileEditPage() {
                         accept="image/*,application/pdf"
                         maxSize={FILE_CONFIGS.document.maxSize / (1024 * 1024)}
                         label="Passport Scan"
-                        currentFile={profile?.passport_scan_url}
+                        currentFile={privateDetails?.passport_scan_url}
                         helperText="Upload a clear scan or photo of your passport"
                       />
 
@@ -732,7 +742,7 @@ export default function ProfileEditPage() {
                         accept="image/*,application/pdf"
                         maxSize={FILE_CONFIGS.document.maxSize / (1024 * 1024)}
                         label="Driving License"
-                        currentFile={profile?.driving_license_url}
+                        currentFile={privateDetails?.driving_license_url}
                         helperText="Upload both sides of your driving license if applicable"
                       />
                     </div>

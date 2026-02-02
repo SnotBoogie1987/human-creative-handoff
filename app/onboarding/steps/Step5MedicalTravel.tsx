@@ -24,8 +24,8 @@ export function Step5MedicalTravel({ profile, privateDetails, data, updateData }
           <Textarea
             label="Dietary Requirements *"
             placeholder="e.g., Vegetarian, Vegan, Gluten-free, or None"
-            defaultValue={profile.dietary_requirements || ''}
-            onChange={(e) => updateData({ profile: { dietary_requirements: e.target.value } })}
+            defaultValue={privateDetails?.dietary_requirements || ''}
+            onChange={(e) => updateData({ privateDetails: { dietary_requirements: e.target.value } })}
             rows={3}
             helperText="Please list any dietary restrictions"
             required
@@ -34,8 +34,8 @@ export function Step5MedicalTravel({ profile, privateDetails, data, updateData }
           <Textarea
             label="Allergies *"
             placeholder="e.g., Peanuts, Shellfish, Pollen, or None"
-            defaultValue={profile.allergies || ''}
-            onChange={(e) => updateData({ profile: { allergies: e.target.value } })}
+            defaultValue={privateDetails?.allergies || ''}
+            onChange={(e) => updateData({ privateDetails: { allergies: e.target.value } })}
             rows={3}
             helperText="List any known allergies"
             required
@@ -44,8 +44,8 @@ export function Step5MedicalTravel({ profile, privateDetails, data, updateData }
           <Textarea
             label="Medical Notes *"
             placeholder="Any medical conditions we should be aware of, or write 'None'"
-            defaultValue={profile.medical_notes || ''}
-            onChange={(e) => updateData({ profile: { medical_notes: e.target.value } })}
+            defaultValue={privateDetails?.medical_notes || ''}
+            onChange={(e) => updateData({ privateDetails: { medical_notes: e.target.value } })}
             rows={3}
             helperText="Any conditions relevant to working on shoots"
             required

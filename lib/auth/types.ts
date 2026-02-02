@@ -15,6 +15,21 @@ export interface PrivateFreelancerDetails {
   emergency_contact_phone: string | null
   frequent_flyer_program: string | null
   other_visas: string | null
+
+  // Sensitive PII (migrated from profiles table)
+  passport_number: string | null
+  passport_expiry: string | null
+  passport_scan_url: string | null
+  driving_license_url: string | null
+  dietary_requirements: string | null
+  allergies: string | null
+  medical_notes: string | null
+  address_line1: string | null
+  address_line2: string | null
+  city: string | null
+  postcode: string | null
+  country: string | null
+
   created_at: string
   updated_at: string
 }
@@ -43,8 +58,6 @@ export interface Profile {
   // Driving & Travel
   driving_license: boolean | null
   has_vehicle: boolean | null
-  passport_number: string | null
-  passport_expiry: string | null
   has_visa_us: boolean | null
   has_visa_schengen: boolean | null
   preferred_airport: string | null
@@ -72,22 +85,6 @@ export interface Profile {
   kit_lighting: string | null
   kit_audio: string | null
   kit_other: string | null
-
-  // Medical & Dietary (Private)
-  dietary_requirements: string | null
-  allergies: string | null
-  medical_notes: string | null
-
-  // Document Storage (Private)
-  passport_scan_url: string | null
-  driving_license_url: string | null
-
-  // Address
-  address_line1: string | null
-  address_line2: string | null
-  city: string | null
-  postcode: string | null
-  country: string | null
 
   // Metadata
   profile_visibility: 'public' | 'private' | null
