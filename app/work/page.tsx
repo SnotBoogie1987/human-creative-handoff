@@ -1,85 +1,76 @@
-import { Header, Footer, Marquee } from '@/components/layout'
-import { BackToTop } from '@/components/ui'
+import { Header, Footer, MarqueeBar, FloatingBadge } from '@/components/layout'
+import Link from 'next/link'
+import Image from 'next/image'
 
 export const metadata = {
-  title: 'WORK | HUMAN. Creative',
-  description: 'From Formula One cars in Bahrain to protein shakes in Manchester, we&apos;ve proudly provided exceptional freelancers to brilliant production companies, agencies and brands all over the globe.',
+  title: 'WORK | Human Creative',
+  description: 'Our portfolio of exceptional work with brilliant production companies, agencies and brands.',
 }
 
-const projects = [
-  { title: 'ASTON MARTIN', slug: 'astonmartin' },
-  { title: 'UNDER ARMOUR', slug: 'underarmour' },
-  { title: 'BBC STORIES', slug: 'bbcstories' },
-  { title: 'JAGUAR TCS', slug: 'jaguartcs' },
-  { title: 'AL AIN FC', slug: 'alainfc' },
-  { title: 'TOUGH MUDDER', slug: 'toughmudder' },
-  { title: 'NIKE WELLFEST', slug: 'nikewellfest' },
-  { title: 'AZIMUTH', slug: 'azimuth' },
-  { title: 'LAURYN HILL', slug: 'laurynhill' },
-  { title: 'BUDGET CAR RENTAL', slug: 'budgetcarrental' },
-  { title: 'MYPROTEIN', slug: 'myprotein' },
-  { title: 'VIVOBAREFOOT', slug: 'vivobarefoot' },
+// Work items data with slugs for detail pages
+const workItems = [
+  { slug: 'astonmartin', image: '61ce5b_0c4254ac35a341a2adf5e8dd83ba815e~mv2.png', alt: 'Aston Martin' },
+  { slug: 'alainfc', image: '61ce5b_394f9241ff5543f2a6dc368b68bfa7ed~mv2.png', alt: 'Al Ain FC' },
+  { slug: 'myprotein', image: '61ce5b_5e9211cb679c4a218f52e24bf2bbb498~mv2.png', alt: 'MyProtein' },
+  { slug: 'budgetcarrental', image: '61ce5b_78a51e5a4e964d059b826fc975c6aa06~mv2.png', alt: 'Budget Car Rental' },
+  { slug: 'bbcstories', image: '61ce5b_85d5dc0d98f648e8aa567617bd2df0c6~mv2.png', alt: 'BBC Stories' },
+  { slug: 'azimuth', image: '61ce5b_981effdcd2b44f9f801b361e216653bd~mv2.png', alt: 'Azimuth' },
+  { slug: 'jaguartcs', image: '61ce5b_a636188349574ca881f7c6b34bfa003d~mv2.png', alt: 'Jaguar TCS' },
+  { slug: 'toughmudder', image: '61ce5b_a7138680183f490d97b26a904ce53c8e~mv2.png', alt: 'Tough Mudder' },
+  { slug: 'nikewellfest', image: '61ce5b_a8c8dce6ebb148d3bd776e7609896252~mv2.png', alt: 'Nike Well Fest' },
+  { slug: 'laurynhill', image: '61ce5b_a974ef5eb1d84153b5601a4160568fcc~mv2.png', alt: 'Lauryn Hill' },
+  { slug: 'vivobarefoot', image: '61ce5b_db29e3c7d8414bd6af56b2b6c9862f95~mv2.png', alt: 'Vivobarefoot' },
+  { slug: 'underarmour', image: '61ce5b_e6dd5a96ed5a498290448d09174de68a~mv2.png', alt: 'Under Armour' },
 ]
 
 export default function WorkPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-dark-grey">
-      <Marquee />
+    <div className="min-h-screen flex flex-col bg-background-dark">
+      <MarqueeBar />
       <Header />
 
-      <main className="flex-1 px-6 py-20">
-        <div className="max-w-7xl mx-auto">
-          {/* Page Title */}
-          <h1 className="text-4xl md:text-6xl font-black text-white text-center mb-8">
-            WORK
-          </h1>
+      <main>
+        {/* Header Section */}
+        <section className="section-dark pt-24 pb-0">
+          <div className="max-w-[1120px] mx-auto text-center px-6">
+            <h1 className="heading-display text-display-lg text-primary mb-6">
+              WORK
+            </h1>
 
-          {/* Introduction */}
-          <div className="max-w-3xl mx-auto text-center mb-12 space-y-4">
-            <p className="text-white text-base md:text-lg">
-              From Formula One cars in Bahrain to protein shakes in Manchester, we&apos;ve proudly provided exceptional freelancers to brilliant production companies, agencies and brands all over the globe.
-            </p>
-            <p className="text-white text-base md:text-lg">
-              Click an image to learn more.
-            </p>
-            <p className="text-white text-base md:text-lg">
-              Additional work references are happily provided{' '}
-              <a href="/enquire" className="text-lime-green underline hover:opacity-80 transition-opacity">
-                upon request
-              </a>
-              .
-            </p>
+            <div className="space-y-20 prose-body max-w-[800px] mx-auto text-text-muted">
+              <p>From Formula One cars in Bahrain to protein shakes in Manchester, we&apos;ve proudly provided exceptional freelancers to brilliant production companies, agencies and brands all over the globe.</p>
+
+              <div className="space-y-5">
+                <p><span className="text-primary font-bold">Click</span> an image to learn more.</p>
+                <p>Additional work references are happily provided <Link href="/enquire" className="text-primary border-b border-primary hover:text-white hover:border-white transition-colors">upon request.</Link></p>
+              </div>
+            </div>
           </div>
+        </section>
 
-          {/* Work Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {projects.map((project) => (
-              <a
-                key={project.slug}
-                href={`/work/${project.slug}`}
-                className="group block bg-gray-900 hover:bg-gray-800 transition-colors duration-300"
-              >
-                {/* Image Placeholder */}
-                <div className="aspect-video bg-gray-800 flex items-center justify-center text-gray-600 group-hover:bg-gray-700 transition-colors">
-                  <span className="text-sm">[{project.title} Image]</span>
-                </div>
-                {/* Title */}
-                <div className="p-4 text-center">
-                  <h3 className="text-white font-bold text-sm md:text-base tracking-wide">
-                    {project.title}
-                  </h3>
-                </div>
-              </a>
+        {/* Work Grid */}
+        <section className="section-dark min-h-screen pb-24 pt-7">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[7px] max-w-[1120px] mx-auto px-6">
+            {workItems.map((item) => (
+              <div key={item.slug} className="relative w-full h-[368px] group flex justify-center">
+                <Link
+                  href={`/work/${item.slug}`}
+                  className="w-[295px] h-[368px] relative block overflow-hidden"
+                >
+                  <Image
+                    src={`/assets/work/${item.image}`}
+                    alt={item.alt}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </Link>
+              </div>
             ))}
           </div>
-
-          {/* Back to Top */}
-          <div className="text-center mt-12">
-            <BackToTop />
-          </div>
-        </div>
+        </section>
       </main>
 
+      <FloatingBadge />
       <Footer />
     </div>
   )

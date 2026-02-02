@@ -1,207 +1,145 @@
-import { Header, Footer, Marquee } from '@/components/layout'
-import { BackToTop } from '@/components/ui'
-import { createClient } from '@/lib/supabase/server'
+import { Header, Footer, MarqueeBar, FloatingBadge } from '@/components/layout'
+import Image from 'next/image'
 
 export const metadata = {
-  title: 'IMPACT | HUMAN. Creative',
-  description: 'Our partnerships, impact categories, and commitment to transparency. Scaling our impact with partners who share our values.',
+  title: 'IMPACT | Human Creative',
+  description: 'Our partnerships, impact categories, and transparent goals for scaling our impact.',
 }
 
-export default async function ImpactPage() {
-  // Fetch partnerships from database
-  const supabase = await createClient()
-  const { data: partnerships } = await supabase
-    .from('partnerships')
-    .select('name')
-    .eq('is_active', true)
-    .order('name')
-
-  const partnerNames = partnerships?.map(p => p.name) || []
-
+export default function ImpactPage() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Marquee />
+    <div className="min-h-screen flex flex-col bg-background-dark">
+      <MarqueeBar />
       <Header />
 
       <main>
-        {/* Section 1: Partnerships and Impact Categories (Dark) */}
-        <section className="min-h-screen flex flex-col items-center justify-center px-6 py-20 bg-black text-white text-center">
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8">
-            PARTNERSHIPS AND<br />IMPACT CATEGORIES
-          </h1>
-
-          <div className="max-w-4xl space-y-6 mb-12">
-            <p className="text-base md:text-lg leading-relaxed">
-              FROM THE BEGINNING, ONE OF OUR BIGGEST AMBITIONS WAS TO CREATE A NETWORK OF PARTNERS THAT REFLECTS THE CARE AND VALUES WE BELIEVE IN.
-            </p>
-
-            <p className="text-base md:text-lg leading-relaxed">
-              WE CAREFULLY SELECT PARTNERS WHO SHARE OUR COMMITMENT TO FREELANCER WELLBEING AND SUSTAINABLE BUSINESS PRACTICES.
-            </p>
-
-            <p className="text-base md:text-lg leading-relaxed">
-              OUR CHARACTER IS DEFINED BY OUR ASSOCIATIONS. WE EXTEND OUR REACH THROUGH PARTNERSHIPS THAT PROVIDE GENUINE VALUE TO OUR MEMBERS ACROSS FOUR IMPACT CATEGORIES: MIND, MOVEMENT, MONEY, AND MASTERY.
-            </p>
-
-            <p className="text-base md:text-lg leading-relaxed">
-              THESE PARTNERS SHARE OUR COMMITMENT TO POSITIVE IMPACT AND HAVE HELPED US BUILD A NETWORK THAT TRULY SUPPORTS FREELANCERS:
-            </p>
-          </div>
-
-          <div className="flex flex-wrap justify-center items-center gap-8 max-w-5xl mx-auto mb-12">
-            {partnerNames.map((name, index) => (
-              <div key={index} className="text-lg md:text-xl font-bold">{name}</div>
-            ))}
-          </div>
-
-          <p className="text-base md:text-lg leading-relaxed">
-            IF YOU ARE A FREELANCER, YOU CAN{' '}
-            <a href="/signup" className="text-lime-green underline hover:opacity-80 transition-opacity">
-              SIGN UP TO ACCESS ALL PARTNERSHIP BENEFITS
-            </a>
-            .
-          </p>
-        </section>
-
-        {/* Section 2: Scaling Our Impact, Transparently (Light) */}
-        <section className="min-h-screen flex flex-col items-center justify-center px-6 py-20 bg-lime-green text-dark-text text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-8">
-            SCALING OUR IMPACT,<br />TRANSPARENTLY
-          </h2>
-
-          <div className="max-w-4xl space-y-6 mb-12">
-            <p className="text-base md:text-lg leading-relaxed">
-              IN OUR FIRST YEAR AS A FULL-TIME AGENCY, WE TURNED OVER JUST SHY OF £750,000 WORTH OF WORK WITH OVER 40 FREELANCERS ENGAGED.
-            </p>
-
-            <p className="text-base md:text-lg leading-relaxed">
-              ALL BUT TEN REQUESTS WERE FULFILLED IN 2024, MOST DECLINES FALLING OVER THE OVERLAPPING CHRISTMAS PERIOD.
-            </p>
-
-            <p className="text-base md:text-lg leading-relaxed">
-              WHILST THESE NUMBERS WILL NO DOUBT GROW, WE ARE INCREDIBLY PROUD OF WHAT WE&apos;VE ALREADY ACHIEVED—ESPECIALLY GIVEN WE&apos;RE BUILDING SUSTAINABLY AND ORGANICALLY, PRIORITIZING TRUST AND LONG-TERM RELATIONSHIPS OVER RAPID GROWTH.
-            </p>
-
-            <p className="text-base md:text-lg leading-relaxed">
-              WE ARE ALSO PROUD MEMBERS OF 1% FOR THE PLANET AND THE LIVING WAGE FOUNDATION, WHERE 1% OF OUR REVENUE IS DEDICATED TO SUPPORTING ENVIRONMENTAL ORGANIZATIONS ACROSS THE PLANET.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap justify-center items-center gap-8 mb-12">
-            <div className="w-36 h-36 rounded-full bg-white flex items-center justify-center text-center font-bold text-sm">
-              1% FOR THE<br />PLANET
-            </div>
-            <div className="w-36 h-36 rounded-full bg-white flex items-center justify-center text-center font-bold text-sm">
-              LIVING<br />WAGE
+        {/* Section 1: Partnerships & Categories (Dark) */}
+        <section className="section-dark">
+          <div className="max-w-content mx-auto text-center">
+            <h1 className="heading-display text-display-lg text-primary mb-12">
+              Partnerships &<br />Impact Categories
+            </h1>
+            <div className="space-y-6 prose-body max-w-2xl mx-auto text-text-muted">
+              <p>From the beginning, one of our biggest endeavours was to create an unrivalled network of support for freelancers - one that would supersede any common workplace, irrespective of industry.</p>
+              <p>Slowly but surely, we are onboarding new partners who share our vision.</p>
+              <p>As we continue to grow, so do the conversations, so does our reach and so does the level of support we are able to pass on to our members - all of this accounts for how we scale our impact.</p>
+              <p>The intricacies of our partnerships remain private to members but we continue to express our immense gratitude to the amazing brands below who are helping us achieve truly great things.</p>
+              <div className="py-12">
+                <Image
+                  src="/assets/brand_logos.png"
+                  alt="Partner Brand Logos"
+                  width={896}
+                  height={200}
+                  className="w-full h-auto max-w-4xl mx-auto object-contain"
+                />
+              </div>
+              <p className="pt-4">If you are a freelancer, you can <a href="mailto:studio@human-creative.co.uk?subject=I'd%20like%20some%20more%20info..." className="text-primary border-b border-primary hover:text-white hover:border-white transition-colors">request an information pack.</a></p>
             </div>
           </div>
-
-          <p className="text-base md:text-lg leading-relaxed">
-            OUR AMBITIONS FOR THE FUTURE ARE HIGHER AND BOLDER, AND WE&apos;RE COMMITTED TO HOLDING OURSELVES ACCOUNTABLE.
-          </p>
         </section>
 
-        {/* Section 3: Partnerships Doubled by April 2026 (Dark) */}
-        <section className="min-h-screen flex flex-col items-center justify-center px-6 py-20 bg-black text-white text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-8">
-            PARTNERSHIPS<br />DOUBLED BY<br />APRIL 2026
-          </h2>
-
-          <div className="max-w-4xl space-y-6">
-            <p className="text-base md:text-lg leading-relaxed">
-              BY APRIL 2026, WE AIM TO DOUBLE OUR CURRENT PARTNERSHIPS—EXPANDING ACCESS TO MORE BENEFITS, MORE OPPORTUNITIES, AND MORE SUPPORT FOR OUR GROWING NETWORK.
-            </p>
-
-            <p className="text-base md:text-lg leading-relaxed">
-              EACH NEW PARTNERSHIP WILL BE CAREFULLY VETTED TO ENSURE THEY SHARE OUR VALUES AND GENUINELY BENEFIT OUR FREELANCERS. NO HOLLOW PARTNERSHIPS. NO EMPTY PROMISES. JUST REAL VALUE.
-            </p>
-
-            <p className="text-base md:text-lg leading-relaxed font-bold text-lime-green">
-              TARGET: APRIL 2026
-            </p>
+        {/* Section 2: Scaling Impact (Primary) */}
+        <section className="section-primary">
+          <div className="max-w-content mx-auto text-center">
+            <h2 className="heading-display text-display-md mb-12">
+              Scaling<br />Our Impact,<br />Transparently
+            </h2>
+            <div className="space-y-6 prose-body max-w-content-wide mx-auto font-medium">
+              <p>In our first year trading as a full time agency, we turned over just shy of £250,000 worth of work with over 40 freelancers engaged.</p>
+              <p>All but two requests were fulfilled in 2024, both of which fell over the challenging Christmas period...</p>
+              <p>I mean, c&apos;mon.</p>
+              <p>Whilst these numbers will be small fry to other, larger agencies, we are immensely proud of what we&apos;ve already achieved.</p>
+              <p>We received (and were recently re-accredited) Living Wage Employer certification, validating our progressive understanding on rates and wages.</p>
+              <p>We are also a proud 1% For The Planet member, where 1% of our annual profits go straight to supporting other organisations helping people and the planet.</p>
+              <div className="flex justify-center flex-wrap gap-8 items-center py-12">
+                <Image
+                  src="/assets/one_percent_logo.png"
+                  alt="1% For The Planet Member"
+                  width={168}
+                  height={168}
+                  className="w-auto h-[168px] object-contain"
+                />
+                <Image
+                  src="/assets/living_wage_logo.png"
+                  alt="Living Wage Employer"
+                  width={168}
+                  height={168}
+                  className="w-auto h-[168px] object-contain"
+                />
+              </div>
+              <p>Our ambitions for the future are even bigger and bolder, read all about them below... we expect to be held accountable.</p>
+            </div>
           </div>
         </section>
 
-        {/* Section 4: Client Welfare Scoring System (Light) */}
-        <section className="min-h-screen flex flex-col items-center justify-center px-6 py-20 bg-lime-green text-dark-text text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-8">
-            CLIENT WELFARE<br />SCORING SYSTEM
-          </h2>
-
-          <div className="max-w-4xl space-y-6">
-            <p className="text-base md:text-lg leading-relaxed">
-              WE&apos;RE DEVELOPING A TRANSPARENT CLIENT WELFARE SCORING SYSTEM THAT RATES PRODUCTION COMPANIES AND CLIENTS BASED ON THEIR TREATMENT OF FREELANCERS.
-            </p>
-
-            <p className="text-base md:text-lg leading-relaxed">
-              FACTORS INCLUDE: PAYMENT TIMELINESS, WORKING CONDITIONS, RESPECT FOR CREW WELFARE, TRANSPARENCY IN EXPECTATIONS, AND OVERALL TREATMENT OF FREELANCE PROFESSIONALS.
-            </p>
-
-            <p className="text-base md:text-lg leading-relaxed">
-              THIS SYSTEM WILL EMPOWER FREELANCERS TO MAKE INFORMED DECISIONS ABOUT WHO THEY WORK WITH, AND ENCOURAGE CLIENTS TO PRIORITIZE CREW WELFARE.
-            </p>
-
-            <p className="text-base md:text-lg leading-relaxed font-bold text-dark-grey">
-              TARGET: SUMMER 2025
-            </p>
+        {/* Section 3: Partnerships Doubled (Dark) */}
+        <section className="section-dark">
+          <div className="max-w-content mx-auto text-center">
+            <h2 className="heading-display text-display-md text-primary mb-12">
+              Partnerships<br />Doubled By<br />April 2026
+            </h2>
+            <div className="space-y-6 prose-body max-w-2xl mx-auto text-text-muted">
+              <p>The impact generated by our partnerships will never be quantifiable, but to further cement an unrivalled support offering, we intend to double the number of partners so that our members receive wider choices, more support and more perks.</p>
+              <p className="pt-4 font-mono text-primary font-bold tracking-wider">Estimated completion time: April 2026</p>
+            </div>
           </div>
         </section>
 
-        {/* Section 5: Online Store Launch (Dark) */}
-        <section className="min-h-screen flex flex-col items-center justify-center px-6 py-20 bg-black text-white text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-8">
-            ONLINE STORE<br />LAUNCH
-          </h2>
-
-          <div className="max-w-4xl space-y-6">
-            <p className="text-base md:text-lg leading-relaxed">
-              WE&apos;RE LAUNCHING AN ONLINE STORE FEATURING BRANDED MERCHANDISE AND CURATED GEAR FOR FILMMAKERS AND CREATIVES.
-            </p>
-
-            <p className="text-base md:text-lg leading-relaxed">
-              ALL PROFITS WILL BE REINVESTED INTO THE NETWORK—FUNDING MORE PARTNERSHIPS, BETTER BENEFITS, AND EXPANDED SUPPORT SERVICES FOR FREELANCERS.
-            </p>
-
-            <p className="text-base md:text-lg leading-relaxed">
-              THIS ISN&apos;T ABOUT SELLING MERCH. IT&apos;S ABOUT BUILDING A SUSTAINABLE MODEL THAT DIRECTLY FUNDS OUR MISSION.
-            </p>
-
-            <p className="text-base md:text-lg leading-relaxed font-bold text-lime-green">
-              TARGET: SPRING 2025
-            </p>
+        {/* Section 4: Client Welfare Scoring (Primary) */}
+        <section className="section-primary">
+          <div className="max-w-content mx-auto text-center">
+            <h2 className="heading-display text-display-md mb-12">
+              Client Welfare<br />Scoring
+            </h2>
+            <div className="space-y-6 prose-body max-w-content-wide mx-auto font-medium">
+              <p>If our clients receive the best, it should be a two way street.</p>
+              <p>We know wrangling clients can be a tall order for production companies; plans often change on the ground without warning and hours can intensify, that is simply part and parcel of the film world.</p>
+              <p>That said, we&apos;re working with our clients to develop a simple framework that can help mitigate how these challenges can negatively impact freelancers when mismanaged.</p>
+              <p>This system will inherently provide a welfare-scoring system, providing experience-based transparency to freelancers without leaving our clients penalised.</p>
+              <p className="pt-4 font-mono font-bold tracking-wider">Estimated implementation: Summer 2026</p>
+            </div>
           </div>
         </section>
 
-        {/* Section 6: B Corporation Certification (Light) */}
-        <section className="min-h-screen flex flex-col items-center justify-center px-6 py-20 bg-lime-green text-dark-text text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-8">
-            B CORPORATION<br />CERTIFICATION
-          </h2>
+        {/* Section 5: Online Store (Dark) */}
+        <section className="section-dark">
+          <div className="max-w-content mx-auto text-center">
+            <h2 className="heading-display text-display-md text-primary mb-12">
+              Online Store<br />Launch
+            </h2>
+            <div className="space-y-6 prose-body max-w-2xl mx-auto text-text-muted">
+              <p>Apparel and accessories formed in collaboration with independent brands, artists and creatives who share our vision, with all proceeds gifted to <a href="https://www.thecalmzone.net/" className="text-primary border-b border-primary hover:text-white hover:border-white transition-colors" target="_blank" rel="noopener noreferrer">CALMZONE.</a></p>
+              <p className="pt-4 font-mono text-primary font-bold tracking-wider">Estimated launch: Spring 2026</p>
+            </div>
+          </div>
+        </section>
 
-          <div className="max-w-4xl space-y-6">
-            <p className="text-base md:text-lg leading-relaxed">
-              WE&apos;RE PURSUING B CORPORATION CERTIFICATION—A RIGOROUS STANDARD THAT VERIFIES OUR COMMITMENT TO SOCIAL AND ENVIRONMENTAL PERFORMANCE, ACCOUNTABILITY, AND TRANSPARENCY.
-            </p>
-
-            <p className="text-base md:text-lg leading-relaxed">
-              B CORPS ARE BUSINESSES THAT MEET THE HIGHEST STANDARDS OF VERIFIED SOCIAL AND ENVIRONMENTAL PERFORMANCE, PUBLIC TRANSPARENCY, AND LEGAL ACCOUNTABILITY.
-            </p>
-
-            <p className="text-base md:text-lg leading-relaxed">
-              THIS CERTIFICATION WILL HOLD US ACCOUNTABLE TO THE VALUES WE ESPOUSE, ENSURING WE&apos;RE NOT JUST TALKING ABOUT CHANGE—WE&apos;RE LIVING IT.
-            </p>
-
-            <p className="text-base md:text-lg leading-relaxed font-bold text-dark-grey">
-              TARGET: 2026
-            </p>
-
-            <div className="mt-12">
-              <BackToTop />
+        {/* Section 6: B Corp (Primary) */}
+        <section className="section-primary">
+          <div className="max-w-content mx-auto text-center">
+            <h2 className="heading-display text-display-md mb-12">
+              B Corporation<br />Certification
+            </h2>
+            <div className="space-y-6 prose-body max-w-content-wide mx-auto font-medium">
+              <p>The B Corp certification isn&apos;t an end goal, it&apos;s our North Star guiding us to build a business that will always be a force for good.</p>
+              <p>Companies with &apos;B Corp&apos; status have undergone rigorous, independent assessment from <a href="https://www.bcorporation.net/en-us/" className="font-bold hover:underline" target="_blank" rel="noopener noreferrer">B Lab</a> to ensure they meet high standards of social or environmental performance, transparency and accountability.</p>
+              <p>While this certification is rightfully seen as a mark of excellence, to us - it&apos;s the bare minimum.</p>
+              <div className="py-12">
+                <Image
+                  src="/assets/b_corp_logo.png"
+                  alt="B Corporation Certified"
+                  width={384}
+                  height={200}
+                  className="w-full h-auto max-w-sm mx-auto object-contain"
+                />
+              </div>
+              <p className="pt-4 font-mono font-bold tracking-wider">Anticipated acquisition: September 2026</p>
             </div>
           </div>
         </section>
       </main>
 
+      <FloatingBadge />
       <Footer />
     </div>
   )

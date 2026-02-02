@@ -2,9 +2,11 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
 
   const mainNavLinks = [
     { label: 'MANIFESTO', href: '/manifesto' },
@@ -15,83 +17,82 @@ export function Header() {
   ]
 
   return (
-    <header className="relative z-50 grid grid-cols-3 items-center px-6 md:px-10 py-4">
-      {/* Logo - Left */}
-      <div className="justify-self-start">
-        <Link
-          href="/"
-          className="text-3xl md:text-4xl font-black tracking-wide text-light-text hover:text-lime-green transition-colors duration-300"
-        >
-          HUMAN<span className="text-lime-green">.</span>
-        </Link>
-      </div>
+    <header className="bg-black h-nav-height relative z-50">
+      <div className="h-full flex items-center justify-between px-6 md:px-10 lg:px-16">
+        {/* Logo - Left */}
+        <div className="flex-shrink-0">
+          <Link
+            href="/"
+            className="font-display text-4xl lg:text-5xl text-white tracking-wider hover:text-primary transition-colors duration-300"
+          >
+            HUMAN.
+          </Link>
+        </div>
 
-      {/* Main Navigation - Center (Desktop) */}
-      <nav className="hidden md:flex justify-self-center">
-        <ul className="flex gap-6">
+        {/* Main Navigation - Center (Desktop) */}
+        <nav className="hidden md:flex items-center gap-8 lg:gap-16">
           {mainNavLinks.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className="text-nav font-regular tracking-wider text-lime-green hover:text-light-text transition-colors duration-300"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
-
-      {/* Account Navigation - Right (Desktop) */}
-      <nav className="hidden md:flex justify-self-end">
-        <ul className="flex gap-6">
-          <li>
             <Link
-              href="/dashboard"
-              className="text-nav font-regular tracking-wider text-light-text hover:text-lime-green transition-colors duration-300"
+              key={link.href}
+              href={link.href}
+              className={`nav-link transition-colors duration-300 hover:text-white ${
+                pathname === link.href ? 'text-white' : 'text-primary'
+              }`}
             >
-              ACCOUNT
+              {link.label}
             </Link>
-          </li>
-        </ul>
-      </nav>
+          ))}
+        </nav>
 
-      {/* Mobile Menu Toggle */}
-      <button
-        className="md:hidden justify-self-end flex flex-col gap-2 w-8 h-6 relative z-50"
-        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        aria-label="Toggle menu"
-        aria-expanded={mobileMenuOpen}
-      >
-        <span className={`block w-full h-0.5 bg-light-text transition-transform duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-        <span className={`block w-full h-0.5 bg-light-text transition-opacity duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
-        <span className={`block w-full h-0.5 bg-light-text transition-transform duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
-      </button>
+        {/* Account Navigation - Right (Desktop) */}
+        <nav className="hidden md:block">
+          <Link
+            href="/login"
+            className="nav-link text-white hover:text-primary transition-colors duration-300"
+          >
+            ACCOUNT
+          </Link>
+        </nav>
 
-      {/* Mobile Menu Overlay */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 bg-dark-grey z-40 md:hidden">
-          <nav className="flex flex-col items-center justify-center h-full gap-8">
-            {mainNavLinks.map((link) => (
+        {/* Mobile Menu Toggle */}
+        <button
+          className="md:hidden flex flex-col gap-2 w-8 h-6 relative z-50"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle menu"
+          aria-expanded={mobileMenuOpen}
+        >
+          <span className={`block w-full h-0.5 bg-white transition-transform duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+          <span className={`block w-full h-0.5 bg-white transition-opacity duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
+          <span className={`block w-full h-0.5 bg-white transition-transform duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+        </button>
+
+        {/* Mobile Menu Overlay */}
+        {mobileMenuOpen && (
+          <div className="fixed inset-0 bg-black z-40 md:hidden">
+            <nav className="flex flex-col items-center justify-center h-full gap-8">
+              {mainNavLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`text-2xl font-mono tracking-wider transition-colors duration-300 hover:text-white ${
+                    pathname === link.href ? 'text-white' : 'text-primary'
+                  }`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ))}
               <Link
-                key={link.href}
-                href={link.href}
-                className="text-2xl font-regular tracking-wider text-lime-green hover:text-light-text transition-colors duration-300"
+                href="/login"
+                className="text-2xl font-mono tracking-wider text-white hover:text-primary transition-colors duration-300"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                {link.label}
+                ACCOUNT
               </Link>
-            ))}
-            <Link
-              href="/dashboard"
-              className="text-2xl font-regular tracking-wider text-light-text hover:text-lime-green transition-colors duration-300"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              ACCOUNT
-            </Link>
-          </nav>
-        </div>
-      )}
+            </nav>
+          </div>
+        )}
+      </div>
     </header>
   )
 }
