@@ -25,7 +25,10 @@
       "Bash(if [ -f \".omc/state/ecomode-state.json\" ])",
       "Bash(then rm -f \".omc/state/ecomode-state.json\")",
       "Bash(else echo \"No ecomode state file found\")",
-      "Bash(fi)"
+      "Bash(fi)",
+      "Bash(tasklist:*)",
+      "Bash(findstr:*)",
+      "Bash(taskkill:*)"
     ],
     "deny": [],
     "ask": []
