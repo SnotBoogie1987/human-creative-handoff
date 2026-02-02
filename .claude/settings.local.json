@@ -20,7 +20,12 @@
       "Bash(npx next build:*)",
       "Bash(gh pr create:*)",
       "Bash(timeout 5 tail:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(del nul)",
+      "Bash(if [ -f \".omc/state/ecomode-state.json\" ])",
+      "Bash(then rm -f \".omc/state/ecomode-state.json\")",
+      "Bash(else echo \"No ecomode state file found\")",
+      "Bash(fi)"
     ],
     "deny": [],
     "ask": []
