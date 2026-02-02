@@ -89,6 +89,14 @@ export interface Profile {
   // Metadata
   profile_visibility: 'public' | 'private' | null
   available_for_work: boolean | null
+
+  // Notification Settings
+  notification_settings: {
+    emailJobAlerts: boolean
+    emailMessages: boolean
+    emailUpdates: boolean
+    smsJobAlerts: boolean
+  } | null
 }
 
 // Combined user type (Supabase user + profile)

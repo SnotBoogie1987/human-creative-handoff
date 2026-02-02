@@ -113,3 +113,38 @@ export async function updatePrivateDetailsAction(
     return { success: false, error: error.message }
   }
 }
+
+/**
+ * Server action to save notification settings
+ */
+export async function saveNotificationSettingsAction(settings: {
+  emailJobAlerts: boolean
+  emailMessages: boolean
+  emailUpdates: boolean
+  smsJobAlerts: boolean
+}) {
+  try {
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+
+    if (!user) {
+      throw new Error('Not authenticated')
+    }
+
+    const { error } = await supabase
+      .from('profiles')
+      .update({ notification_settings: settings })
+      .eq('id', user.id)
+
+    if (error) {
+      throw error
+    }
+
+    // Revalidate settings page
+    revalidatePath('/dashboard/settings')
+
+    return { success: true }
+  } catch (error: any) {
+    return { success: false, error: error.message }
+  }
+}

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { Settings as SettingsIcon, Bell, Lock, Shield, Trash2, Save, Check } from 'lucide-react'
 import { Input, Button, Separator } from '@/components/ui'
-import { getUserWithProfileAction, updateProfileAction } from '../profile/actions'
+import { getUserWithProfileAction, updateProfileAction, saveNotificationSettingsAction } from '../profile/actions'
 import type { Profile } from '@/lib/auth/types'
 
 interface NotificationSettings {
@@ -36,6 +36,11 @@ export default function SettingsPage() {
         if (data) {
           setProfile(data.profile)
           setEmail(data.email || '')
+
+          // Load notification settings from profile
+          if (data.profile.notification_settings) {
+            setNotifications(data.profile.notification_settings)
+          }
         }
       } catch (error) {
         // Failed to load profile
@@ -56,13 +61,16 @@ export default function SettingsPage() {
   const handleSaveNotifications = async () => {
     setIsSaving(true)
     try {
-      // TODO: Save notification settings to database
-      // For now, just simulate a save
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-      setSaveSuccess(true)
-      setTimeout(() => setSaveSuccess(false), 3000)
+      const result = await saveNotificationSettingsAction(notifications)
+
+      if (result.success) {
+        setSaveSuccess(true)
+        setTimeout(() => setSaveSuccess(false), 3000)
+      } else {
+        console.error('Failed to save notification settings:', result.error)
+      }
     } catch (error) {
-      // Failed to save settings
+      console.error('Failed to save settings:', error)
     } finally {
       setIsSaving(false)
     }
