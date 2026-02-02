@@ -101,11 +101,11 @@
   }
 
   /* Contextual Paragraph Defaults */
-  .bg-background-dark p {
+  .bg-background-dark p:not([class*="text-"]) {
     @apply text-white;
   }
 
-  .bg-primary p {
+  .bg-primary p:not([class*="text-"]) {
     @apply text-black;
   }
 }
