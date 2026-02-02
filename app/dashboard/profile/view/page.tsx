@@ -50,7 +50,7 @@ export default async function ProfileViewPage() {
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-4xl font-black text-white mb-2">My Profile</h1>
+            <h1 className="text-display-md font-black text-white mb-2">My Profile</h1>
             <p className="text-gray-400">Your professional freelancer profile</p>
           </div>
           <Link
@@ -75,7 +75,7 @@ export default async function ProfileViewPage() {
               </Avatar>
 
               {/* Name & Role */}
-              <h2 className="text-2xl font-black text-white text-center mb-1">
+              <h2 className="text-display-sm font-black text-white text-center mb-1">
                 {profile.full_name || 'Unnamed User'}
               </h2>
               <p className="text-lime-green text-center font-mono font-bold mb-2">
@@ -174,7 +174,7 @@ export default async function ProfileViewPage() {
             {/* Bio Section */}
             {profile.bio && (
               <section className="bg-dark-grey border border-gray-800 rounded-lg p-8">
-                <h2 className="text-2xl font-black text-white mb-4">About</h2>
+                <h2 className="text-display-sm font-black text-white mb-4">About</h2>
                 <p className="text-gray-300 leading-relaxed whitespace-pre-wrap">
                   {profile.bio}
                 </p>
@@ -184,7 +184,7 @@ export default async function ProfileViewPage() {
             {/* Showreels */}
             {(profile.showreel_one || profile.showreel_two) && (
               <section className="bg-dark-grey border border-gray-800 rounded-lg p-8">
-                <h2 className="text-2xl font-black text-white mb-6">Showreels</h2>
+                <h2 className="text-display-sm font-black text-white mb-6">Showreels</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {profile.showreel_one && (
                     <div>
@@ -225,7 +225,7 @@ export default async function ProfileViewPage() {
             {/* Recent Work */}
             {profile.work_links && profile.work_links.length > 0 && (
               <section className="bg-dark-grey border border-gray-800 rounded-lg p-8">
-                <h2 className="text-2xl font-black text-white mb-6">Recent Work</h2>
+                <h2 className="text-display-sm font-black text-white mb-6">Recent Work</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {profile.work_links.map((link, index) => (
                     <a
@@ -248,7 +248,7 @@ export default async function ProfileViewPage() {
             {/* Skills */}
             {(profile.skill_premiere || profile.skill_final_cut || profile.skill_davinci) && (
               <section className="bg-dark-grey border border-gray-800 rounded-lg p-8">
-                <h2 className="text-2xl font-black text-white mb-6">Editing Skills</h2>
+                <h2 className="text-display-sm font-black text-white mb-6">Editing Skills</h2>
                 <div className="space-y-6">
                   {profile.skill_premiere && (
                     <Progress
@@ -275,7 +275,7 @@ export default async function ProfileViewPage() {
             {/* Kit List */}
             {(profile.kit_camera_bodies || profile.kit_lenses || profile.kit_lighting || profile.kit_audio || profile.kit_other) && (
               <section className="bg-dark-grey border border-gray-800 rounded-lg p-8">
-                <h2 className="text-2xl font-black text-white mb-6">Equipment Kit</h2>
+                <h2 className="text-display-sm font-black text-white mb-6">Equipment Kit</h2>
 
                 {/* Desktop Table View */}
                 <div className="hidden md:block overflow-x-auto">
@@ -360,7 +360,7 @@ export default async function ProfileViewPage() {
             {/* Social Links */}
             {(profile.personal_website || profile.instagram || profile.vimeo || profile.linkedin) && (
               <section className="bg-dark-grey border border-gray-800 rounded-lg p-8">
-                <h2 className="text-2xl font-black text-white mb-6">Online Presence</h2>
+                <h2 className="text-display-sm font-black text-white mb-6">Online Presence</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {profile.personal_website && (
                     <a

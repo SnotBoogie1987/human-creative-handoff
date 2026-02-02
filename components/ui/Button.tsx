@@ -25,7 +25,7 @@ export function Button({
   const baseStyles = `
     inline-flex items-center justify-center
     font-mono font-regular
-    text-lg md:text-xl
+    text-body
     tracking-wide
     transition-all duration-300 ease-in-out
     border-3

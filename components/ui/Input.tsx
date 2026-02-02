@@ -30,6 +30,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             focus:outline-none focus:ring-2 ${error ? 'focus:ring-red-500' : 'focus:ring-lime-green'}
             disabled:opacity-50 disabled:cursor-not-allowed
             transition-all duration-200
+            rounded
             ${className}
           `}
           {...props}
@@ -79,6 +80,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             disabled:opacity-50 disabled:cursor-not-allowed
             transition-all duration-200
             resize-vertical
+            rounded
             ${className}
           `}
           {...props}
