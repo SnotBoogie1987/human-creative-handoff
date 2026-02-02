@@ -1,5 +1,6 @@
 import { Header, Footer, MarqueeBar, FloatingBadge } from '@/components/layout'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export const metadata = {
   title: 'MANIFESTO | Human Creative',
@@ -34,6 +35,24 @@ export default function ManifestoPage() {
             <div className="mt-12 text-manifesto-h6 font-mono text-primary uppercase text-center">
               <p>Mike King</p>
               <p>Director & Co-Founder</p>
+            </div>
+
+            {/* Signature and Logo */}
+            <div className="mt-16 flex flex-col items-center gap-8">
+              <Image
+                src="/assets/mike-king-signature.png"
+                alt="Mike King Signature"
+                width={200}
+                height={80}
+                className="object-contain"
+              />
+              <Image
+                src="/assets/human-circle-logo.png"
+                alt="Human Creative Logo"
+                width={120}
+                height={120}
+                className="object-contain"
+              />
             </div>
           </div>
         </section>
