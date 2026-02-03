@@ -32,9 +32,9 @@ const TabsTrigger = React.forwardRef<
       'border-2 border-gray-800 rounded-lg',
       'transition-all duration-200',
       'hover:border-gray-700',
-      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-green',
+      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
       'disabled:pointer-events-none disabled:opacity-50',
-      'data-[state=active]:bg-lime-green data-[state=active]:text-dark-text data-[state=active]:border-lime-green',
+      'data-[state=active]:bg-primary data-[state=active]:text-text-light data-[state=active]:border-primary',
       'data-[state=inactive]:bg-transparent data-[state=inactive]:text-gray-400',
       className
     )}
@@ -51,7 +51,7 @@ const TabsContent = React.forwardRef<
     ref={ref}
     className={cn(
       'mt-8 ring-offset-background',
-      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-green focus-visible:ring-offset-2',
+      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
       className
     )}
     {...props}

@@ -26,11 +26,6 @@ module.exports = {
           dark: "#FFFFFF",
           muted: "rgb(209, 213, 219)", // gray-300 equivalent
         },
-        // Legacy (kept for backwards compatibility during migration)
-        'lime-green': '#DAFA92',
-        'dark-grey': '#1a1a1a',
-        'light-text': '#ffffff',
-        'dark-text': '#000000',
       },
 
       /* ===================

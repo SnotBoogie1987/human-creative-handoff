@@ -1,4 +1,15 @@
 import { Header, Footer, MarqueeBar, FloatingBadge } from '@/components/layout'
+import { HeroSection } from '@/components/homepage/HeroSection'
+import { ValueProps } from '@/components/homepage/ValueProps'
+import { FeaturedWork } from '@/components/homepage/FeaturedWork'
+import { ManifestoTeaser } from '@/components/homepage/ManifestoTeaser'
+import { ImpactHighlights } from '@/components/homepage/ImpactHighlights'
+import { FinalCTA } from '@/components/homepage/FinalCTA'
+
+export const metadata = {
+  title: 'Human Creative | Exceptional Crew, Exceptional Support',
+  description: 'A curated marketplace connecting brilliant freelance filmmakers with production companies and brands that value their craft and wellbeing.',
+}
 
 export default function Home() {
   return (
@@ -6,15 +17,13 @@ export default function Home() {
       <MarqueeBar />
       <Header />
 
-      <main className="flex-1 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="heading-display text-display-lg text-primary mb-4">
-            HOME
-          </h1>
-          <p className="font-mono text-xl text-white">
-            Page under construction
-          </p>
-        </div>
+      <main className="flex-1">
+        <HeroSection />
+        <ValueProps />
+        <FeaturedWork />
+        <ManifestoTeaser />
+        <ImpactHighlights />
+        <FinalCTA />
       </main>
 
       <FloatingBadge />

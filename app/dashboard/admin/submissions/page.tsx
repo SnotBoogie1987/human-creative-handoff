@@ -42,21 +42,21 @@ export default async function AdminSubmissionsPage() {
 
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-          <div className="bg-dark-grey border border-gray-800 rounded-lg p-6">
+          <div className="bg-background-dark border border-gray-800 rounded-lg p-6">
             <div className="text-gray-400 text-sm mb-1">Total Submissions</div>
             <div className="text-white text-3xl font-bold">{stats.total}</div>
           </div>
-          <div className="bg-dark-grey border border-gray-800 rounded-lg p-6">
+          <div className="bg-background-dark border border-gray-800 rounded-lg p-6">
             <div className="text-gray-400 text-sm mb-1">Client Contact</div>
             <div className="text-blue-400 text-3xl font-bold">{stats.clientContact}</div>
           </div>
-          <div className="bg-dark-grey border border-gray-800 rounded-lg p-6">
+          <div className="bg-background-dark border border-gray-800 rounded-lg p-6">
             <div className="text-gray-400 text-sm mb-1">Special Rates</div>
             <div className="text-purple-400 text-3xl font-bold">{stats.specialRates}</div>
           </div>
-          <div className="bg-dark-grey border border-gray-800 rounded-lg p-6">
+          <div className="bg-background-dark border border-gray-800 rounded-lg p-6">
             <div className="text-gray-400 text-sm mb-1">This Week</div>
-            <div className="text-lime-green text-3xl font-bold">{stats.thisWeek}</div>
+            <div className="text-primary text-3xl font-bold">{stats.thisWeek}</div>
           </div>
         </div>
 

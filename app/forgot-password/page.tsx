@@ -56,7 +56,7 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-dark-grey">
+    <div className="min-h-screen flex flex-col bg-background-dark">
       <Marquee />
       <Header />
 
@@ -72,11 +72,11 @@ export default function ForgotPasswordPage() {
           </div>
 
           {successMessage ? (
-            <div className="bg-lime-green/10 border border-lime-green text-lime-green px-6 py-4 rounded mb-6">
+            <div className="bg-primary/10 border border-primary text-primary px-6 py-4 rounded mb-6">
               <p className="text-sm">{successMessage}</p>
               <Link
                 href="/login"
-                className="text-lime-green underline hover:opacity-80 transition-opacity mt-4 inline-block"
+                className="text-primary underline hover:opacity-80 transition-opacity mt-4 inline-block"
               >
                 Return to login
               </Link>
@@ -118,7 +118,7 @@ export default function ForgotPasswordPage() {
               <div className="text-center">
                 <Link
                   href="/login"
-                  className="text-gray-400 hover:text-lime-green transition-colors text-sm"
+                  className="text-gray-400 hover:text-primary transition-colors text-sm"
                 >
                   ← Back to login
                 </Link>

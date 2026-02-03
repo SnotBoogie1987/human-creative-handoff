@@ -90,7 +90,7 @@ export default function SettingsPage() {
         {/* Header */}
         <div className="mb-12">
           <div className="flex items-center gap-4 mb-4">
-            <SettingsIcon className="h-8 w-8 text-lime-green" />
+            <SettingsIcon className="h-8 w-8 text-primary" />
             <h1 className="text-4xl font-black text-white">Settings</h1>
           </div>
           <p className="text-gray-400 text-lg">
@@ -100,15 +100,15 @@ export default function SettingsPage() {
 
         {/* Account Information */}
         <section className="mb-12">
-          <div className="bg-dark-grey border border-gray-800 rounded-lg p-8">
+          <div className="bg-background-dark border border-gray-800 rounded-lg p-8">
             <div className="flex items-center gap-3 mb-6">
-              <Lock className="h-5 w-5 text-lime-green" />
+              <Lock className="h-5 w-5 text-primary" />
               <h2 className="text-2xl font-black text-white">Account Information</h2>
             </div>
 
             <div className="space-y-6">
               <div>
-                <label className="block mb-2 text-sm font-regular text-light-text">
+                <label className="block mb-2 text-sm font-regular text-text-dark">
                   Email Address
                 </label>
                 <div className="relative">
@@ -125,7 +125,7 @@ export default function SettingsPage() {
               </div>
 
               <div>
-                <label className="block mb-2 text-sm font-regular text-light-text">
+                <label className="block mb-2 text-sm font-regular text-text-dark">
                   Change Password
                 </label>
                 <p className="text-gray-400 text-sm mb-4">
@@ -142,9 +142,9 @@ export default function SettingsPage() {
 
         {/* Notification Preferences */}
         <section className="mb-12">
-          <div className="bg-dark-grey border border-gray-800 rounded-lg p-8">
+          <div className="bg-background-dark border border-gray-800 rounded-lg p-8">
             <div className="flex items-center gap-3 mb-6">
-              <Bell className="h-5 w-5 text-lime-green" />
+              <Bell className="h-5 w-5 text-primary" />
               <h2 className="text-2xl font-black text-white">Notification Preferences</h2>
             </div>
 
@@ -220,9 +220,9 @@ export default function SettingsPage() {
 
         {/* Privacy & Security */}
         <section className="mb-12">
-          <div className="bg-dark-grey border border-gray-800 rounded-lg p-8">
+          <div className="bg-background-dark border border-gray-800 rounded-lg p-8">
             <div className="flex items-center gap-3 mb-6">
-              <Shield className="h-5 w-5 text-lime-green" />
+              <Shield className="h-5 w-5 text-primary" />
               <h2 className="text-2xl font-black text-white">Privacy & Security</h2>
             </div>
 
@@ -247,11 +247,11 @@ export default function SettingsPage() {
               <div>
                 <h3 className="text-white font-bold mb-2">Data & Privacy</h3>
                 <div className="space-y-3">
-                  <button className="text-lime-green hover:underline text-sm font-mono">
+                  <button className="text-primary hover:underline text-sm font-mono">
                     Download my data
                   </button>
                   <br />
-                  <button className="text-lime-green hover:underline text-sm font-mono">
+                  <button className="text-primary hover:underline text-sm font-mono">
                     View privacy policy
                   </button>
                 </div>
@@ -306,7 +306,7 @@ function ToggleSetting({ label, description, checked, onChange, disabled }: Togg
         onClick={onChange}
         disabled={disabled}
         className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-          checked ? 'bg-lime-green' : 'bg-gray-700'
+          checked ? 'bg-primary' : 'bg-gray-700'
         } ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
       >
         <span

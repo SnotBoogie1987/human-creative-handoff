@@ -114,7 +114,7 @@ export function FileUpload({
   return (
     <div className={cn('w-full', className)}>
       {label && (
-        <label className="block mb-2 text-sm font-regular text-light-text">{label}</label>
+        <label className="block mb-2 text-sm font-regular text-text-dark">{label}</label>
       )}
 
       {/* Upload Area */}
@@ -126,8 +126,8 @@ export function FileUpload({
         className={cn(
           'relative border-3 border-dashed rounded-lg p-8 text-center cursor-pointer transition-all duration-200',
           isDragging
-            ? 'border-lime-green bg-lime-green/5'
-            : 'border-gray-700 hover:border-lime-green hover:bg-lime-green/5',
+            ? 'border-primary bg-primary/5'
+            : 'border-gray-700 hover:border-primary hover:bg-primary/5',
           preview && 'border-solid'
         )}
       >
@@ -165,7 +165,7 @@ export function FileUpload({
 
             {/* Success Indicator */}
             {uploadSuccess && (
-              <div className="absolute top-2 left-2 flex items-center gap-2 bg-lime-green text-dark-text px-3 py-1 rounded-full text-xs font-mono font-bold">
+              <div className="absolute top-2 left-2 flex items-center gap-2 bg-primary text-text-light px-3 py-1 rounded-full text-xs font-mono font-bold">
                 <Check className="h-3 w-3" />
                 Uploaded
               </div>
@@ -176,7 +176,7 @@ export function FileUpload({
           <div className="flex flex-col items-center gap-3">
             {isUploading ? (
               <>
-                <Loader2 className="h-10 w-10 text-lime-green animate-spin" />
+                <Loader2 className="h-10 w-10 text-primary animate-spin" />
                 <p className="text-sm font-mono text-gray-400">Uploading...</p>
               </>
             ) : (

@@ -44,7 +44,7 @@ export default async function AdminFreelancerDetailPage({ params }: PageProps) {
           <p className="text-gray-400 mb-6">This freelancer does not exist or you don&apos;t have permission to view them.</p>
           <a
             href="/dashboard/admin/freelancers"
-            className="px-6 py-3 bg-lime-green text-black rounded-lg hover:bg-lime-green/80 transition-colors font-mono"
+            className="px-6 py-3 bg-primary text-black rounded-lg hover:bg-primary/80 transition-colors font-mono"
           >
             Back to Freelancers
           </a>

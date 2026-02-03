@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function AzimuthPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-dark-grey">
+    <div className="min-h-screen flex flex-col bg-background-dark">
       <Marquee />
       <Header />
 
@@ -17,7 +17,7 @@ export default function AzimuthPage() {
         <div className="max-w-4xl mx-auto">
           <Link
             href="/work"
-            className="inline-block text-lime-green hover:opacity-80 transition-opacity mb-8"
+            className="inline-block text-primary hover:opacity-80 transition-opacity mb-8"
           >
             ← Back to Work
           </Link>

@@ -50,14 +50,14 @@ export default function ClientOnboardingPage() {
         {/* Header */}
         <div className="mb-12">
           <div className="flex items-center gap-3 mb-4">
-            <Briefcase className="h-8 w-8 text-lime-green" />
+            <Briefcase className="h-8 w-8 text-primary" />
             <h1 className="text-5xl font-black text-white">CLIENT ONBOARDING</h1>
           </div>
           <p className="text-gray-400 text-lg mb-6">
             Welcome to HUMAN. Creative! Please complete this onboarding form so we can better understand your needs and deliver exceptional results.
           </p>
-          <div className="bg-dark-grey border border-lime-green/30 rounded-lg p-6">
-            <h2 className="text-lime-green font-bold mb-3">What Happens Next?</h2>
+          <div className="bg-background-dark border border-primary/30 rounded-lg p-6">
+            <h2 className="text-primary font-bold mb-3">What Happens Next?</h2>
             <ul className="text-gray-300 space-y-2 text-sm">
               <li>1. We&apos;ll review your requirements within 24 hours</li>
               <li>2. You&apos;ll receive a tailored proposal and quote</li>
@@ -69,10 +69,10 @@ export default function ClientOnboardingPage() {
 
         {/* Success Message */}
         {submitSuccess && (
-          <div className="mb-8 p-6 bg-lime-green/10 border border-lime-green rounded-lg flex items-start gap-3">
-            <Check className="h-6 w-6 text-lime-green flex-shrink-0 mt-1" />
+          <div className="mb-8 p-6 bg-primary/10 border border-primary rounded-lg flex items-start gap-3">
+            <Check className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
             <div>
-              <h3 className="text-lime-green font-bold mb-1">Welcome Aboard!</h3>
+              <h3 className="text-primary font-bold mb-1">Welcome Aboard!</h3>
               <p className="text-gray-300 text-sm">
                 Thank you for choosing HUMAN. Creative. We&apos;ll review your information and be in touch within 24 hours.
               </p>
@@ -95,7 +95,7 @@ export default function ClientOnboardingPage() {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
           {/* Company Information */}
           <section>
-            <h2 className="text-2xl font-black text-white mb-6 border-b border-lime-green pb-2">
+            <h2 className="text-2xl font-black text-white mb-6 border-b border-primary pb-2">
               COMPANY INFORMATION
             </h2>
             <div className="space-y-6">
@@ -125,7 +125,7 @@ export default function ClientOnboardingPage() {
 
           {/* Primary Contact */}
           <section>
-            <h2 className="text-2xl font-black text-white mb-6 border-b border-lime-green pb-2">
+            <h2 className="text-2xl font-black text-white mb-6 border-b border-primary pb-2">
               PRIMARY CONTACT
             </h2>
             <div className="space-y-6">
@@ -156,7 +156,7 @@ export default function ClientOnboardingPage() {
 
           {/* Project Details */}
           <section>
-            <h2 className="text-2xl font-black text-white mb-6 border-b border-lime-green pb-2">
+            <h2 className="text-2xl font-black text-white mb-6 border-b border-primary pb-2">
               PROJECT DETAILS
             </h2>
             <div className="space-y-6">
@@ -169,20 +169,20 @@ export default function ClientOnboardingPage() {
               />
 
               <div>
-                <label className="block mb-2 text-sm font-regular text-light-text">
+                <label className="block mb-2 text-sm font-regular text-text-dark">
                   Project Timeline *
                 </label>
                 <select
                   {...register('timeline')}
-                  className="w-full px-4 py-4 bg-transparent border-3 border-lime-green text-light-text font-mono font-regular focus:outline-none focus:ring-2 focus:ring-lime-green transition-all duration-200 rounded"
+                  className="w-full px-4 py-4 bg-transparent border-3 border-primary text-text-dark font-mono font-regular focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200 rounded"
                 >
                   <option value="">Select timeline...</option>
-                  <option value="urgent" className="bg-dark-grey">Urgent (within 2 weeks)</option>
-                  <option value="1-month" className="bg-dark-grey">Within 1 month</option>
-                  <option value="1-3-months" className="bg-dark-grey">1-3 months</option>
-                  <option value="3-6-months" className="bg-dark-grey">3-6 months</option>
-                  <option value="6-months+" className="bg-dark-grey">6+ months</option>
-                  <option value="flexible" className="bg-dark-grey">Flexible</option>
+                  <option value="urgent" className="bg-background-dark">Urgent (within 2 weeks)</option>
+                  <option value="1-month" className="bg-background-dark">Within 1 month</option>
+                  <option value="1-3-months" className="bg-background-dark">1-3 months</option>
+                  <option value="3-6-months" className="bg-background-dark">3-6 months</option>
+                  <option value="6-months+" className="bg-background-dark">6+ months</option>
+                  <option value="flexible" className="bg-background-dark">Flexible</option>
                 </select>
                 {errors.timeline && (
                   <p className="mt-2 text-sm text-red-500">{errors.timeline.message}</p>
@@ -190,20 +190,20 @@ export default function ClientOnboardingPage() {
               </div>
 
               <div>
-                <label className="block mb-2 text-sm font-regular text-light-text">
+                <label className="block mb-2 text-sm font-regular text-text-dark">
                   Budget Range *
                 </label>
                 <select
                   {...register('budget')}
-                  className="w-full px-4 py-4 bg-transparent border-3 border-lime-green text-light-text font-mono font-regular focus:outline-none focus:ring-2 focus:ring-lime-green transition-all duration-200 rounded"
+                  className="w-full px-4 py-4 bg-transparent border-3 border-primary text-text-dark font-mono font-regular focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200 rounded"
                 >
                   <option value="">Select budget range...</option>
-                  <option value="<10k" className="bg-dark-grey">Less than £10,000</option>
-                  <option value="10k-25k" className="bg-dark-grey">£10,000 - £25,000</option>
-                  <option value="25k-50k" className="bg-dark-grey">£25,000 - £50,000</option>
-                  <option value="50k-100k" className="bg-dark-grey">£50,000 - £100,000</option>
-                  <option value="100k+" className="bg-dark-grey">£100,000+</option>
-                  <option value="tbd" className="bg-dark-grey">To be determined</option>
+                  <option value="<10k" className="bg-background-dark">Less than £10,000</option>
+                  <option value="10k-25k" className="bg-background-dark">£10,000 - £25,000</option>
+                  <option value="25k-50k" className="bg-background-dark">£25,000 - £50,000</option>
+                  <option value="50k-100k" className="bg-background-dark">£50,000 - £100,000</option>
+                  <option value="100k+" className="bg-background-dark">£100,000+</option>
+                  <option value="tbd" className="bg-background-dark">To be determined</option>
                 </select>
                 {errors.budget && (
                   <p className="mt-2 text-sm text-red-500">{errors.budget.message}</p>

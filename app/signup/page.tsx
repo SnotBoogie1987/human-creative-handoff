@@ -76,7 +76,7 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-dark-grey">
+    <div className="min-h-screen flex flex-col bg-background-dark">
       <Marquee />
       <Header />
 
@@ -89,14 +89,14 @@ export default function SignupPage() {
 
           {/* Success Message */}
           {successMessage && (
-            <div className="mb-6 p-4 bg-lime-green/10 border-3 border-lime-green rounded">
-              <p className="text-lime-green text-sm text-center">
+            <div className="mb-6 p-4 bg-primary/10 border-3 border-primary rounded">
+              <p className="text-primary text-sm text-center">
                 {successMessage}
               </p>
               <div className="mt-4 text-center">
                 <Link
                   href="/login"
-                  className="text-sm text-lime-green hover:opacity-80 font-bold"
+                  className="text-sm text-primary hover:opacity-80 font-bold"
                 >
                   Go to login →
                 </Link>
@@ -171,7 +171,7 @@ export default function SignupPage() {
               Already have an account?{' '}
               <Link
                 href="/login"
-                className="text-lime-green hover:opacity-80 transition-opacity font-bold"
+                className="text-primary hover:opacity-80 transition-opacity font-bold"
               >
                 Log in
               </Link>
@@ -182,7 +182,7 @@ export default function SignupPage() {
           <div className="mt-6 text-center">
             <Link
               href="/"
-              className="text-sm text-gray-400 hover:text-lime-green transition-colors"
+              className="text-sm text-gray-400 hover:text-primary transition-colors"
             >
               ← Back to home
             </Link>

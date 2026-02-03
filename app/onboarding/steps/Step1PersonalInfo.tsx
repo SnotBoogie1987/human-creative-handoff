@@ -41,11 +41,11 @@ export function Step1PersonalInfo({ profile, privateDetails, data, updateData }:
   }
 
   return (
-    <div className="bg-dark-grey border border-gray-800 rounded-lg p-8 space-y-6">
+    <div className="bg-background-dark border border-gray-800 rounded-lg p-8 space-y-6">
       {/* Avatar Upload */}
       <div>
         <div className="flex items-start gap-4 mb-4">
-          <User className="h-5 w-5 text-lime-green mt-1" />
+          <User className="h-5 w-5 text-primary mt-1" />
           <div>
             <h3 className="text-white font-bold mb-1">Profile Photo</h3>
             <p className="text-gray-400 text-sm">
@@ -104,7 +104,7 @@ export function Step1PersonalInfo({ profile, privateDetails, data, updateData }:
 
       {/* Address Details */}
       <div className="pt-6 border-t border-gray-800">
-        <h3 className="text-lime-green font-mono font-bold mb-4">Full Address (Private)</h3>
+        <h3 className="text-primary font-mono font-bold mb-4">Full Address (Private)</h3>
 
         <div className="space-y-4">
           <Input

@@ -59,7 +59,7 @@ export function SubmissionsTable({ initialSubmissions }: SubmissionsTableProps) 
 
   return (
     <>
-      <div className="bg-dark-grey border border-gray-800 rounded-lg">
+      <div className="bg-background-dark border border-gray-800 rounded-lg">
         {/* Search and Filter Controls */}
         <div className="p-6 border-b border-gray-800">
           <div className="flex flex-col md:flex-row gap-4">
@@ -72,7 +72,7 @@ export function SubmissionsTable({ initialSubmissions }: SubmissionsTableProps) 
                   placeholder="Search submissions..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 bg-black border border-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-lime-green"
+                  className="w-full pl-10 pr-4 py-3 bg-black border border-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 />
               </div>
             </div>
@@ -83,7 +83,7 @@ export function SubmissionsTable({ initialSubmissions }: SubmissionsTableProps) 
                 onClick={() => setFilterType('all')}
                 className={`px-4 py-2 rounded-lg font-mono text-sm transition-colors ${
                   filterType === 'all'
-                    ? 'bg-lime-green text-black'
+                    ? 'bg-primary text-black'
                     : 'bg-black text-gray-400 hover:text-white border border-gray-700'
                 }`}
               >
@@ -197,7 +197,7 @@ export function SubmissionsTable({ initialSubmissions }: SubmissionsTableProps) 
                       <td className="px-6 py-4 text-right">
                         <button
                           onClick={() => setSelectedSubmission(submission)}
-                          className="inline-flex items-center gap-2 px-4 py-2 bg-lime-green text-black rounded-lg hover:bg-lime-green/80 transition-colors font-mono text-sm"
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-black rounded-lg hover:bg-primary/80 transition-colors font-mono text-sm"
                         >
                           <Eye className="h-4 w-4" />
                           View
@@ -242,7 +242,7 @@ function SubmissionDetailModal({
 
   return (
     <div className="fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-50" onClick={onClose}>
-      <div className="bg-dark-grey border border-gray-800 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+      <div className="bg-background-dark border border-gray-800 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
         {/* Header */}
         <div className="p-6 border-b border-gray-800">
           <h2 className="text-2xl font-black text-white mb-2">{formType}</h2>
@@ -269,7 +269,7 @@ function SubmissionDetailModal({
         <div className="p-6 border-t border-gray-800 flex justify-end">
           <button
             onClick={onClose}
-            className="px-6 py-2 bg-lime-green text-black rounded-lg hover:bg-lime-green/80 transition-colors font-mono"
+            className="px-6 py-2 bg-primary text-black rounded-lg hover:bg-primary/80 transition-colors font-mono"
           >
             Close
           </button>

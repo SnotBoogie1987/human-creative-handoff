@@ -47,7 +47,7 @@ export function FreelancersTable({ initialFreelancers }: FreelancersTableProps) 
   }, [initialFreelancers, filterType, searchTerm])
 
   return (
-    <div className="bg-dark-grey border border-gray-800 rounded-lg">
+    <div className="bg-background-dark border border-gray-800 rounded-lg">
       {/* Search and Filter Controls */}
       <div className="p-6 border-b border-gray-800">
         <div className="flex flex-col md:flex-row gap-4">
@@ -60,7 +60,7 @@ export function FreelancersTable({ initialFreelancers }: FreelancersTableProps) 
                 placeholder="Search by name, role, or location..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-black border border-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-lime-green"
+                className="w-full pl-10 pr-4 py-3 bg-black border border-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
           </div>
@@ -71,7 +71,7 @@ export function FreelancersTable({ initialFreelancers }: FreelancersTableProps) 
               onClick={() => setFilterType('all')}
               className={`px-4 py-2 rounded-lg font-mono text-sm transition-colors ${
                 filterType === 'all'
-                  ? 'bg-lime-green text-black'
+                  ? 'bg-primary text-black'
                   : 'bg-black text-gray-400 hover:text-white border border-gray-700'
               }`}
             >
@@ -81,7 +81,7 @@ export function FreelancersTable({ initialFreelancers }: FreelancersTableProps) 
               onClick={() => setFilterType('complete')}
               className={`px-4 py-2 rounded-lg font-mono text-sm transition-colors ${
                 filterType === 'complete'
-                  ? 'bg-lime-green text-black'
+                  ? 'bg-primary text-black'
                   : 'bg-black text-gray-400 hover:text-white border border-gray-700'
               }`}
             >
@@ -91,7 +91,7 @@ export function FreelancersTable({ initialFreelancers }: FreelancersTableProps) 
               onClick={() => setFilterType('incomplete')}
               className={`px-4 py-2 rounded-lg font-mono text-sm transition-colors ${
                 filterType === 'incomplete'
-                  ? 'bg-lime-green text-black'
+                  ? 'bg-primary text-black'
                   : 'bg-black text-gray-400 hover:text-white border border-gray-700'
               }`}
             >
@@ -101,7 +101,7 @@ export function FreelancersTable({ initialFreelancers }: FreelancersTableProps) 
               onClick={() => setFilterType('available')}
               className={`px-4 py-2 rounded-lg font-mono text-sm transition-colors ${
                 filterType === 'available'
-                  ? 'bg-lime-green text-black'
+                  ? 'bg-primary text-black'
                   : 'bg-black text-gray-400 hover:text-white border border-gray-700'
               }`}
             >
@@ -196,7 +196,7 @@ export function FreelancersTable({ initialFreelancers }: FreelancersTableProps) 
                   <td className="px-6 py-4">
                     <div className="flex flex-col gap-1">
                       {freelancer.onboarding_completed ? (
-                        <span className="inline-flex items-center gap-1 text-lime-green text-sm">
+                        <span className="inline-flex items-center gap-1 text-primary text-sm">
                           <CheckCircle className="h-4 w-4" />
                           Complete
                         </span>
@@ -216,7 +216,7 @@ export function FreelancersTable({ initialFreelancers }: FreelancersTableProps) 
                   <td className="px-6 py-4 text-right">
                     <Link
                       href={`/dashboard/admin/freelancers/${freelancer.id}`}
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-lime-green text-black rounded-lg hover:bg-lime-green/80 transition-colors font-mono text-sm"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-black rounded-lg hover:bg-primary/80 transition-colors font-mono text-sm"
                     >
                       <Eye className="h-4 w-4" />
                       View

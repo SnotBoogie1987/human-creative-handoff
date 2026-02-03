@@ -106,7 +106,7 @@ export default function MobileSidebar({ userRole }: MobileSidebarProps) {
                     href={item.href}
                     className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                       isActive
-                        ? 'bg-lime-green text-black'
+                        ? 'bg-primary text-black'
                         : 'text-gray-300 hover:bg-gray-900 hover:text-white'
                     }`}
                   >
@@ -135,7 +135,7 @@ export default function MobileSidebar({ userRole }: MobileSidebarProps) {
                         href={item.href}
                         className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                           isActive
-                            ? 'bg-lime-green text-black'
+                            ? 'bg-primary text-black'
                             : 'text-gray-300 hover:bg-gray-900 hover:text-white'
                         }`}
                       >

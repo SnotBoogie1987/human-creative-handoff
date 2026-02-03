@@ -58,7 +58,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-dark-grey">
+    <div className="min-h-screen flex flex-col bg-background-dark">
       <Marquee />
       <Header />
 
@@ -102,7 +102,7 @@ export default function LoginPage() {
             <div className="text-right">
               <Link
                 href="/forgot-password"
-                className="text-sm text-lime-green hover:opacity-80 transition-opacity"
+                className="text-sm text-primary hover:opacity-80 transition-opacity"
               >
                 Forgot password?
               </Link>
@@ -125,7 +125,7 @@ export default function LoginPage() {
               Don&apos;t have an account?{' '}
               <Link
                 href="/signup"
-                className="text-lime-green hover:opacity-80 transition-opacity font-bold"
+                className="text-primary hover:opacity-80 transition-opacity font-bold"
               >
                 Sign up
               </Link>
@@ -136,7 +136,7 @@ export default function LoginPage() {
           <div className="mt-6 text-center">
             <Link
               href="/"
-              className="text-sm text-gray-400 hover:text-lime-green transition-colors"
+              className="text-sm text-gray-400 hover:text-primary transition-colors"
             >
               ← Back to home
             </Link>

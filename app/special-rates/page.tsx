@@ -50,14 +50,14 @@ export default function SpecialRatesPage() {
         {/* Header */}
         <div className="mb-12">
           <div className="flex items-center gap-3 mb-4">
-            <Heart className="h-8 w-8 text-lime-green" />
+            <Heart className="h-8 w-8 text-primary" />
             <h1 className="text-5xl font-black text-white">SPECIAL RATES</h1>
           </div>
           <p className="text-gray-400 text-lg mb-6">
             HUMAN. Creative supports charities, educational institutions, nonprofits, and mission-driven organizations through special discounted rates.
           </p>
-          <div className="bg-dark-grey border border-lime-green/30 rounded-lg p-6">
-            <h2 className="text-lime-green font-bold mb-3">Who Qualifies?</h2>
+          <div className="bg-background-dark border border-primary/30 rounded-lg p-6">
+            <h2 className="text-primary font-bold mb-3">Who Qualifies?</h2>
             <ul className="text-gray-300 space-y-2 text-sm">
               <li>• Registered charities and nonprofits</li>
               <li>• Educational institutions (schools, universities)</li>
@@ -70,10 +70,10 @@ export default function SpecialRatesPage() {
 
         {/* Success Message */}
         {submitSuccess && (
-          <div className="mb-8 p-6 bg-lime-green/10 border border-lime-green rounded-lg flex items-start gap-3">
-            <Check className="h-6 w-6 text-lime-green flex-shrink-0 mt-1" />
+          <div className="mb-8 p-6 bg-primary/10 border border-primary rounded-lg flex items-start gap-3">
+            <Check className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
             <div>
-              <h3 className="text-lime-green font-bold mb-1">Request Submitted!</h3>
+              <h3 className="text-primary font-bold mb-1">Request Submitted!</h3>
               <p className="text-gray-300 text-sm">
                 Thank you for your application. We&apos;ll review your request and get back to you within 2-3 business days.
               </p>
@@ -121,19 +121,19 @@ export default function SpecialRatesPage() {
 
           {/* Organization Type */}
           <div>
-            <label className="block mb-2 text-sm font-regular text-light-text">
+            <label className="block mb-2 text-sm font-regular text-text-dark">
               Organization Type *
             </label>
             <select
               {...register('organizationType')}
-              className="w-full px-4 py-4 bg-transparent border-3 border-lime-green text-light-text font-mono font-regular focus:outline-none focus:ring-2 focus:ring-lime-green transition-all duration-200 rounded"
+              className="w-full px-4 py-4 bg-transparent border-3 border-primary text-text-dark font-mono font-regular focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200 rounded"
             >
               <option value="">Select organization type...</option>
-              <option value="charity" className="bg-dark-grey">Registered Charity</option>
-              <option value="nonprofit" className="bg-dark-grey">Nonprofit Organization</option>
-              <option value="educational" className="bg-dark-grey">Educational Institution</option>
-              <option value="startup" className="bg-dark-grey">Social/Environmental Startup</option>
-              <option value="other" className="bg-dark-grey">Other</option>
+              <option value="charity" className="bg-background-dark">Registered Charity</option>
+              <option value="nonprofit" className="bg-background-dark">Nonprofit Organization</option>
+              <option value="educational" className="bg-background-dark">Educational Institution</option>
+              <option value="startup" className="bg-background-dark">Social/Environmental Startup</option>
+              <option value="other" className="bg-background-dark">Other</option>
             </select>
             {errors.organizationType && (
               <p className="mt-2 text-sm text-red-500">{errors.organizationType.message}</p>

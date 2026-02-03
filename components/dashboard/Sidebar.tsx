@@ -65,7 +65,7 @@ export function Sidebar({ profile }: SidebarProps) {
   }
 
   return (
-    <aside className="flex h-full w-64 flex-col bg-dark-grey border-r border-gray-800">
+    <aside className="flex h-full w-64 flex-col bg-background-dark border-r border-gray-800">
       {/* User Identity */}
       <div className="flex flex-col items-center px-6 py-8">
         <Avatar className="h-20 w-20 mb-4">
@@ -98,7 +98,7 @@ export function Sidebar({ profile }: SidebarProps) {
                 'flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200',
                 'text-sm font-mono',
                 isActive
-                  ? 'bg-lime-green text-dark-text font-bold'
+                  ? 'bg-primary text-text-light font-bold'
                   : 'text-gray-400 hover:bg-gray-800 hover:text-white'
               )}
             >
@@ -118,7 +118,7 @@ export function Sidebar({ profile }: SidebarProps) {
                 'flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200',
                 'text-sm font-mono',
                 pathname.startsWith('/dashboard/admin')
-                  ? 'bg-orange-400 text-dark-text font-bold'
+                  ? 'bg-orange-400 text-text-light font-bold'
                   : 'text-orange-400 hover:bg-orange-400/10 hover:text-orange-300'
               )}
             >

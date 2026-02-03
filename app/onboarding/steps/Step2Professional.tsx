@@ -12,20 +12,20 @@ interface StepProps {
 
 export function Step2Professional({ profile, data, updateData }: StepProps) {
   return (
-    <div className="bg-dark-grey border border-gray-800 rounded-lg p-8 space-y-6">
+    <div className="bg-background-dark border border-gray-800 rounded-lg p-8 space-y-6">
       {/* Years of Experience */}
       <div>
-        <label className="block mb-2 text-sm font-regular text-light-text">
+        <label className="block mb-2 text-sm font-regular text-text-dark">
           Years of Experience *
         </label>
         <select
           defaultValue={profile.years_experience || ''}
           onChange={(e) => updateData({ profile: { years_experience: parseInt(e.target.value) } })}
-          className="w-full px-4 py-4 bg-transparent border-3 border-lime-green text-light-text font-mono font-regular focus:outline-none focus:ring-2 focus:ring-lime-green transition-all duration-200 rounded"
+          className="w-full px-4 py-4 bg-transparent border-3 border-primary text-text-dark font-mono font-regular focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200 rounded"
         >
           <option value="">Select...</option>
           {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30].map((years) => (
-            <option key={years} value={years} className="bg-dark-grey">
+            <option key={years} value={years} className="bg-background-dark">
               {years} {years === 1 ? 'year' : 'years'}
             </option>
           ))}
@@ -44,7 +44,7 @@ export function Step2Professional({ profile, data, updateData }: StepProps) {
 
       {/* Driving & Travel */}
       <div className="pt-6 border-t border-gray-800">
-        <h3 className="text-lime-green font-mono font-bold mb-4">Driving & Travel</h3>
+        <h3 className="text-primary font-mono font-bold mb-4">Driving & Travel</h3>
 
         <div className="space-y-4">
           <label className="flex items-center gap-3 cursor-pointer">
@@ -52,7 +52,7 @@ export function Step2Professional({ profile, data, updateData }: StepProps) {
               type="checkbox"
               defaultChecked={profile.driving_license || false}
               onChange={(e) => updateData({ profile: { driving_license: e.target.checked } })}
-              className="w-5 h-5 accent-lime-green"
+              className="w-5 h-5 accent-primary"
             />
             <span className="text-white">I have a valid driving license</span>
           </label>
@@ -62,7 +62,7 @@ export function Step2Professional({ profile, data, updateData }: StepProps) {
               type="checkbox"
               defaultChecked={profile.has_vehicle || false}
               onChange={(e) => updateData({ profile: { has_vehicle: e.target.checked } })}
-              className="w-5 h-5 accent-lime-green"
+              className="w-5 h-5 accent-primary"
             />
             <span className="text-white">I own a vehicle</span>
           </label>
@@ -72,7 +72,7 @@ export function Step2Professional({ profile, data, updateData }: StepProps) {
               type="checkbox"
               defaultChecked={profile.has_visa_us || false}
               onChange={(e) => updateData({ profile: { has_visa_us: e.target.checked } })}
-              className="w-5 h-5 accent-lime-green"
+              className="w-5 h-5 accent-primary"
             />
             <span className="text-white">I have a US visa</span>
           </label>
@@ -82,7 +82,7 @@ export function Step2Professional({ profile, data, updateData }: StepProps) {
               type="checkbox"
               defaultChecked={profile.has_visa_schengen || false}
               onChange={(e) => updateData({ profile: { has_visa_schengen: e.target.checked } })}
-              className="w-5 h-5 accent-lime-green"
+              className="w-5 h-5 accent-primary"
             />
             <span className="text-white">I have a Schengen visa</span>
           </label>
@@ -106,7 +106,7 @@ export function Step2Professional({ profile, data, updateData }: StepProps) {
             type="checkbox"
             defaultChecked={profile.available_for_work !== false} // Default to true
             onChange={(e) => updateData({ profile: { available_for_work: e.target.checked } })}
-            className="w-5 h-5 accent-lime-green"
+            className="w-5 h-5 accent-primary"
           />
           <div>
             <span className="text-white block">I am available for work</span>

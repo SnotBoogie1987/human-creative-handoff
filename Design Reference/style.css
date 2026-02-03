@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@200;400;700;800;900&display=swap');
 
 :root {
-    --lime-green: #DAFA92;
-    --dark-grey: #1a1a1a;
+    --primary: #DAFA92;
+    --background-dark: #1a1a1a;
     --light-text: #ffffff;
     --dark-text: #000000;
 }
@@ -33,7 +33,7 @@ a {
 }
 
 a:hover {
-    color: var(--lime-green);
+    color: var(--primary);
 }
 
 ul {
@@ -46,7 +46,7 @@ ul {
 .marquee-bar {
     width: 100%;
     overflow: hidden;
-    background-color: var(--lime-green);
+    background-color: var(--primary);
     color: var(--dark-text); 
     white-space: nowrap;
     border-bottom: 1px solid #444;
@@ -94,7 +94,7 @@ ul {
     color: var(--light-text); 
 }
 .logo a:hover {
-    color: var(--lime-green);
+    color: var(--primary);
 }
 
 .main-nav ul,
@@ -109,7 +109,7 @@ ul {
     line-height: 26px;
     font-weight: 400;
     letter-spacing: 0.5px;
-    color: var(--lime-green); 
+    color: var(--primary); 
     transition: color 0.3s ease;
 }
 
@@ -128,7 +128,7 @@ ul {
 }
 
 .account-nav a:hover {
-    color: var(--lime-green); 
+    color: var(--primary); 
 }
 
 
@@ -204,9 +204,9 @@ main {
     width: 410.5px; 
     height: 80px;
     background-color: transparent;
-    border: 3px solid var(--lime-green);
+    border: 3px solid var(--primary);
     border-radius: 0; 
-    color: var(--lime-green);
+    color: var(--primary);
     font-family: 'Azeret Mono', monospace;
     font-size: 1.2rem;
     font-weight: 400;
@@ -216,7 +216,7 @@ main {
 }
 
 .cta-button:hover {
-    background-color: var(--lime-green);
+    background-color: var(--primary);
     color: var(--dark-text);
 }
 
@@ -227,8 +227,8 @@ main {
     justify-content: center;
     width: 410.5px;
     height: 80px;
-    background-color: var(--lime-green);
-    border: 3px solid var(--lime-green);
+    background-color: var(--primary);
+    border: 3px solid var(--primary);
     border-radius: 0;
     color: var(--dark-text);
     font-family: 'Azeret Mono', monospace;
@@ -240,7 +240,7 @@ main {
 }
 .cta-button-solid:hover {
     background-color: transparent;
-    color: var(--lime-green);
+    color: var(--primary);
 }
 
 
@@ -270,7 +270,7 @@ main:has(.manifesto-section) {
 }
 
 .manifesto-section.manifesto-light {
-    background-color: var(--lime-green);
+    background-color: var(--primary);
     color: var(--dark-text);
 }
 
@@ -337,7 +337,7 @@ main:has(.manifesto-section) {
 
 .signature-image {
     font-style: italic;
-    color: var(--lime-green);
+    color: var(--primary);
     margin-bottom: 15px;
     font-size: 0.9rem;
 }
@@ -360,7 +360,7 @@ main:has(.manifesto-section) {
 
 .manifesto-light a.cta-button:hover {
     background-color: var(--dark-text);
-    color: var(--lime-green);
+    color: var(--primary);
 }
 
 
@@ -371,7 +371,7 @@ main:has(.manifesto-section) {
     align-items: center;
     padding: 20px 40px;
     
-    background-color: var(--lime-green);
+    background-color: var(--primary);
     color: var(--dark-text);
     
     font-size: 0.8rem;

@@ -64,7 +64,7 @@ export default function ResetPasswordPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-dark-grey">
+    <div className="min-h-screen flex flex-col bg-background-dark">
       <Marquee />
       <Header />
 
@@ -132,7 +132,7 @@ export default function ResetPasswordPage() {
             <div className="text-center">
               <Link
                 href="/login"
-                className="text-gray-400 hover:text-lime-green transition-colors text-sm"
+                className="text-gray-400 hover:text-primary transition-colors text-sm"
               >
                 ← Back to login
               </Link>

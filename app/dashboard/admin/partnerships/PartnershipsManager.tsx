@@ -29,7 +29,7 @@ interface Partnership {
 
 const CATEGORY_COLORS = {
   mind: 'text-purple-400 bg-purple-400/10 border-purple-400/30',
-  movement: 'text-lime-green bg-lime-green/10 border-lime-green/30',
+  movement: 'text-primary bg-primary/10 border-primary/30',
   money: 'text-green-400 bg-green-400/10 border-green-400/30',
   mastery: 'text-orange-400 bg-orange-400/10 border-orange-400/30',
 }
@@ -113,7 +113,7 @@ export function PartnershipsManager({
       </div>
 
       {/* Partnerships Table */}
-      <div className="bg-dark-grey border border-gray-800 rounded-lg overflow-hidden">
+      <div className="bg-background-dark border border-gray-800 rounded-lg overflow-hidden">
         <table className="w-full">
           <thead className="bg-black border-b border-gray-800">
             <tr>
@@ -154,7 +154,7 @@ export function PartnershipsManager({
                 </td>
                 <td className="px-6 py-4">
                   {partnership.discount_code ? (
-                    <code className="text-lime-green text-xs font-mono bg-black px-2 py-1 rounded">
+                    <code className="text-primary text-xs font-mono bg-black px-2 py-1 rounded">
                       {partnership.discount_code}
                     </code>
                   ) : (
@@ -173,8 +173,8 @@ export function PartnershipsManager({
                   >
                     {partnership.is_active ? (
                       <>
-                        <Eye className="h-4 w-4 text-lime-green" />
-                        <span className="text-lime-green">Active</span>
+                        <Eye className="h-4 w-4 text-primary" />
+                        <span className="text-primary">Active</span>
                       </>
                     ) : (
                       <>
@@ -188,7 +188,7 @@ export function PartnershipsManager({
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => handleEdit(partnership)}
-                      className="p-2 text-gray-400 hover:text-lime-green transition-colors"
+                      className="p-2 text-gray-400 hover:text-primary transition-colors"
                       title="Edit"
                     >
                       <Edit2 className="h-4 w-4" />

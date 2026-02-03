@@ -34,10 +34,10 @@ export function FreelancerDetailView({ freelancerData }: FreelancerDetailViewPro
             <img
               src={profile.avatar_url}
               alt={profile.full_name || 'Profile'}
-              className="w-24 h-24 rounded-full object-cover border-4 border-lime-green"
+              className="w-24 h-24 rounded-full object-cover border-4 border-primary"
             />
           ) : (
-            <div className="w-24 h-24 rounded-full bg-gray-800 border-4 border-lime-green flex items-center justify-center">
+            <div className="w-24 h-24 rounded-full bg-gray-800 border-4 border-primary flex items-center justify-center">
               <User className="h-12 w-12 text-gray-500" />
             </div>
           )}
@@ -73,7 +73,7 @@ export function FreelancerDetailView({ freelancerData }: FreelancerDetailViewPro
               )}
               <div className="flex items-center gap-2">
                 {profile.onboarding_completed ? (
-                  <span className="inline-flex items-center gap-1 text-lime-green">
+                  <span className="inline-flex items-center gap-1 text-primary">
                     <CheckCircle className="h-4 w-4" />
                     Onboarding Complete
                   </span>
@@ -112,7 +112,7 @@ export function FreelancerDetailView({ freelancerData }: FreelancerDetailViewPro
 
         {/* Professional Tab */}
         <TabsContent value="professional">
-          <div className="bg-dark-grey border border-gray-800 rounded-lg p-8">
+          <div className="bg-background-dark border border-gray-800 rounded-lg p-8">
             <h2 className="text-2xl font-black text-white mb-6">Professional Information</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -130,17 +130,17 @@ export function FreelancerDetailView({ freelancerData }: FreelancerDetailViewPro
 
             {profile.bio && (
               <div className="mt-6 pt-6 border-t border-gray-800">
-                <h3 className="text-lime-green font-mono font-bold mb-2">Bio</h3>
+                <h3 className="text-primary font-mono font-bold mb-2">Bio</h3>
                 <p className="text-gray-300 whitespace-pre-wrap">{profile.bio}</p>
               </div>
             )}
 
             {profile.operating_positions && profile.operating_positions.length > 0 && (
               <div className="mt-6 pt-6 border-t border-gray-800">
-                <h3 className="text-lime-green font-mono font-bold mb-2">Operating Positions</h3>
+                <h3 className="text-primary font-mono font-bold mb-2">Operating Positions</h3>
                 <div className="flex flex-wrap gap-2">
                   {profile.operating_positions.map((position, idx) => (
-                    <span key={idx} className="px-3 py-1 bg-black border border-lime-green text-lime-green rounded-full text-sm">
+                    <span key={idx} className="px-3 py-1 bg-black border border-primary text-primary rounded-full text-sm">
                       {position}
                     </span>
                   ))}
@@ -152,7 +152,7 @@ export function FreelancerDetailView({ freelancerData }: FreelancerDetailViewPro
 
         {/* Portfolio Tab */}
         <TabsContent value="portfolio">
-          <div className="bg-dark-grey border border-gray-800 rounded-lg p-8">
+          <div className="bg-background-dark border border-gray-800 rounded-lg p-8">
             <h2 className="text-2xl font-black text-white mb-6">Portfolio</h2>
 
             <div className="space-y-6">
@@ -166,7 +166,7 @@ export function FreelancerDetailView({ freelancerData }: FreelancerDetailViewPro
 
             {profile.work_links && profile.work_links.length > 0 && (
               <div className="mt-6 pt-6 border-t border-gray-800">
-                <h3 className="text-lime-green font-mono font-bold mb-3">Work Links</h3>
+                <h3 className="text-primary font-mono font-bold mb-3">Work Links</h3>
                 <ul className="space-y-2">
                   {profile.work_links.map((link, idx) => (
                     <li key={idx}>
@@ -188,7 +188,7 @@ export function FreelancerDetailView({ freelancerData }: FreelancerDetailViewPro
 
         {/* Gear Tab */}
         <TabsContent value="gear">
-          <div className="bg-dark-grey border border-gray-800 rounded-lg p-8">
+          <div className="bg-background-dark border border-gray-800 rounded-lg p-8">
             <h2 className="text-2xl font-black text-white mb-6">Equipment & Skills</h2>
 
             <div className="mb-6">
@@ -204,7 +204,7 @@ export function FreelancerDetailView({ freelancerData }: FreelancerDetailViewPro
             </div>
 
             <div className="pt-6 border-t border-gray-800">
-              <h3 className="text-lime-green font-mono font-bold mb-4">Editing Skills</h3>
+              <h3 className="text-primary font-mono font-bold mb-4">Editing Skills</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <SkillBadge label="Premiere Pro" level={profile.skill_premiere} />
                 <SkillBadge label="Final Cut Pro" level={profile.skill_final_cut} />
@@ -216,7 +216,7 @@ export function FreelancerDetailView({ freelancerData }: FreelancerDetailViewPro
 
         {/* Private Info Tab */}
         <TabsContent value="private">
-          <div className="bg-dark-grey border border-gray-800 rounded-lg p-8">
+          <div className="bg-background-dark border border-gray-800 rounded-lg p-8">
             <div className="flex items-center gap-3 mb-6">
               <Lock className="h-6 w-6 text-red-500" />
               <div>
@@ -228,7 +228,7 @@ export function FreelancerDetailView({ freelancerData }: FreelancerDetailViewPro
             {/* Medical & Dietary */}
             {privateDetails && (
               <div className="mb-8">
-                <h3 className="text-lime-green font-mono font-bold mb-4">Medical & Dietary</h3>
+                <h3 className="text-primary font-mono font-bold mb-4">Medical & Dietary</h3>
                 <div className="space-y-4">
                   <InfoField label="Dietary Requirements" value={privateDetails.dietary_requirements} multiline />
                   <InfoField label="Allergies" value={privateDetails.allergies} multiline />
@@ -240,7 +240,7 @@ export function FreelancerDetailView({ freelancerData }: FreelancerDetailViewPro
             {/* Emergency Contact & Personal */}
             {privateDetails && (
               <div className="pt-6 border-t border-gray-800 mb-8">
-                <h3 className="text-lime-green font-mono font-bold mb-4">Emergency Contact & Personal</h3>
+                <h3 className="text-primary font-mono font-bold mb-4">Emergency Contact & Personal</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <InfoField label="Date of Birth" value={privateDetails.birthdate} />
                   <InfoField label="Emergency Contact Name" value={privateDetails.emergency_contact_name} />
@@ -255,7 +255,7 @@ export function FreelancerDetailView({ freelancerData }: FreelancerDetailViewPro
             {/* Address */}
             {privateDetails && (
               <div className="pt-6 border-t border-gray-800 mb-8">
-                <h3 className="text-lime-green font-mono font-bold mb-4">Address</h3>
+                <h3 className="text-primary font-mono font-bold mb-4">Address</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <InfoField label="Address Line 1" value={privateDetails.address_line1} />
                   <InfoField label="Address Line 2" value={privateDetails.address_line2} />
@@ -269,7 +269,7 @@ export function FreelancerDetailView({ freelancerData }: FreelancerDetailViewPro
             {/* Documents */}
             {privateDetails && (
               <div className="pt-6 border-t border-gray-800">
-                <h3 className="text-lime-green font-mono font-bold mb-4">Documents</h3>
+                <h3 className="text-primary font-mono font-bold mb-4">Documents</h3>
                 <div className="space-y-3">
                   {privateDetails.passport_scan_url && (
                     <div className="flex items-center gap-3">
@@ -356,7 +356,7 @@ function SkillBadge({ label, level }: { label: string; level: string | null | un
   const getColor = (level: string | null | undefined) => {
     switch (level) {
       case 'very_good':
-        return 'bg-lime-green text-black'
+        return 'bg-primary text-black'
       case 'good':
         return 'bg-yellow-500 text-black'
       case 'none':

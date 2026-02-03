@@ -227,7 +227,7 @@ export default function ProfileEditPage() {
                   Saving...
                 </span>
               ) : lastSaved ? (
-                <span className="flex items-center gap-2 text-lime-green">
+                <span className="flex items-center gap-2 text-primary">
                   <Check className="h-4 w-4" />
                   Saved {lastSaved.toLocaleTimeString()}
                 </span>
@@ -264,13 +264,13 @@ export default function ProfileEditPage() {
           <div className="lg:ml-72">
             {/* TAB 1: Identity & Roles */}
             <TabsContent value="identity">
-              <div className="bg-dark-grey border border-gray-800 rounded-lg p-8">
+              <div className="bg-background-dark border border-gray-800 rounded-lg p-8">
                 <h2 className="text-display-sm font-black text-white mb-6">Identity & Roles</h2>
 
                 {/* Avatar Upload */}
                 <div className="mb-8 pb-8 border-b border-gray-800">
                   <div className="flex items-start gap-4 mb-4">
-                    <User className="h-5 w-5 text-lime-green mt-1" />
+                    <User className="h-5 w-5 text-primary mt-1" />
                     <div>
                       <h3 className="text-white font-bold mb-1">Profile Photo</h3>
                       <p className="text-gray-400 text-sm">
@@ -312,16 +312,16 @@ export default function ProfileEditPage() {
 
                   {/* Years Experience */}
                   <div>
-                    <label className="block mb-2 text-sm font-regular text-light-text">
+                    <label className="block mb-2 text-sm font-regular text-text-dark">
                       Years of Experience
                     </label>
                     <select
                       {...register('years_experience', { valueAsNumber: true })}
-                      className="w-full px-4 py-4 bg-transparent border-3 border-lime-green text-light-text font-mono font-regular focus:outline-none focus:ring-2 focus:ring-lime-green transition-all duration-200 rounded"
+                      className="w-full px-4 py-4 bg-transparent border-3 border-primary text-text-dark font-mono font-regular focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200 rounded"
                     >
                       <option value="">Select...</option>
                       {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30].map((years) => (
-                        <option key={years} value={years} className="bg-dark-grey">
+                        <option key={years} value={years} className="bg-background-dark">
                           {years} {years === 1 ? 'year' : 'years'}
                         </option>
                       ))}
@@ -340,7 +340,7 @@ export default function ProfileEditPage() {
 
             {/* TAB 2: Portfolio */}
             <TabsContent value="portfolio">
-              <div className="bg-dark-grey border border-gray-800 rounded-lg p-8">
+              <div className="bg-background-dark border border-gray-800 rounded-lg p-8">
                 <h2 className="text-display-sm font-black text-white mb-6">Portfolio</h2>
                 <div className="space-y-6">
                   {/* Personal Website */}
@@ -375,7 +375,7 @@ export default function ProfileEditPage() {
 
                   {/* Showreels */}
                   <div className="pt-6 border-t border-gray-800">
-                    <h3 className="text-lime-green font-mono font-bold mb-4">Showreels</h3>
+                    <h3 className="text-primary font-mono font-bold mb-4">Showreels</h3>
 
                     <Input
                       {...register('showreel_one')}
@@ -397,7 +397,7 @@ export default function ProfileEditPage() {
 
                   {/* Work Links - Note: This would need special handling for arrays */}
                   <div className="pt-6 border-t border-gray-800">
-                    <h3 className="text-lime-green font-mono font-bold mb-4">Recent Work Links</h3>
+                    <h3 className="text-primary font-mono font-bold mb-4">Recent Work Links</h3>
                     <p className="text-gray-400 text-sm mb-4">
                       Add URLs to your recent work (one per line)
                     </p>
@@ -414,30 +414,30 @@ export default function ProfileEditPage() {
 
             {/* TAB 3: The Gear */}
             <TabsContent value="gear">
-              <div className="bg-dark-grey border border-gray-800 rounded-lg p-8">
+              <div className="bg-background-dark border border-gray-800 rounded-lg p-8">
                 <h2 className="text-display-sm font-black text-white mb-6">The Gear</h2>
                 <div className="space-y-6">
                   {/* Kit Value */}
                   <div>
-                    <label className="block mb-2 text-sm font-regular text-light-text">
+                    <label className="block mb-2 text-sm font-regular text-text-dark">
                       Kit Value (Estimated)
                     </label>
                     <select
                       {...register('kit_value')}
-                      className="w-full px-4 py-4 bg-transparent border-3 border-lime-green text-light-text font-mono font-regular focus:outline-none focus:ring-2 focus:ring-lime-green transition-all duration-200 rounded"
+                      className="w-full px-4 py-4 bg-transparent border-3 border-primary text-text-dark font-mono font-regular focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200 rounded"
                     >
                       <option value="">Select range...</option>
-                      <option value="£0-£5,000" className="bg-dark-grey">£0-£5,000</option>
-                      <option value="£5,000-£10,000" className="bg-dark-grey">£5,000-£10,000</option>
-                      <option value="£10,000-£20,000" className="bg-dark-grey">£10,000-£20,000</option>
-                      <option value="£20,000-£50,000" className="bg-dark-grey">£20,000-£50,000</option>
-                      <option value="£50,000+" className="bg-dark-grey">£50,000+</option>
+                      <option value="£0-£5,000" className="bg-background-dark">£0-£5,000</option>
+                      <option value="£5,000-£10,000" className="bg-background-dark">£5,000-£10,000</option>
+                      <option value="£10,000-£20,000" className="bg-background-dark">£10,000-£20,000</option>
+                      <option value="£20,000-£50,000" className="bg-background-dark">£20,000-£50,000</option>
+                      <option value="£50,000+" className="bg-background-dark">£50,000+</option>
                     </select>
                   </div>
 
                   {/* Equipment Inventory */}
                   <div className="pt-6 border-t border-gray-800">
-                    <h3 className="text-lime-green font-mono font-bold mb-4">Equipment Inventory</h3>
+                    <h3 className="text-primary font-mono font-bold mb-4">Equipment Inventory</h3>
 
                     <Textarea
                       {...register('kit_camera_bodies')}
@@ -485,7 +485,7 @@ export default function ProfileEditPage() {
 
                   {/* Editing Skills */}
                   <div className="pt-6 border-t border-gray-800">
-                    <h3 className="text-lime-green font-mono font-bold mb-4">Editing Software Skills</h3>
+                    <h3 className="text-primary font-mono font-bold mb-4">Editing Software Skills</h3>
 
                     {(['skill_premiere', 'skill_final_cut', 'skill_davinci'] as const).map((skill) => {
                       const labels = {
@@ -496,7 +496,7 @@ export default function ProfileEditPage() {
 
                       return (
                         <div key={skill} className="mb-6">
-                          <label className="block mb-2 text-sm font-regular text-light-text">
+                          <label className="block mb-2 text-sm font-regular text-text-dark">
                             {labels[skill]}
                           </label>
                           <div className="flex gap-4">
@@ -509,7 +509,7 @@ export default function ProfileEditPage() {
                                   {...register(skill)}
                                   type="radio"
                                   value={level}
-                                  className="w-4 h-4 accent-lime-green"
+                                  className="w-4 h-4 accent-primary"
                                 />
                                 <span className="text-white text-sm capitalize">
                                   {level.replace('_', ' ')}
@@ -527,9 +527,9 @@ export default function ProfileEditPage() {
 
             {/* TAB 4: Admin & Welfare (Private) */}
             <TabsContent value="admin">
-              <div className="bg-dark-grey border border-gray-800 rounded-lg p-8">
+              <div className="bg-background-dark border border-gray-800 rounded-lg p-8">
                 <div className="flex items-center gap-3 mb-6">
-                  <Lock className="h-6 w-6 text-lime-green" />
+                  <Lock className="h-6 w-6 text-primary" />
                   <div>
                     <h2 className="text-2xl font-black text-white">Admin & Welfare</h2>
                     <p className="text-gray-400 text-sm">Private information - not visible to clients</p>
@@ -539,14 +539,14 @@ export default function ProfileEditPage() {
                 <div className="space-y-6">
                   {/* Travel Information */}
                   <div>
-                    <h3 className="text-lime-green font-mono font-bold mb-4">Travel & Driving</h3>
+                    <h3 className="text-primary font-mono font-bold mb-4">Travel & Driving</h3>
 
                     <div className="space-y-4">
                       <label className="flex items-center gap-3 cursor-pointer">
                         <input
                           {...register('driving_license')}
                           type="checkbox"
-                          className="w-5 h-5 accent-lime-green"
+                          className="w-5 h-5 accent-primary"
                         />
                         <span className="text-white">I have a valid driving license</span>
                       </label>
@@ -555,7 +555,7 @@ export default function ProfileEditPage() {
                         <input
                           {...register('has_vehicle')}
                           type="checkbox"
-                          className="w-5 h-5 accent-lime-green"
+                          className="w-5 h-5 accent-primary"
                         />
                         <span className="text-white">I own a vehicle</span>
                       </label>
@@ -564,7 +564,7 @@ export default function ProfileEditPage() {
                         <input
                           {...register('has_visa_us')}
                           type="checkbox"
-                          className="w-5 h-5 accent-lime-green"
+                          className="w-5 h-5 accent-primary"
                         />
                         <span className="text-white">I have a US visa</span>
                       </label>
@@ -573,7 +573,7 @@ export default function ProfileEditPage() {
                         <input
                           {...register('has_visa_schengen')}
                           type="checkbox"
-                          className="w-5 h-5 accent-lime-green"
+                          className="w-5 h-5 accent-primary"
                         />
                         <span className="text-white">I have a Schengen visa</span>
                       </label>
@@ -596,7 +596,7 @@ export default function ProfileEditPage() {
 
                   {/* Address Information */}
                   <div className="pt-6 border-t border-gray-800">
-                    <h3 className="text-lime-green font-mono font-bold mb-4">Address Information</h3>
+                    <h3 className="text-primary font-mono font-bold mb-4">Address Information</h3>
 
                     <Input
                       {...registerPrivate('address_line1')}
@@ -636,7 +636,7 @@ export default function ProfileEditPage() {
 
                   {/* Medical & Dietary */}
                   <div className="pt-6 border-t border-gray-800">
-                    <h3 className="text-lime-green font-mono font-bold mb-4">Medical & Dietary</h3>
+                    <h3 className="text-primary font-mono font-bold mb-4">Medical & Dietary</h3>
 
                     <Textarea
                       {...registerPrivate('dietary_requirements')}
@@ -666,7 +666,7 @@ export default function ProfileEditPage() {
 
                   {/* Emergency Contact & Additional Details */}
                   <div className="pt-6 border-t border-gray-800">
-                    <h3 className="text-lime-green font-mono font-bold mb-4">Personal Information & Emergency Contact</h3>
+                    <h3 className="text-primary font-mono font-bold mb-4">Personal Information & Emergency Contact</h3>
 
                     <div className="space-y-6">
                       {/* Birthdate */}
@@ -719,7 +719,7 @@ export default function ProfileEditPage() {
 
                   {/* Document Uploads */}
                   <div className="pt-6 border-t border-gray-800">
-                    <h3 className="text-lime-green font-mono font-bold mb-6">Documents</h3>
+                    <h3 className="text-primary font-mono font-bold mb-6">Documents</h3>
                     <p className="text-gray-400 text-sm mb-6">
                       Upload scans of your important documents. These are stored securely and only
                       visible to you and authorized admins.

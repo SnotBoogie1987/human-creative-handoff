@@ -9,7 +9,7 @@ export function BackToTop() {
   return (
     <a
       href="#"
-      className="text-lime-green hover:opacity-80 transition-opacity text-sm md:text-base"
+      className="text-primary hover:opacity-80 transition-opacity text-sm md:text-base"
       onClick={handleClick}
     >
       BACK TO TOP ↑

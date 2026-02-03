@@ -40,8 +40,8 @@ export default async function DashboardPage() {
       {/* Quick Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
         {/* Profile Completion */}
-        <div className="bg-dark-grey border border-gray-800 rounded-lg p-6">
-          <h3 className="text-lime-green font-bold text-sm mb-2">PROFILE STATUS</h3>
+        <div className="bg-background-dark border border-gray-800 rounded-lg p-6">
+          <h3 className="text-primary font-bold text-sm mb-2">PROFILE STATUS</h3>
           <p className="text-white text-3xl font-black mb-2">
             {userWithProfile?.profile.onboarding_completed ? '100%' : '25%'}
           </p>
@@ -53,51 +53,51 @@ export default async function DashboardPage() {
         </div>
 
         {/* Member Benefits */}
-        <div className="bg-dark-grey border border-gray-800 rounded-lg p-6">
-          <h3 className="text-lime-green font-bold text-sm mb-2">ACTIVE BENEFITS</h3>
+        <div className="bg-background-dark border border-gray-800 rounded-lg p-6">
+          <h3 className="text-primary font-bold text-sm mb-2">ACTIVE BENEFITS</h3>
           <p className="text-white text-3xl font-black mb-2">{activeBenefitsCount}</p>
           <p className="text-gray-400 text-sm">Perks available to you</p>
         </div>
 
         {/* Network Status */}
-        <div className="bg-dark-grey border border-gray-800 rounded-lg p-6">
-          <h3 className="text-lime-green font-bold text-sm mb-2">NETWORK STATUS</h3>
+        <div className="bg-background-dark border border-gray-800 rounded-lg p-6">
+          <h3 className="text-primary font-bold text-sm mb-2">NETWORK STATUS</h3>
           <p className="text-white text-3xl font-black mb-2">Active</p>
           <p className="text-gray-400 text-sm">Available for projects</p>
         </div>
       </div>
 
       {/* Quick Actions */}
-      <div className="bg-dark-grey border border-gray-800 rounded-lg p-8">
+      <div className="bg-background-dark border border-gray-800 rounded-lg p-8">
         <h2 className="text-white font-black text-2xl mb-6">Quick Actions</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <a
             href="/dashboard/profile/view"
-            className="flex items-center justify-between p-4 bg-black border border-gray-800 rounded-lg hover:border-lime-green transition-colors"
+            className="flex items-center justify-between p-4 bg-black border border-gray-800 rounded-lg hover:border-primary transition-colors"
           >
             <span className="text-white font-mono">View My Profile</span>
-            <span className="text-lime-green">→</span>
+            <span className="text-primary">→</span>
           </a>
           <a
             href="/dashboard/profile/edit"
-            className="flex items-center justify-between p-4 bg-black border border-gray-800 rounded-lg hover:border-lime-green transition-colors"
+            className="flex items-center justify-between p-4 bg-black border border-gray-800 rounded-lg hover:border-primary transition-colors"
           >
             <span className="text-white font-mono">Edit Profile</span>
-            <span className="text-lime-green">→</span>
+            <span className="text-primary">→</span>
           </a>
           <a
             href="/dashboard/benefits"
-            className="flex items-center justify-between p-4 bg-black border border-gray-800 rounded-lg hover:border-lime-green transition-colors"
+            className="flex items-center justify-between p-4 bg-black border border-gray-800 rounded-lg hover:border-primary transition-colors"
           >
             <span className="text-white font-mono">View Benefits</span>
-            <span className="text-lime-green">→</span>
+            <span className="text-primary">→</span>
           </a>
           <a
             href="/dashboard/settings"
-            className="flex items-center justify-between p-4 bg-black border border-gray-800 rounded-lg hover:border-lime-green transition-colors"
+            className="flex items-center justify-between p-4 bg-black border border-gray-800 rounded-lg hover:border-primary transition-colors"
           >
             <span className="text-white font-mono">Account Settings</span>
-            <span className="text-lime-green">→</span>
+            <span className="text-primary">→</span>
           </a>
         </div>
       </div>

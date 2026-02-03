@@ -55,7 +55,7 @@ export default async function ProfileViewPage() {
           </div>
           <Link
             href="/dashboard/profile/edit"
-            className="px-6 py-3 bg-lime-green text-dark-text font-mono font-bold rounded-lg hover:opacity-90 transition-opacity"
+            className="px-6 py-3 bg-primary text-text-light font-mono font-bold rounded-lg hover:opacity-90 transition-opacity"
           >
             Edit Profile
           </Link>
@@ -66,7 +66,7 @@ export default async function ProfileViewPage() {
           {/* LEFT SIDEBAR - Sticky */}
           <aside className="lg:sticky lg:top-8 lg:self-start space-y-6">
             {/* Headshot */}
-            <div className="bg-dark-grey border border-gray-800 rounded-lg p-6">
+            <div className="bg-background-dark border border-gray-800 rounded-lg p-6">
               <Avatar className="w-full aspect-square mb-4">
                 <AvatarImage src={profile.avatar_url || undefined} alt={profile.full_name || 'User'} />
                 <AvatarFallback className="text-4xl">
@@ -78,7 +78,7 @@ export default async function ProfileViewPage() {
               <h2 className="text-display-sm font-black text-white text-center mb-1">
                 {profile.full_name || 'Unnamed User'}
               </h2>
-              <p className="text-lime-green text-center font-mono font-bold mb-2">
+              <p className="text-primary text-center font-mono font-bold mb-2">
                 {profile.professional_role || 'Freelancer'}
               </p>
               {profile.location && (
@@ -87,7 +87,7 @@ export default async function ProfileViewPage() {
             </div>
 
             {/* Quick Stats */}
-            <div className="bg-dark-grey border border-gray-800 rounded-lg p-6">
+            <div className="bg-background-dark border border-gray-800 rounded-lg p-6">
               <h3 className="text-white font-bold text-sm mb-4 uppercase tracking-wide">
                 Quick Stats
               </h3>
@@ -142,7 +142,7 @@ export default async function ProfileViewPage() {
             </div>
 
             {/* Contact */}
-            <div className="bg-dark-grey border border-gray-800 rounded-lg p-6">
+            <div className="bg-background-dark border border-gray-800 rounded-lg p-6">
               <h3 className="text-white font-bold text-sm mb-4 uppercase tracking-wide">
                 Contact
               </h3>
@@ -150,18 +150,18 @@ export default async function ProfileViewPage() {
                 {userWithProfile.user.email && (
                   <a
                     href={`mailto:${userWithProfile.user.email}`}
-                    className="flex items-center gap-3 p-3 bg-black border border-gray-800 rounded-lg hover:border-lime-green transition-colors"
+                    className="flex items-center gap-3 p-3 bg-black border border-gray-800 rounded-lg hover:border-primary transition-colors"
                   >
-                    <Mail className="h-5 w-5 text-lime-green" />
+                    <Mail className="h-5 w-5 text-primary" />
                     <span className="text-white text-sm truncate">{userWithProfile.user.email}</span>
                   </a>
                 )}
                 {profile.phone && (
                   <a
                     href={`tel:${profile.phone}`}
-                    className="flex items-center gap-3 p-3 bg-black border border-gray-800 rounded-lg hover:border-lime-green transition-colors"
+                    className="flex items-center gap-3 p-3 bg-black border border-gray-800 rounded-lg hover:border-primary transition-colors"
                   >
-                    <Phone className="h-5 w-5 text-lime-green" />
+                    <Phone className="h-5 w-5 text-primary" />
                     <span className="text-white text-sm">{profile.phone}</span>
                   </a>
                 )}
@@ -173,7 +173,7 @@ export default async function ProfileViewPage() {
           <main className="space-y-8">
             {/* Bio Section */}
             {profile.bio && (
-              <section className="bg-dark-grey border border-gray-800 rounded-lg p-8">
+              <section className="bg-background-dark border border-gray-800 rounded-lg p-8">
                 <h2 className="text-display-sm font-black text-white mb-4">About</h2>
                 <p className="text-gray-300 leading-relaxed whitespace-pre-wrap">
                   {profile.bio}
@@ -183,18 +183,18 @@ export default async function ProfileViewPage() {
 
             {/* Showreels */}
             {(profile.showreel_one || profile.showreel_two) && (
-              <section className="bg-dark-grey border border-gray-800 rounded-lg p-8">
+              <section className="bg-background-dark border border-gray-800 rounded-lg p-8">
                 <h2 className="text-display-sm font-black text-white mb-6">Showreels</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {profile.showreel_one && (
                     <div>
-                      <h3 className="text-lime-green font-mono font-bold mb-3">Primary Showreel</h3>
+                      <h3 className="text-primary font-mono font-bold mb-3">Primary Showreel</h3>
                       <div className="aspect-video bg-black rounded-lg flex items-center justify-center border border-gray-700">
                         <a
                           href={profile.showreel_one}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-lime-green hover:opacity-80"
+                          className="flex items-center gap-2 text-primary hover:opacity-80"
                         >
                           <ExternalLink className="h-5 w-5" />
                           <span className="font-mono text-sm">View Showreel</span>
@@ -204,13 +204,13 @@ export default async function ProfileViewPage() {
                   )}
                   {profile.showreel_two && (
                     <div>
-                      <h3 className="text-lime-green font-mono font-bold mb-3">Secondary Showreel</h3>
+                      <h3 className="text-primary font-mono font-bold mb-3">Secondary Showreel</h3>
                       <div className="aspect-video bg-black rounded-lg flex items-center justify-center border border-gray-700">
                         <a
                           href={profile.showreel_two}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-lime-green hover:opacity-80"
+                          className="flex items-center gap-2 text-primary hover:opacity-80"
                         >
                           <ExternalLink className="h-5 w-5" />
                           <span className="font-mono text-sm">View Showreel</span>
@@ -224,7 +224,7 @@ export default async function ProfileViewPage() {
 
             {/* Recent Work */}
             {profile.work_links && profile.work_links.length > 0 && (
-              <section className="bg-dark-grey border border-gray-800 rounded-lg p-8">
+              <section className="bg-background-dark border border-gray-800 rounded-lg p-8">
                 <h2 className="text-display-sm font-black text-white mb-6">Recent Work</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {profile.work_links.map((link, index) => (
@@ -233,10 +233,10 @@ export default async function ProfileViewPage() {
                       href={link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group p-4 bg-black border border-gray-800 rounded-lg hover:border-lime-green transition-colors"
+                      className="group p-4 bg-black border border-gray-800 rounded-lg hover:border-primary transition-colors"
                     >
                       <div className="aspect-video bg-gray-900 rounded mb-3 flex items-center justify-center">
-                        <ExternalLink className="h-6 w-6 text-gray-600 group-hover:text-lime-green transition-colors" />
+                        <ExternalLink className="h-6 w-6 text-gray-600 group-hover:text-primary transition-colors" />
                       </div>
                       <p className="text-white text-sm font-mono truncate">{link}</p>
                     </a>
@@ -247,7 +247,7 @@ export default async function ProfileViewPage() {
 
             {/* Skills */}
             {(profile.skill_premiere || profile.skill_final_cut || profile.skill_davinci) && (
-              <section className="bg-dark-grey border border-gray-800 rounded-lg p-8">
+              <section className="bg-background-dark border border-gray-800 rounded-lg p-8">
                 <h2 className="text-display-sm font-black text-white mb-6">Editing Skills</h2>
                 <div className="space-y-6">
                   {profile.skill_premiere && (
@@ -274,7 +274,7 @@ export default async function ProfileViewPage() {
 
             {/* Kit List */}
             {(profile.kit_camera_bodies || profile.kit_lenses || profile.kit_lighting || profile.kit_audio || profile.kit_other) && (
-              <section className="bg-dark-grey border border-gray-800 rounded-lg p-8">
+              <section className="bg-background-dark border border-gray-800 rounded-lg p-8">
                 <h2 className="text-display-sm font-black text-white mb-6">Equipment Kit</h2>
 
                 {/* Desktop Table View */}
@@ -282,8 +282,8 @@ export default async function ProfileViewPage() {
                   <table className="w-full">
                     <thead>
                       <tr className="border-b border-gray-700">
-                        <th className="text-left py-3 px-4 text-lime-green font-mono font-bold text-sm">Category</th>
-                        <th className="text-left py-3 px-4 text-lime-green font-mono font-bold text-sm">Equipment</th>
+                        <th className="text-left py-3 px-4 text-primary font-mono font-bold text-sm">Category</th>
+                        <th className="text-left py-3 px-4 text-primary font-mono font-bold text-sm">Equipment</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-800">
@@ -325,31 +325,31 @@ export default async function ProfileViewPage() {
                 <div className="md:hidden space-y-4">
                   {profile.kit_camera_bodies && (
                     <div className="p-4 bg-black border border-gray-800 rounded-lg">
-                      <h3 className="text-lime-green font-mono font-bold text-sm mb-2">Camera Bodies</h3>
+                      <h3 className="text-primary font-mono font-bold text-sm mb-2">Camera Bodies</h3>
                       <p className="text-gray-300 text-sm whitespace-pre-wrap">{profile.kit_camera_bodies}</p>
                     </div>
                   )}
                   {profile.kit_lenses && (
                     <div className="p-4 bg-black border border-gray-800 rounded-lg">
-                      <h3 className="text-lime-green font-mono font-bold text-sm mb-2">Lenses</h3>
+                      <h3 className="text-primary font-mono font-bold text-sm mb-2">Lenses</h3>
                       <p className="text-gray-300 text-sm whitespace-pre-wrap">{profile.kit_lenses}</p>
                     </div>
                   )}
                   {profile.kit_lighting && (
                     <div className="p-4 bg-black border border-gray-800 rounded-lg">
-                      <h3 className="text-lime-green font-mono font-bold text-sm mb-2">Lighting</h3>
+                      <h3 className="text-primary font-mono font-bold text-sm mb-2">Lighting</h3>
                       <p className="text-gray-300 text-sm whitespace-pre-wrap">{profile.kit_lighting}</p>
                     </div>
                   )}
                   {profile.kit_audio && (
                     <div className="p-4 bg-black border border-gray-800 rounded-lg">
-                      <h3 className="text-lime-green font-mono font-bold text-sm mb-2">Audio</h3>
+                      <h3 className="text-primary font-mono font-bold text-sm mb-2">Audio</h3>
                       <p className="text-gray-300 text-sm whitespace-pre-wrap">{profile.kit_audio}</p>
                     </div>
                   )}
                   {profile.kit_other && (
                     <div className="p-4 bg-black border border-gray-800 rounded-lg">
-                      <h3 className="text-lime-green font-mono font-bold text-sm mb-2">Other</h3>
+                      <h3 className="text-primary font-mono font-bold text-sm mb-2">Other</h3>
                       <p className="text-gray-300 text-sm whitespace-pre-wrap">{profile.kit_other}</p>
                     </div>
                   )}
@@ -359,7 +359,7 @@ export default async function ProfileViewPage() {
 
             {/* Social Links */}
             {(profile.personal_website || profile.instagram || profile.vimeo || profile.linkedin) && (
-              <section className="bg-dark-grey border border-gray-800 rounded-lg p-8">
+              <section className="bg-background-dark border border-gray-800 rounded-lg p-8">
                 <h2 className="text-display-sm font-black text-white mb-6">Online Presence</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {profile.personal_website && (
@@ -367,9 +367,9 @@ export default async function ProfileViewPage() {
                       href={profile.personal_website}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-3 p-4 bg-black border border-gray-800 rounded-lg hover:border-lime-green transition-colors"
+                      className="flex items-center gap-3 p-4 bg-black border border-gray-800 rounded-lg hover:border-primary transition-colors"
                     >
-                      <ExternalLink className="h-5 w-5 text-lime-green" />
+                      <ExternalLink className="h-5 w-5 text-primary" />
                       <div>
                         <p className="text-xs text-gray-400 font-mono">Website</p>
                         <p className="text-white text-sm truncate">{profile.personal_website}</p>
@@ -381,9 +381,9 @@ export default async function ProfileViewPage() {
                       href={`https://instagram.com/${profile.instagram.replace('@', '')}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-3 p-4 bg-black border border-gray-800 rounded-lg hover:border-lime-green transition-colors"
+                      className="flex items-center gap-3 p-4 bg-black border border-gray-800 rounded-lg hover:border-primary transition-colors"
                     >
-                      <ExternalLink className="h-5 w-5 text-lime-green" />
+                      <ExternalLink className="h-5 w-5 text-primary" />
                       <div>
                         <p className="text-xs text-gray-400 font-mono">Instagram</p>
                         <p className="text-white text-sm">@{profile.instagram.replace('@', '')}</p>
@@ -395,9 +395,9 @@ export default async function ProfileViewPage() {
                       href={profile.vimeo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-3 p-4 bg-black border border-gray-800 rounded-lg hover:border-lime-green transition-colors"
+                      className="flex items-center gap-3 p-4 bg-black border border-gray-800 rounded-lg hover:border-primary transition-colors"
                     >
-                      <ExternalLink className="h-5 w-5 text-lime-green" />
+                      <ExternalLink className="h-5 w-5 text-primary" />
                       <div>
                         <p className="text-xs text-gray-400 font-mono">Vimeo</p>
                         <p className="text-white text-sm truncate">{profile.vimeo}</p>
@@ -409,9 +409,9 @@ export default async function ProfileViewPage() {
                       href={profile.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-3 p-4 bg-black border border-gray-800 rounded-lg hover:border-lime-green transition-colors"
+                      className="flex items-center gap-3 p-4 bg-black border border-gray-800 rounded-lg hover:border-primary transition-colors"
                     >
-                      <ExternalLink className="h-5 w-5 text-lime-green" />
+                      <ExternalLink className="h-5 w-5 text-primary" />
                       <div>
                         <p className="text-xs text-gray-400 font-mono">LinkedIn</p>
                         <p className="text-white text-sm truncate">{profile.linkedin}</p>

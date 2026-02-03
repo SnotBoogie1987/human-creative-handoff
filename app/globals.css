@@ -47,12 +47,6 @@
     /* Small/Caption: 14px -> 15px */
     --fs-sm: clamp(0.875rem, 0.8542rem + 0.1042vw, 0.9375rem);
 
-    /* --- LEGACY COLOR VARIABLES (for backwards compatibility) --- */
-    --color-lime-green: #DAFA92;
-    --color-dark-grey: #1a1a1a;
-    --color-light-text: #ffffff;
-    --color-dark-text: #000000;
-
     /* --- NEW COLOR VARIABLES --- */
     --color-primary: #D2F865;
     --color-background-dark: #000000;
@@ -75,7 +69,7 @@
     @apply antialiased transition-colors duration-300;
     font-family: 'Azeret Mono', 'Space Mono', monospace;
     font-weight: 400;
-    color: var(--color-light-text);
+    color: var(--color-text-dark);
     background-color: var(--color-background-dark);
     line-height: 1.6;
   }

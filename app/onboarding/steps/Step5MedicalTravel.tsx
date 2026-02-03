@@ -12,10 +12,10 @@ interface StepProps {
 
 export function Step5MedicalTravel({ profile, privateDetails, data, updateData }: StepProps) {
   return (
-    <div className="bg-dark-grey border border-gray-800 rounded-lg p-8 space-y-6">
+    <div className="bg-background-dark border border-gray-800 rounded-lg p-8 space-y-6">
       {/* Medical & Dietary */}
       <div>
-        <h3 className="text-lime-green font-mono font-bold mb-4">Medical & Dietary Information</h3>
+        <h3 className="text-primary font-mono font-bold mb-4">Medical & Dietary Information</h3>
         <p className="text-gray-400 text-sm mb-6">
           This information helps us ensure your safety and comfort on shoots
         </p>
@@ -55,7 +55,7 @@ export function Step5MedicalTravel({ profile, privateDetails, data, updateData }
 
       {/* Personal Information */}
       <div className="pt-6 border-t border-gray-800">
-        <h3 className="text-lime-green font-mono font-bold mb-4">Personal Information</h3>
+        <h3 className="text-primary font-mono font-bold mb-4">Personal Information</h3>
         <p className="text-gray-400 text-sm mb-6">
           Required for travel documentation and age verification
         </p>
@@ -72,7 +72,7 @@ export function Step5MedicalTravel({ profile, privateDetails, data, updateData }
 
       {/* Emergency Contact */}
       <div className="pt-6 border-t border-gray-800">
-        <h3 className="text-lime-green font-mono font-bold mb-4">Emergency Contact *</h3>
+        <h3 className="text-primary font-mono font-bold mb-4">Emergency Contact *</h3>
         <p className="text-gray-400 text-sm mb-6">
           Who should we contact in case of an emergency?
         </p>
@@ -108,7 +108,7 @@ export function Step5MedicalTravel({ profile, privateDetails, data, updateData }
 
       {/* Travel Details (Optional) */}
       <div className="pt-6 border-t border-gray-800">
-        <h3 className="text-lime-green font-mono font-bold mb-4">Additional Travel Details (Optional)</h3>
+        <h3 className="text-primary font-mono font-bold mb-4">Additional Travel Details (Optional)</h3>
 
         <div className="space-y-4">
           <Input

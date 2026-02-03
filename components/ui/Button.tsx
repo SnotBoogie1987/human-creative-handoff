@@ -37,21 +37,21 @@ export function Button({
   const variantStyles = {
     outline: `
       bg-transparent
-      border-lime-green
-      text-lime-green
-      hover:bg-lime-green
-      hover:text-dark-text
+      border-primary
+      text-primary
+      hover:bg-primary
+      hover:text-text-light
       disabled:hover:bg-transparent
-      disabled:hover:text-lime-green
+      disabled:hover:text-primary
     `,
     solid: `
-      bg-lime-green
-      border-lime-green
-      text-dark-text
+      bg-primary
+      border-primary
+      text-text-light
       hover:bg-transparent
-      hover:text-lime-green
-      disabled:hover:bg-lime-green
-      disabled:hover:text-dark-text
+      hover:text-primary
+      disabled:hover:bg-primary
+      disabled:hover:text-text-light
     `,
   }
 

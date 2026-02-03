@@ -151,9 +151,9 @@ export function OnboardingWizard({
                 <div
                   className={`w-10 h-10 rounded-full flex items-center justify-center font-bold transition-all ${
                     currentStep > step.id
-                      ? 'bg-lime-green text-black'
+                      ? 'bg-primary text-black'
                       : currentStep === step.id
-                      ? 'bg-lime-green text-black ring-4 ring-lime-green/30'
+                      ? 'bg-primary text-black ring-4 ring-primary/30'
                       : 'bg-gray-800 text-gray-500'
                   }`}
                 >
@@ -172,7 +172,7 @@ export function OnboardingWizard({
               {index < STEPS.length - 1 && (
                 <div
                   className={`h-1 flex-1 mx-2 transition-all ${
-                    currentStep > step.id ? 'bg-lime-green' : 'bg-gray-800'
+                    currentStep > step.id ? 'bg-primary' : 'bg-gray-800'
                   }`}
                 />
               )}
@@ -183,7 +183,7 @@ export function OnboardingWizard({
         {/* Progress Percentage */}
         <div className="bg-gray-800 h-2 rounded-full overflow-hidden">
           <div
-            className="bg-lime-green h-full transition-all duration-500"
+            className="bg-primary h-full transition-all duration-500"
             style={{ width: `${progress}%` }}
           />
         </div>

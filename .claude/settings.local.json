@@ -28,7 +28,11 @@
       "Bash(fi)",
       "Bash(tasklist:*)",
       "Bash(findstr:*)",
-      "Bash(taskkill:*)"
+      "Bash(taskkill:*)",
+      "mcp__plugin_oh-my-claudecode_t__ast_grep_replace",
+      "mcp__claude_ai_Supabase__list_projects",
+      "mcp__claude_ai_Supabase__apply_migration",
+      "mcp__claude_ai_Supabase__execute_sql"
     ],
     "deny": [],
     "ask": []

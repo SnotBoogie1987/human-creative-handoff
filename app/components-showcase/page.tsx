@@ -10,30 +10,30 @@ export default function ComponentShowcase() {
   const [errorInput, setErrorInput] = useState('')
 
   return (
-    <div className="min-h-screen flex flex-col bg-dark-grey">
+    <div className="min-h-screen flex flex-col bg-background-dark">
       <Marquee />
       <Header />
 
       <main className="flex-1 px-6 py-12">
         <div className="max-w-5xl mx-auto space-y-16">
           <section>
-            <h1 className="text-4xl font-black mb-4 text-lime-green">
+            <h1 className="text-4xl font-black mb-4 text-primary">
               Component Showcase
             </h1>
-            <p className="text-light-text/70">
+            <p className="text-text-dark/70">
               All components from the design system in one place for testing and verification.
             </p>
           </section>
 
           {/* Buttons */}
           <section className="space-y-6">
-            <h2 className="text-2xl font-bold text-lime-green border-b border-lime-green/30 pb-2">
+            <h2 className="text-2xl font-bold text-primary border-b border-primary/30 pb-2">
               Buttons
             </h2>
 
             <div className="space-y-4">
               <div>
-                <h3 className="text-lg font-bold mb-3 text-light-text">Outline Variant (Default)</h3>
+                <h3 className="text-lg font-bold mb-3 text-text-dark">Outline Variant (Default)</h3>
                 <div className="flex flex-wrap gap-4">
                   <Button variant="outline">READ THE MANIFESTO</Button>
                   <Button variant="outline" disabled>DISABLED STATE</Button>
@@ -41,7 +41,7 @@ export default function ComponentShowcase() {
               </div>
 
               <div>
-                <h3 className="text-lg font-bold mb-3 text-light-text">Solid Variant</h3>
+                <h3 className="text-lg font-bold mb-3 text-text-dark">Solid Variant</h3>
                 <div className="flex flex-wrap gap-4">
                   <Button variant="solid">JOIN THE AGENCY</Button>
                   <Button variant="solid" disabled>DISABLED STATE</Button>
@@ -49,7 +49,7 @@ export default function ComponentShowcase() {
               </div>
 
               <div>
-                <h3 className="text-lg font-bold mb-3 text-light-text">As Links</h3>
+                <h3 className="text-lg font-bold mb-3 text-text-dark">As Links</h3>
                 <div className="flex flex-wrap gap-4">
                   <Button variant="outline" href="/manifesto">GO TO MANIFESTO</Button>
                   <Button variant="solid" href="/work">VIEW WORK</Button>
@@ -57,7 +57,7 @@ export default function ComponentShowcase() {
               </div>
 
               <div>
-                <h3 className="text-lg font-bold mb-3 text-light-text">Full Width (Mobile)</h3>
+                <h3 className="text-lg font-bold mb-3 text-text-dark">Full Width (Mobile)</h3>
                 <Button variant="outline" fullWidth>FULL WIDTH BUTTON</Button>
               </div>
             </div>
@@ -65,7 +65,7 @@ export default function ComponentShowcase() {
 
           {/* Inputs */}
           <section className="space-y-6">
-            <h2 className="text-2xl font-bold text-lime-green border-b border-lime-green/30 pb-2">
+            <h2 className="text-2xl font-bold text-primary border-b border-primary/30 pb-2">
               Inputs
             </h2>
 
@@ -103,7 +103,7 @@ export default function ComponentShowcase() {
 
           {/* Textareas */}
           <section className="space-y-6">
-            <h2 className="text-2xl font-bold text-lime-green border-b border-lime-green/30 pb-2">
+            <h2 className="text-2xl font-bold text-primary border-b border-primary/30 pb-2">
               Textareas
             </h2>
 
@@ -138,23 +138,23 @@ export default function ComponentShowcase() {
 
           {/* Layout Components */}
           <section className="space-y-6">
-            <h2 className="text-2xl font-bold text-lime-green border-b border-lime-green/30 pb-2">
+            <h2 className="text-2xl font-bold text-primary border-b border-primary/30 pb-2">
               Layout Components
             </h2>
 
             <div className="space-y-4">
               <div>
-                <h3 className="text-lg font-bold mb-3 text-light-text">Marquee</h3>
-                <p className="text-light-text/70 mb-4">Visible at the top of the page with 80s infinite scroll animation.</p>
-                <div className="border-2 border-lime-green/30 p-4">
+                <h3 className="text-lg font-bold mb-3 text-text-dark">Marquee</h3>
+                <p className="text-text-dark/70 mb-4">Visible at the top of the page with 80s infinite scroll animation.</p>
+                <div className="border-2 border-primary/30 p-4">
                   <Marquee />
                 </div>
               </div>
 
               <div>
-                <h3 className="text-lg font-bold mb-3 text-light-text">Header</h3>
-                <p className="text-light-text/70 mb-4">3-column grid layout, responsive mobile menu. Check the top of the page.</p>
-                <ul className="text-light-text/70 space-y-1 list-disc list-inside">
+                <h3 className="text-lg font-bold mb-3 text-text-dark">Header</h3>
+                <p className="text-text-dark/70 mb-4">3-column grid layout, responsive mobile menu. Check the top of the page.</p>
+                <ul className="text-text-dark/70 space-y-1 list-disc list-inside">
                   <li>Left: HUMAN. logo</li>
                   <li>Center: Main navigation (MANIFESTO, WORK, ENQUIRE, IMPACT, SHOP)</li>
                   <li>Right: Account link</li>
@@ -163,9 +163,9 @@ export default function ComponentShowcase() {
               </div>
 
               <div>
-                <h3 className="text-lg font-bold mb-3 text-light-text">Footer</h3>
-                <p className="text-light-text/70 mb-4">Lime green background, 3-column layout. Check the bottom of the page.</p>
-                <ul className="text-light-text/70 space-y-1 list-disc list-inside">
+                <h3 className="text-lg font-bold mb-3 text-text-dark">Footer</h3>
+                <p className="text-text-dark/70 mb-4">Lime green background, 3-column layout. Check the bottom of the page.</p>
+                <ul className="text-text-dark/70 space-y-1 list-disc list-inside">
                   <li>Left: Info icon (i)</li>
                   <li>Center: Copyright text</li>
                   <li>Right: Social media links</li>
@@ -176,33 +176,33 @@ export default function ComponentShowcase() {
 
           {/* Typography */}
           <section className="space-y-6">
-            <h2 className="text-2xl font-bold text-lime-green border-b border-lime-green/30 pb-2">
+            <h2 className="text-2xl font-bold text-primary border-b border-primary/30 pb-2">
               Typography Examples
             </h2>
 
             <div className="space-y-4">
               <div>
-                <p className="text-sm text-light-text/70 mb-2">Hero H1 (80px / 900)</p>
+                <p className="text-sm text-text-dark/70 mb-2">Hero H1 (80px / 900)</p>
                 <h1 className="text-hero font-black leading-hero">HUMAN.</h1>
               </div>
 
               <div>
-                <p className="text-sm text-light-text/70 mb-2">Manifesto H1 (113.75px / 900)</p>
+                <p className="text-sm text-text-dark/70 mb-2">Manifesto H1 (113.75px / 900)</p>
                 <h1 className="text-manifesto-h1 font-black leading-manifesto-h1">THE HUMANIFESTO</h1>
               </div>
 
               <div>
-                <p className="text-sm text-light-text/70 mb-2">Manifesto H2 (70.7px / 800)</p>
+                <p className="text-sm text-text-dark/70 mb-2">Manifesto H2 (70.7px / 800)</p>
                 <h2 className="text-manifesto-h2 font-heavy">SECTION HEADING</h2>
               </div>
 
               <div>
-                <p className="text-sm text-light-text/70 mb-2">Navigation (22px / 400)</p>
+                <p className="text-sm text-text-dark/70 mb-2">Navigation (22px / 400)</p>
                 <p className="text-nav font-regular">MANIFESTO | WORK | ENQUIRE</p>
               </div>
 
               <div>
-                <p className="text-sm text-light-text/70 mb-2">Body Text (18px / 400)</p>
+                <p className="text-sm text-text-dark/70 mb-2">Body Text (18px / 400)</p>
                 <p className="text-manifesto-body font-regular leading-manifesto-body">
                   This is body text using the Azeret Mono font family. It maintains excellent readability
                   at 18px with a line height of 28.8px, perfect for longer content sections.
@@ -213,30 +213,30 @@ export default function ComponentShowcase() {
 
           {/* Color Palette */}
           <section className="space-y-6">
-            <h2 className="text-2xl font-bold text-lime-green border-b border-lime-green/30 pb-2">
+            <h2 className="text-2xl font-bold text-primary border-b border-primary/30 pb-2">
               Color Palette
             </h2>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="space-y-2">
-                <div className="w-full h-24 bg-lime-green border-2 border-light-text"></div>
-                <p className="text-sm text-light-text">Lime Green</p>
-                <p className="text-xs text-light-text/70">#DAFA92</p>
+                <div className="w-full h-24 bg-primary border-2 border-light-text"></div>
+                <p className="text-sm text-text-dark">Lime Green</p>
+                <p className="text-xs text-text-dark/70">#DAFA92</p>
               </div>
               <div className="space-y-2">
-                <div className="w-full h-24 bg-dark-grey border-2 border-light-text"></div>
-                <p className="text-sm text-light-text">Dark Grey</p>
-                <p className="text-xs text-light-text/70">#1a1a1a</p>
+                <div className="w-full h-24 bg-background-dark border-2 border-light-text"></div>
+                <p className="text-sm text-text-dark">Dark Grey</p>
+                <p className="text-xs text-text-dark/70">#1a1a1a</p>
               </div>
               <div className="space-y-2">
-                <div className="w-full h-24 bg-light-text border-2 border-dark-grey"></div>
-                <p className="text-sm text-light-text">Light Text</p>
-                <p className="text-xs text-light-text/70">#ffffff</p>
+                <div className="w-full h-24 bg-light-text border-2 border-background-dark"></div>
+                <p className="text-sm text-text-dark">Light Text</p>
+                <p className="text-xs text-text-dark/70">#ffffff</p>
               </div>
               <div className="space-y-2">
                 <div className="w-full h-24 bg-dark-text border-2 border-light-text"></div>
-                <p className="text-sm text-light-text">Dark Text</p>
-                <p className="text-xs text-light-text/70">#000000</p>
+                <p className="text-sm text-text-dark">Dark Text</p>
+                <p className="text-xs text-text-dark/70">#000000</p>
               </div>
             </div>
           </section>

@@ -39,23 +39,23 @@ export default async function AdminFreelancersPage() {
 
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-          <div className="bg-dark-grey border border-gray-800 rounded-lg p-6">
+          <div className="bg-background-dark border border-gray-800 rounded-lg p-6">
             <div className="text-gray-400 text-sm mb-1">Total Freelancers</div>
             <div className="text-white text-3xl font-bold">{freelancers.length}</div>
           </div>
-          <div className="bg-dark-grey border border-gray-800 rounded-lg p-6">
+          <div className="bg-background-dark border border-gray-800 rounded-lg p-6">
             <div className="text-gray-400 text-sm mb-1">Onboarding Complete</div>
-            <div className="text-lime-green text-3xl font-bold">
+            <div className="text-primary text-3xl font-bold">
               {freelancers.filter(f => f.onboarding_completed).length}
             </div>
           </div>
-          <div className="bg-dark-grey border border-gray-800 rounded-lg p-6">
+          <div className="bg-background-dark border border-gray-800 rounded-lg p-6">
             <div className="text-gray-400 text-sm mb-1">Onboarding Incomplete</div>
             <div className="text-yellow-500 text-3xl font-bold">
               {freelancers.filter(f => !f.onboarding_completed).length}
             </div>
           </div>
-          <div className="bg-dark-grey border border-gray-800 rounded-lg p-6">
+          <div className="bg-background-dark border border-gray-800 rounded-lg p-6">
             <div className="text-gray-400 text-sm mb-1">Available for Work</div>
             <div className="text-white text-3xl font-bold">
               {freelancers.filter(f => f.available_for_work).length}

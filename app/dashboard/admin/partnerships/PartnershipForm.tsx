@@ -84,7 +84,7 @@ export function PartnershipForm({
 
   return (
     <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
-      <div className="bg-dark-grey border border-gray-800 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-background-dark border border-gray-800 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-800">
           <h2 className="text-2xl font-bold text-white">
@@ -119,7 +119,7 @@ export function PartnershipForm({
             </label>
             <select
               {...register('category')}
-              className="w-full bg-black border border-gray-700 rounded px-4 py-3 text-white focus:outline-none focus:border-lime-green transition-colors"
+              className="w-full bg-black border border-gray-700 rounded px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors"
             >
               <option value="mind">MIND - Mental Health & Wellbeing</option>
               <option value="movement">MOVEMENT - Physical Fitness & Health</option>
@@ -213,7 +213,7 @@ export function PartnershipForm({
             <input
               type="checkbox"
               {...register('is_active')}
-              className="w-5 h-5 bg-black border border-gray-700 rounded focus:ring-lime-green focus:ring-2"
+              className="w-5 h-5 bg-black border border-gray-700 rounded focus:ring-primary focus:ring-2"
             />
             <label className="text-white font-medium">
               Active (visible to members)

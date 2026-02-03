@@ -57,10 +57,10 @@ export default function ClientContactPage() {
 
         {/* Success Message */}
         {submitSuccess && (
-          <div className="mb-8 p-6 bg-lime-green/10 border border-lime-green rounded-lg flex items-start gap-3">
-            <Check className="h-6 w-6 text-lime-green flex-shrink-0 mt-1" />
+          <div className="mb-8 p-6 bg-primary/10 border border-primary rounded-lg flex items-start gap-3">
+            <Check className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
             <div>
-              <h3 className="text-lime-green font-bold mb-1">Message Sent!</h3>
+              <h3 className="text-primary font-bold mb-1">Message Sent!</h3>
               <p className="text-gray-300 text-sm">
                 Thank you for contacting us. We&apos;ll get back to you within 24-48 hours.
               </p>
@@ -115,39 +115,39 @@ export default function ClientContactPage() {
 
           {/* Project Type */}
           <div>
-            <label className="block mb-2 text-sm font-regular text-light-text">
+            <label className="block mb-2 text-sm font-regular text-text-dark">
               Project Type
             </label>
             <select
               {...register('projectType')}
-              className="w-full px-4 py-4 bg-transparent border-3 border-lime-green text-light-text font-mono font-regular focus:outline-none focus:ring-2 focus:ring-lime-green transition-all duration-200 rounded"
+              className="w-full px-4 py-4 bg-transparent border-3 border-primary text-text-dark font-mono font-regular focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200 rounded"
             >
               <option value="">Select a project type...</option>
-              <option value="commercial" className="bg-dark-grey">Commercial / Advertisement</option>
-              <option value="corporate" className="bg-dark-grey">Corporate Video</option>
-              <option value="documentary" className="bg-dark-grey">Documentary</option>
-              <option value="event" className="bg-dark-grey">Event Coverage</option>
-              <option value="music-video" className="bg-dark-grey">Music Video</option>
-              <option value="social-media" className="bg-dark-grey">Social Media Content</option>
-              <option value="other" className="bg-dark-grey">Other</option>
+              <option value="commercial" className="bg-background-dark">Commercial / Advertisement</option>
+              <option value="corporate" className="bg-background-dark">Corporate Video</option>
+              <option value="documentary" className="bg-background-dark">Documentary</option>
+              <option value="event" className="bg-background-dark">Event Coverage</option>
+              <option value="music-video" className="bg-background-dark">Music Video</option>
+              <option value="social-media" className="bg-background-dark">Social Media Content</option>
+              <option value="other" className="bg-background-dark">Other</option>
             </select>
           </div>
 
           {/* Budget */}
           <div>
-            <label className="block mb-2 text-sm font-regular text-light-text">
+            <label className="block mb-2 text-sm font-regular text-text-dark">
               Estimated Budget
             </label>
             <select
               {...register('budget')}
-              className="w-full px-4 py-4 bg-transparent border-3 border-lime-green text-light-text font-mono font-regular focus:outline-none focus:ring-2 focus:ring-lime-green transition-all duration-200 rounded"
+              className="w-full px-4 py-4 bg-transparent border-3 border-primary text-text-dark font-mono font-regular focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200 rounded"
             >
               <option value="">Select a budget range...</option>
-              <option value="<5k" className="bg-dark-grey">Less than £5,000</option>
-              <option value="5k-10k" className="bg-dark-grey">£5,000 - £10,000</option>
-              <option value="10k-25k" className="bg-dark-grey">£10,000 - £25,000</option>
-              <option value="25k-50k" className="bg-dark-grey">£25,000 - £50,000</option>
-              <option value="50k+" className="bg-dark-grey">£50,000+</option>
+              <option value="<5k" className="bg-background-dark">Less than £5,000</option>
+              <option value="5k-10k" className="bg-background-dark">£5,000 - £10,000</option>
+              <option value="10k-25k" className="bg-background-dark">£10,000 - £25,000</option>
+              <option value="25k-50k" className="bg-background-dark">£25,000 - £50,000</option>
+              <option value="50k+" className="bg-background-dark">£50,000+</option>
             </select>
           </div>
 
