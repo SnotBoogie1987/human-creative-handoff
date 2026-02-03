@@ -1,53 +1,24 @@
-import { redirect } from 'next/navigation'
-import { getUser } from '@/lib/auth'
-import { Sidebar } from '@/components/dashboard'
-import MobileSidebar from '@/components/dashboard/MobileSidebar'
+import { redirect } from 'next/navigation';
+import { createClient } from '@/lib/supabase/server';
+import { DashboardShell } from '@/components/dashboard/DashboardShell';
 
 export default async function DashboardLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
-  // Require authentication
-  const userWithProfile = await getUser()
+  const supabase = await createClient();
 
-  if (!userWithProfile) {
-    redirect('/login')
-  }
+  // Check auth
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) redirect('/login');
 
-  // Redirect freelancers with incomplete onboarding (except when on onboarding page)
-  // Admins don't need onboarding
-  const isFreelancer = userWithProfile.profile.role === 'freelancer'
-  const hasCompletedOnboarding = userWithProfile.profile.onboarding_completed
+  // Fetch profile
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('id', user.id)
+    .single();
 
-  if (isFreelancer && !hasCompletedOnboarding) {
-    redirect('/onboarding')
-  }
-
-  return (
-    <div className="flex h-screen bg-black overflow-hidden">
-      {/* Mobile Sidebar */}
-      <MobileSidebar userRole={userWithProfile.profile.role} />
-
-      {/* Desktop Sidebar - Fixed */}
-      <div className="hidden lg:flex lg:flex-shrink-0">
-        <Sidebar profile={userWithProfile.profile} />
-      </div>
-
-      {/* Main Content Area */}
-      <div className="flex flex-col flex-1 overflow-hidden">
-        {/* Top Header (Mobile) */}
-        <header className="lg:hidden flex items-center justify-between px-6 py-4 bg-background-dark border-b border-gray-800">
-          <h1 className="text-white font-black text-2xl">
-            HUMAN<span className="text-primary">.</span>
-          </h1>
-        </header>
-
-        {/* Page Content - Scrollable */}
-        <main className="flex-1 overflow-y-auto bg-black">
-          {children}
-        </main>
-      </div>
-    </div>
-  )
+  return <DashboardShell profile={profile}>{children}</DashboardShell>;
 }

@@ -26,6 +26,16 @@ module.exports = {
           dark: "#FFFFFF",
           muted: "rgb(209, 213, 219)", // gray-300 equivalent
         },
+        card: {
+          DEFAULT: "hsl(0, 0%, 10%)",    // Dark card background
+          border: "hsl(0, 0%, 18%)",     // Card border
+        },
+        muted: {
+          DEFAULT: "hsl(0, 0%, 18%)",
+          foreground: "hsl(0, 0%, 75%)",
+        },
+        success: "hsl(142, 76%, 36%)",   // Green for positive trends
+        destructive: "hsl(0, 84%, 60%)", // Red for negative trends
       },
 
       /* ===================
