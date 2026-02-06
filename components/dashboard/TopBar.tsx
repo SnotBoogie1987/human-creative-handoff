@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Search, Bell, Menu } from 'lucide-react';
 import {
-  Button,
   Input,
   Avatar,
   AvatarFallback,
@@ -22,19 +21,19 @@ interface TopBarProps {
   onToggleMobileMenu: () => void;
 }
 
-export default function TopBar({ onToggleMobileMenu }: TopBarProps) {
+export default function TopBar({ sidebarCollapsed, onToggleMobileMenu }: TopBarProps) {
   const [searchFocused, setSearchFocused] = useState(false);
 
   return (
     <header className="h-20 bg-gray-900 border-b border-primary/20 flex items-center px-8 gap-6">
-      <Button
-        variant="outline"
+      <button
+        type="button"
         onClick={onToggleMobileMenu}
-        className="lg:hidden bg-transparent text-foreground hover:bg-muted hover:text-foreground p-2"
+        className="lg:hidden p-2 rounded-lg bg-transparent text-foreground hover:bg-muted hover:text-foreground transition-colors"
         aria-label="Toggle mobile menu"
       >
         <Menu className="w-6 h-6" />
-      </Button>
+      </button>
 
       <div className="flex-1 max-w-xl">
         <div className="relative">
@@ -53,23 +52,23 @@ export default function TopBar({ onToggleMobileMenu }: TopBarProps) {
       </div>
 
       <div className="flex items-center gap-4">
-        <Button
-          variant="outline"
-          className="relative bg-transparent text-foreground hover:bg-muted hover:text-foreground p-2"
+        <button
+          type="button"
+          className="relative p-2 rounded-lg bg-transparent text-foreground hover:bg-muted hover:text-foreground transition-colors"
           aria-label="Notifications"
         >
           <Bell className="w-6 h-6" />
           <span className="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full" />
-        </Button>
+        </button>
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="relative h-10 w-10 rounded-full bg-transparent hover:bg-muted">
+            <button type="button" className="relative h-10 w-10 rounded-full bg-transparent hover:bg-muted transition-colors" aria-label="User menu">
               <Avatar className="h-10 w-10">
-                <AvatarImage src="https://api.dicebear.com/7.x/avataaars/svg?seed=JohnDoe" alt="User avatar" />
+                <AvatarImage src="https://c.animaapp.com/ml4n20z6RgdjJT/img/ai_4.png" alt="User avatar" />
                 <AvatarFallback className="bg-primary text-primary-foreground">JD</AvatarFallback>
               </Avatar>
-            </Button>
+            </button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56 bg-popover text-popover-foreground border-border">
             <DropdownMenuLabel className="text-foreground">My Account</DropdownMenuLabel>

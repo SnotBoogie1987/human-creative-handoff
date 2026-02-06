@@ -3,46 +3,50 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
-  LayoutDashboard,
-  User,
-  Heart,
-  Settings,
+  Users,
+  Calendar,
+  Folder,
+  Bell,
   LogOut,
-  Shield
+  ChevronLeft,
+  X
 } from 'lucide-react'
-import { Avatar, AvatarImage, AvatarFallback, Separator } from '@/components/ui'
 import { signOut } from '@/lib/auth/client'
 import { cn } from '@/lib/utils'
 import type { Profile } from '@/lib/auth/types'
 
 interface SidebarProps {
   profile: Profile | null
+  collapsed: boolean
+  onToggleCollapse: () => void
+  mobileOpen: boolean
+  onCloseMobile: () => void
 }
 
 const navigation = [
   {
-    name: 'Dashboard',
-    href: '/dashboard',
-    icon: LayoutDashboard,
-  },
-  {
-    name: 'My Profile',
+    name: 'Profile',
     href: '/dashboard/profile/view',
-    icon: User,
+    icon: Users,
   },
   {
-    name: 'Member Benefits',
-    href: '/dashboard/benefits',
-    icon: Heart,
+    name: 'Calendar',
+    href: '/dashboard/calendar',
+    icon: Calendar,
   },
   {
-    name: 'Settings',
-    href: '/dashboard/settings',
-    icon: Settings,
+    name: 'Notes',
+    href: '/dashboard/notes',
+    icon: Folder,
+  },
+  {
+    name: 'Announcements',
+    href: '/dashboard/announcements',
+    icon: Bell,
   },
 ]
 
-export function Sidebar({ profile }: SidebarProps) {
+export function Sidebar({ profile, collapsed, onToggleCollapse, mobileOpen, onCloseMobile }: SidebarProps) {
   const pathname = usePathname()
 
   const handleSignOut = async () => {
@@ -53,94 +57,149 @@ export function Sidebar({ profile }: SidebarProps) {
     }
   }
 
-  // Get user initials for avatar fallback
-  const getInitials = (name: string | null) => {
-    if (!name) return 'U'
-    return name
-      .split(' ')
-      .map((n) => n[0])
-      .join('')
-      .toUpperCase()
-      .slice(0, 2)
-  }
-
   return (
-    <aside className="flex h-full w-64 flex-col bg-background-dark border-r border-gray-800">
-      {/* User Identity */}
-      <div className="flex flex-col items-center px-6 py-8">
-        <Avatar className="h-20 w-20 mb-4">
-          <AvatarImage src={profile?.avatar_url || undefined} alt={profile?.full_name || 'User'} />
-          <AvatarFallback className="text-2xl">
-            {getInitials(profile?.full_name || null)}
-          </AvatarFallback>
-        </Avatar>
-        <h2 className="text-white font-bold text-lg text-center">
-          {profile?.full_name || 'User'}
-        </h2>
-        <p className="text-gray-400 text-sm capitalize">
-          {profile?.role?.replace('_', ' ')}
-        </p>
-      </div>
-
-      <Separator className="mx-6" />
-
-      {/* Navigation */}
-      <nav className="flex-1 px-4 py-6 space-y-2">
-        {navigation.map((item) => {
-          const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`)
-          const Icon = item.icon
-
-          return (
-            <Link
-              key={item.name}
-              href={item.href}
-              className={cn(
-                'flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200',
-                'text-sm font-mono',
-                isActive
-                  ? 'bg-primary text-text-light font-bold'
-                  : 'text-gray-400 hover:bg-gray-800 hover:text-white'
-              )}
-            >
-              <Icon className="h-5 w-5" />
-              <span>{item.name}</span>
-            </Link>
-          )
-        })}
-
-        {/* Admin Section - Only for Super Admins */}
-        {profile?.role === 'super_admin' && (
-          <>
-            <Separator className="my-4" />
-            <Link
-              href="/dashboard/admin/partnerships"
-              className={cn(
-                'flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200',
-                'text-sm font-mono',
-                pathname.startsWith('/dashboard/admin')
-                  ? 'bg-orange-400 text-text-light font-bold'
-                  : 'text-orange-400 hover:bg-orange-400/10 hover:text-orange-300'
-              )}
-            >
-              <Shield className="h-5 w-5" />
-              <span>Admin Panel</span>
-            </Link>
-          </>
+    <>
+      {/* Desktop Sidebar */}
+      <aside
+        className={cn(
+          'hidden lg:flex flex-col bg-gray-900 border-r border-border transition-all duration-300 ease-in-out',
+          collapsed ? 'w-20' : 'w-64'
         )}
-      </nav>
+      >
+        <div className="flex items-center justify-between p-6 border-b border-border h-20">
+          {!collapsed && (
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center">
+                <span className="text-foreground font-bold text-lg">H</span>
+              </div>
+              <div>
+                <h1 className="text-base font-semibold text-foreground">HUMAN CREATIVE</h1>
+                <p className="text-xs text-muted-foreground">Freelancer Dashboard</p>
+              </div>
+            </div>
+          )}
+          {collapsed && (
+            <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center">
+              <span className="text-foreground font-bold text-lg">H</span>
+            </div>
+          )}
+          <button
+            type="button"
+            onClick={onToggleCollapse}
+            className="bg-transparent text-foreground hover:bg-muted hover:text-foreground p-2 rounded-md transition-colors"
+            aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+          >
+            <ChevronLeft className={cn('w-5 h-5 transition-transform', collapsed && 'rotate-180')} />
+          </button>
+        </div>
 
-      <Separator className="mx-6" />
+        <nav className="flex-1 py-8 px-3 space-y-2">
+          {navigation.map((item) => {
+            const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`)
+            const Icon = item.icon
 
-      {/* Logout */}
-      <div className="px-4 py-6">
-        <button
-          onClick={handleSignOut}
-          className="flex items-center gap-3 w-full px-4 py-3 rounded-lg text-sm font-mono text-gray-400 hover:bg-red-500/10 hover:text-red-500 transition-all duration-200"
-        >
-          <LogOut className="h-5 w-5" />
-          <span>Logout</span>
-        </button>
-      </div>
-    </aside>
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={cn(
+                  'flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200',
+                  isActive
+                    ? 'bg-primary text-primary-foreground'
+                    : 'text-muted-foreground hover:bg-muted/50 hover:text-foreground'
+                )}
+              >
+                <Icon className="w-5 h-5 flex-shrink-0" />
+                {!collapsed && <span className="text-sm font-normal">{item.name}</span>}
+              </Link>
+            )
+          })}
+        </nav>
+
+        <div className="p-3 border-t border-border">
+          <button
+            type="button"
+            onClick={handleSignOut}
+            className={cn(
+              'w-full flex items-center gap-3 bg-transparent text-muted-foreground hover:bg-muted hover:text-foreground px-3 py-2.5 rounded-lg transition-colors',
+              collapsed ? 'justify-center' : 'justify-start'
+            )}
+          >
+            <LogOut className="w-6 h-6" />
+            {!collapsed && <span className="font-normal">Logout</span>}
+          </button>
+        </div>
+      </aside>
+
+      {/* Mobile Sidebar Overlay */}
+      {mobileOpen && (
+        <div
+          className="lg:hidden fixed inset-0 bg-background/80 backdrop-blur-sm z-40"
+          onClick={onCloseMobile}
+        />
+      )}
+
+      {/* Mobile Sidebar */}
+      <aside
+        className={cn(
+          'lg:hidden fixed top-0 left-0 bottom-0 w-64 bg-gray-900 border-r border-border z-50 transform transition-transform duration-300',
+          mobileOpen ? 'translate-x-0' : '-translate-x-full'
+        )}
+      >
+        <div className="flex items-center justify-between p-6 border-b border-border h-20">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center">
+              <span className="text-foreground font-bold text-lg">H</span>
+            </div>
+            <div>
+              <h1 className="text-base font-semibold text-foreground">HUMAN CREATIVE</h1>
+              <p className="text-xs text-muted-foreground">Freelancer Dashboard</p>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={onCloseMobile}
+            className="bg-transparent text-foreground hover:bg-muted hover:text-foreground p-2 rounded-md transition-colors"
+            aria-label="Close menu"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        <nav className="flex-1 py-8 px-3 space-y-2">
+          {navigation.map((item) => {
+            const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`)
+            const Icon = item.icon
+
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={cn(
+                  'flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200',
+                  isActive
+                    ? 'bg-primary text-primary-foreground'
+                    : 'text-muted-foreground hover:bg-muted/50 hover:text-foreground'
+                )}
+              >
+                <Icon className="w-5 h-5 flex-shrink-0" />
+                <span className="text-sm font-normal">{item.name}</span>
+              </Link>
+            )
+          })}
+        </nav>
+
+        <div className="p-3 border-t border-border">
+          <button
+            type="button"
+            onClick={handleSignOut}
+            className="w-full flex items-center gap-3 justify-start bg-transparent text-muted-foreground hover:bg-muted hover:text-foreground px-3 py-2.5 rounded-lg transition-colors"
+          >
+            <LogOut className="w-6 h-6" />
+            <span className="font-normal">Logout</span>
+          </button>
+        </div>
+      </aside>
+    </>
   )
 }

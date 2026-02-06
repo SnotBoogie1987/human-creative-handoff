@@ -43,3 +43,4 @@ export {
 export type { ToastActionElement } from './Toast'
 export { Toaster } from './Toaster'
 export { useToast } from './use-toast'
+export { VerifiedBadge } from './VerifiedBadge'

@@ -12,11 +12,27 @@ module.exports = {
          COLOR TOKENS
          =================== */
       colors: {
-        // New Design System
-        primary: "#D2F865",           // Acid Lime
+        // Design System - aligned with reference dashboard
+        border: "hsl(0, 0%, 18%)",
+        input: "hsl(0, 0%, 18%)",
+        ring: "hsl(72, 95%, 60%)",
         background: {
+          DEFAULT: "hsl(0, 0%, 7%)",
           light: "#F5F5F5",
           dark: "#000000",
+        },
+        foreground: "hsl(0, 0%, 98%)",
+        primary: {
+          DEFAULT: "hsl(72, 95%, 60%)",  // Bright lime green
+          foreground: "hsl(0, 0%, 0%)",
+        },
+        secondary: {
+          DEFAULT: "hsl(72, 65%, 48%)",
+          foreground: "hsl(0, 0%, 100%)",
+        },
+        tertiary: {
+          DEFAULT: "hsl(0, 0%, 10%)",
+          foreground: "hsl(72, 95%, 60%)",
         },
         surface: {
           dark: "#000000",
@@ -24,18 +40,49 @@ module.exports = {
         text: {
           light: "#000000",
           dark: "#FFFFFF",
-          muted: "rgb(209, 213, 219)", // gray-300 equivalent
+          muted: "rgb(209, 213, 219)",
         },
         card: {
-          DEFAULT: "hsl(0, 0%, 10%)",    // Dark card background
-          border: "hsl(0, 0%, 18%)",     // Card border
+          DEFAULT: "hsl(0, 0%, 12%)",
+          foreground: "hsl(0, 0%, 98%)",
+          border: "hsl(0, 0%, 18%)",
+        },
+        popover: {
+          DEFAULT: "hsl(0, 0%, 10%)",
+          foreground: "hsl(0, 0%, 100%)",
         },
         muted: {
-          DEFAULT: "hsl(0, 0%, 18%)",
-          foreground: "hsl(0, 0%, 75%)",
+          DEFAULT: "hsl(0, 0%, 16%)",
+          foreground: "hsl(0, 0%, 65%)",
         },
-        success: "hsl(142, 76%, 36%)",   // Green for positive trends
-        destructive: "hsl(0, 84%, 60%)", // Red for negative trends
+        accent: {
+          DEFAULT: "hsl(72, 95%, 60%)",
+          foreground: "hsl(0, 0%, 0%)",
+        },
+        success: {
+          DEFAULT: "hsl(140, 65%, 38%)",
+          foreground: "hsl(0, 0%, 100%)",
+        },
+        warning: {
+          DEFAULT: "hsl(45, 100%, 51%)",
+          foreground: "hsl(0, 0%, 0%)",
+        },
+        destructive: {
+          DEFAULT: "hsl(0, 84%, 60%)",
+          foreground: "hsl(0, 0%, 100%)",
+        },
+        gray: {
+          50: "hsl(0, 0%, 98%)",
+          100: "hsl(0, 0%, 94%)",
+          200: "hsl(0, 0%, 86%)",
+          300: "hsl(0, 0%, 75%)",
+          400: "hsl(0, 0%, 55%)",
+          500: "hsl(0, 0%, 38%)",
+          600: "hsl(0, 0%, 28%)",
+          700: "hsl(0, 0%, 18%)",
+          800: "hsl(0, 0%, 10%)",
+          900: "hsl(0, 0%, 0%)",
+        },
       },
 
       /* ===================
@@ -43,8 +90,14 @@ module.exports = {
          =================== */
       fontFamily: {
         display: ["'Anton'", "sans-serif"],
+        headline: ["'Anton'", "sans-serif"],  // Alias for reference compatibility
         sans: ["'Inter'", "sans-serif"],
         mono: ["'Azeret Mono'", "'Space Mono'", "monospace"],
+      },
+      backgroundImage: {
+        'gradient-1': 'linear-gradient(135deg, hsl(72, 95%, 60%) 0%, hsl(72, 65%, 48%) 100%)',
+        'gradient-2': 'linear-gradient(135deg, hsl(0, 0%, 10%) 0%, hsl(72, 95%, 60%) 100%)',
+        'button-border-gradient': 'linear-gradient(90deg, hsl(72, 95%, 60%), hsl(72, 65%, 48%))',
       },
 
       /* ===================
